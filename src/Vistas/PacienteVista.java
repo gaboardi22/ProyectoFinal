@@ -3,6 +3,7 @@ package Vistas;
 
 import Entidades.Paciente;
 import EntidadesData.PacienteData;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -53,12 +54,6 @@ public class PacienteVista extends javax.swing.JInternalFrame {
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setText("NOMBRE");
-
-        jTNombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTNombreActionPerformed(evt);
-            }
-        });
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setText("EDAD");
@@ -131,9 +126,9 @@ public class PacienteVista extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(29, 29, 29)
                         .addComponent(jBNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32)
+                        .addGap(51, 51, 51)
                         .addComponent(jBGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(37, 37, 37)
+                        .addGap(18, 18, 18)
                         .addComponent(jBEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(45, 45, 45)
                         .addComponent(jBSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -201,10 +196,6 @@ public class PacienteVista extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTNombreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTNombreActionPerformed
-
     private void jTAlturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTAlturaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTAlturaActionPerformed
@@ -223,7 +214,17 @@ public class PacienteVista extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBGuardarActionPerformed
 
     private void jBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarActionPerformed
-       
+     if(pacienteActual != null){
+         pacienteData.eliminarPaciente(pacienteActual.getIdPaciente());
+         pacienteActual = null;
+         jTEdad.setText("");
+         jTNombre.setText("");
+         jTPesoActual.setText("");
+         jTPesoEsperado.setText("");
+         jREstado.setSelected(true);
+     }else{
+         JOptionPane.showMessageDialog(this, "No se busco un paciente a eliminar");
+     }
     }//GEN-LAST:event_jBEliminarActionPerformed
 
     private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed

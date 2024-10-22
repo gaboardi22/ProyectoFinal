@@ -38,7 +38,7 @@ public class PacienteData {
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "error al acceder a la tabla nutricionista");
+            JOptionPane.showMessageDialog(null, "error al acceder a la tabla paciente");
         }
     }
     
@@ -60,13 +60,13 @@ public class PacienteData {
            }
            ps.close();
         } catch (SQLException ex) {
-           JOptionPane.showMessageDialog(null, "error al acceder a la tabla nutricionista");
+           JOptionPane.showMessageDialog(null, "error al acceder a la tabla paciente");
         }  
     }
     
-    public  Paciente bscarPaciente(String nombre){
+    public  Paciente bscarPacientePorNombre(String nombre){
         Paciente paciente = null;
-        String sql= "SELECT nombre, edad, altura, peso_actual, peso_esperado, estado WHERE dni = ?";
+        String sql= "SELECT nombre, edad, altura, peso_actual, peso_esperado, estado WHERE nombre = ?";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, nombre);
@@ -79,11 +79,25 @@ public class PacienteData {
                paciente.setPesoActual(rs.getDouble("peso_actual"));
                paciente.setPesoEsperado(rs.getDouble("peso_esperado"));
                paciente.setEstado(rs.getBoolean("estado"));
-               
             }
         } catch (SQLException ex) {
-           JOptionPane.showMessageDialog(null, "error al acceder a la tabla nutricionista");
+           JOptionPane.showMessageDialog(null, "error al acceder a la tabla paciente");
         }
         return paciente;
+    }
+    
+    public void eliminarPaciente(int id){
+        String sql = " UPDATE paciente SET estado = 0 WHERE id_Paciente = ?";
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, id);
+            int exito = ps.executeUpdate();
+             if(exito == 1){
+               JOptionPane.showMessageDialog(null, "paciente eliminado con exito");
+           }
+             ps.close();
+        } catch (SQLException ex) {
+           JOptionPane.showMessageDialog(null, "error al acceder a la tabla paciente");
+        }  
     }
 }

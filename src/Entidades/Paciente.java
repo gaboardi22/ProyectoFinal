@@ -7,6 +7,7 @@ package Entidades;
  */
 public class Paciente {
     private  int idPaciente;
+    private int dni;
     private String nombre;
     private int edad;
     private Double altura;
@@ -17,7 +18,8 @@ public class Paciente {
     public Paciente() {
     }
 
-    public Paciente(String nombre, int edad, Double altura, Double pesoActual, Double pesoEsperado, boolean estado) {
+    public Paciente(int dni, String nombre, int edad, Double altura, Double pesoActual, Double pesoEsperado, boolean estado) {
+        this.dni = dni;
         this.nombre = nombre;
         this.edad = edad;
         this.altura = altura;
@@ -26,8 +28,9 @@ public class Paciente {
         this.estado = estado;
     }
 
-    public Paciente(int idPaciente, String nombre, int edad, Double altura, Double pesoActual, Double pesoEsperado, boolean estado) {
+    public Paciente(int idPaciente, int dni, String nombre, int edad, Double altura, Double pesoActual, Double pesoEsperado, boolean estado) {
         this.idPaciente = idPaciente;
+        this.dni = dni;
         this.nombre = nombre;
         this.edad = edad;
         this.altura = altura;
@@ -42,6 +45,14 @@ public class Paciente {
 
     public void setIdPaciente(int idPaciente) {
         this.idPaciente = idPaciente;
+    }
+
+    public int getDni() {
+        return dni;
+    }
+
+    public void setDni(int dni) {
+        this.dni = dni;
     }
 
     public String getNombre() {
@@ -94,8 +105,8 @@ public class Paciente {
 
     @Override
     public String toString() {
-        return "Paciente{" + "idPaciente=" + idPaciente + ", nombre=" + nombre + ", edad=" + edad + ", altura=" + altura + ", pesoActual=" + pesoActual + ", pesoEsperado=" + pesoEsperado + ", estado=" + estado + '}';
+        return "Paciente{" + "idPaciente=" + idPaciente + ", dni=" + dni + ", nombre=" + nombre + ", edad=" + edad + ", altura=" + altura + ", pesoActual=" + pesoActual + ", pesoEsperado=" + pesoEsperado + ", estado=" + estado + '}';
     }
 
-    
+  
 }

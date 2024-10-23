@@ -64,9 +64,9 @@ public class PacienteData {
         }  
     }
     
-    public  Paciente bscarPacientePorNombre(String nombre){
+    public  Paciente buscarPacientePorNombre(String nombre){
         Paciente paciente = null;
-        String sql= "SELECT nombre, edad, altura, peso_actual, peso_esperado, estado WHERE nombre = ?";
+        String sql= "SELECT nombre, edad, altura, peso_actual, peso_esperado, estado FROM paciente WHERE nombre = ?";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, nombre);
@@ -100,4 +100,6 @@ public class PacienteData {
            JOptionPane.showMessageDialog(null, "error al acceder a la tabla paciente");
         }  
     }
+    
+    
 }

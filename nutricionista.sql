@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-10-2024 a las 01:51:28
+-- Tiempo de generación: 23-10-2024 a las 19:23:50
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -30,12 +30,12 @@ USE `nutricionista`;
 --
 
 CREATE TABLE `comida` (
-  `idComida` int(11) NOT NULL,
-  `nombre` varchar(30) DEFAULT NULL,
-  `tipoComida` varchar(30) DEFAULT NULL,
-  `caloriasX100g` int(11) DEFAULT NULL,
-  `detalle` varchar(30) DEFAULT NULL,
-  `baja` tinyint(1) DEFAULT NULL
+  `id_comida` int(11) NOT NULL,
+  `nombre` varchar(30) NOT NULL,
+  `tipo_comida` enum('DESAYUNO','MERIENDA','COLACION','ALMUERZO','CENA') NOT NULL,
+  `calorias_x_100g` int(11) NOT NULL,
+  `detalle` varchar(30) NOT NULL,
+  `baja` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -105,7 +105,7 @@ CREATE TABLE `reglondemenu` (
 -- Indices de la tabla `comida`
 --
 ALTER TABLE `comida`
-  ADD PRIMARY KEY (`idComida`);
+  ADD PRIMARY KEY (`id_comida`);
 
 --
 -- Indices de la tabla `dieta`
@@ -136,6 +136,16 @@ ALTER TABLE `reglondemenu`
   ADD KEY `idComida` (`idComida`);
 
 --
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `comida`
+--
+ALTER TABLE `comida`
+  MODIFY `id_comida` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- Restricciones para tablas volcadas
 --
 
@@ -156,7 +166,7 @@ ALTER TABLE `menu`
 -- Filtros para la tabla `reglondemenu`
 --
 ALTER TABLE `reglondemenu`
-  ADD CONSTRAINT `reglondemenu_ibfk_1` FOREIGN KEY (`idComida`) REFERENCES `comida` (`idComida`);
+  ADD CONSTRAINT `reglondemenu_ibfk_1` FOREIGN KEY (`idComida`) REFERENCES `comida` (`id_comida`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -37,8 +37,7 @@ public class PacienteData {
             ResultSet rs = ps.getGeneratedKeys();
             if(rs.next()){
                 paciente.setIdPaciente(rs.getInt(1));
-                 JOptionPane.showMessageDialog(null, "paciente guardado");
-                 System.out.println("guarda");
+                JOptionPane.showMessageDialog(null, "paciente guardado");
             }
             ps.close();
         } catch (SQLException ex) {
@@ -60,9 +59,8 @@ public class PacienteData {
             ps.setBoolean(7, paciente.isEstado());
             ps.setInt(8, paciente.getIdPaciente());
             ps.executeUpdate();
-           
-           JOptionPane.showMessageDialog(null, "paciente modificado con exito");
-           ps.close();
+            JOptionPane.showMessageDialog(null, "paciente modificado con exito");
+            ps.close();
         } catch (SQLException ex) {
            JOptionPane.showMessageDialog(null, "error al acceder a la tabla paciente");
         }  
@@ -85,7 +83,6 @@ public class PacienteData {
                paciente.setPesoActual(rs.getDouble("peso_actual"));
                paciente.setPesoEsperado(rs.getDouble("peso_esperado"));
                paciente.setEstado(rs.getBoolean("estado"));
-                System.out.println(paciente.toString());
             }
             ps.close();
         } catch (SQLException ex) {

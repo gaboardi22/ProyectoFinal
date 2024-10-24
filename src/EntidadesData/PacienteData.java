@@ -38,6 +38,7 @@ public class PacienteData {
             if(rs.next()){
                 paciente.setIdPaciente(rs.getInt(1));
                  JOptionPane.showMessageDialog(null, "paciente guardado");
+                 System.out.println("guarda");
             }
             ps.close();
         } catch (SQLException ex) {
@@ -58,10 +59,9 @@ public class PacienteData {
             ps.setDouble(6, paciente.getPesoEsperado());
             ps.setBoolean(7, paciente.isEstado());
             ps.setInt(8, paciente.getIdPaciente());
-            int exito = ps.executeUpdate();
-            if(exito == 1){
-               JOptionPane.showMessageDialog(null, "paciente modificado con exito");
-           }
+            ps.executeUpdate();
+           
+           JOptionPane.showMessageDialog(null, "paciente modificado con exito");
            ps.close();
         } catch (SQLException ex) {
            JOptionPane.showMessageDialog(null, "error al acceder a la tabla paciente");
@@ -70,13 +70,14 @@ public class PacienteData {
     
     public  Paciente buscarPacientePorNombre(String nombre){
         Paciente paciente = null;
-        String sql= "SELECT dni, nombre, edad, altura, peso_actual, peso_esperado, estado FROM paciente WHERE nombre = ?";
+        String sql= "SELECT id_paciente, dni, nombre, edad, altura, peso_actual, peso_esperado, estado FROM paciente WHERE nombre = ?";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, nombre);
             ResultSet rs  = ps.executeQuery();
             if(rs.next()){
                paciente  = new Paciente();
+               paciente.setIdPaciente(rs.getInt("id_paciente"));
                paciente.setDni(rs.getInt("dni"));
                paciente.setNombre(nombre);
                paciente.setEdad(rs.getInt("edad"));
@@ -84,6 +85,7 @@ public class PacienteData {
                paciente.setPesoActual(rs.getDouble("peso_actual"));
                paciente.setPesoEsperado(rs.getDouble("peso_esperado"));
                paciente.setEstado(rs.getBoolean("estado"));
+                System.out.println(paciente.toString());
             }
             ps.close();
         } catch (SQLException ex) {
@@ -93,6 +95,8 @@ public class PacienteData {
     }
     
     public void eliminarPaciente(int id){
+        Paciente paciente = new Paciente();
+        id  = paciente.getIdPaciente();
         String sql = " UPDATE paciente SET estado = 0 WHERE id_paciente = ?";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);

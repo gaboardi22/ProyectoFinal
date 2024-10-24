@@ -228,6 +228,7 @@ public class PacienteVista extends javax.swing.JInternalFrame {
         if (pacienteActual == null) {
             pacienteActual = new Paciente(dni, nombre, edad, altura, pesoActual, pesoEsperado, estado);
             pacienteData.guardarPaciente(pacienteActual);
+            
         } else {
             pacienteActual.setDni(dni);
             pacienteActual.setNombre(nombre);
@@ -237,6 +238,7 @@ public class PacienteVista extends javax.swing.JInternalFrame {
             pacienteActual.setPesoEsperado(pesoEsperado);
             pacienteActual.setEstado(estado);
             pacienteData.modificarPaciente(pacienteActual);
+            System.out.println(pacienteActual.toString());
         }
        }catch(NumberFormatException e ){
            JOptionPane.showMessageDialog(this, "debe ingresar datos numericos donde lo requiera");
@@ -284,6 +286,7 @@ public class PacienteVista extends javax.swing.JInternalFrame {
             jTPesoActual.setText(pacienteActual.getPesoActual() + "");
             jTPesoEsperado.setText(pacienteActual.getPesoEsperado() + "");
             jREstado.setSelected(pacienteActual.isEstado());
+            System.out.println(pacienteActual.toString());
         }
     }//GEN-LAST:event_jBBuscarActionPerformed
 

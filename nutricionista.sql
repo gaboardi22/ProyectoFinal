@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-10-2024 a las 00:21:37
+-- Tiempo de generación: 25-10-2024 a las 00:40:30
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -89,6 +89,7 @@ CREATE TABLE `menu` (
 
 CREATE TABLE `paciente` (
   `id_paciente` int(11) NOT NULL,
+  `dni` int(20) NOT NULL,
   `nombre` varchar(30) NOT NULL,
   `edad` int(11) NOT NULL,
   `altura` double NOT NULL,
@@ -162,7 +163,8 @@ ALTER TABLE `menu`
 -- Indices de la tabla `paciente`
 --
 ALTER TABLE `paciente`
-  ADD PRIMARY KEY (`id_paciente`);
+  ADD PRIMARY KEY (`id_paciente`),
+  ADD UNIQUE KEY `dni` (`dni`);
 
 --
 -- Indices de la tabla `reglondemenu`

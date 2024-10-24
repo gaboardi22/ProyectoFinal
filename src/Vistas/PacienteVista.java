@@ -217,6 +217,7 @@ public class PacienteVista extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
+       try{
         Integer dni = Integer.valueOf(jTDni.getText());
         String nombre = jTNombre.getText().trim();
         Integer edad = Integer.valueOf(jTEdad.getText());
@@ -224,11 +225,11 @@ public class PacienteVista extends javax.swing.JInternalFrame {
         Double pesoActual = Double.valueOf(jTPesoActual.getText());
         Double pesoEsperado = Double.valueOf(jTPesoEsperado.getText());
         Boolean estado = jREstado.isSelected();
-        
         if (pacienteActual == null) {
             pacienteActual = new Paciente(dni, nombre, edad, altura, pesoActual, pesoEsperado, estado);
             pacienteData.guardarPaciente(pacienteActual);
         } else {
+            pacienteActual.setDni(dni);
             pacienteActual.setNombre(nombre);
             pacienteActual.setEdad(edad);
             pacienteActual.setAltura(altura);
@@ -237,19 +238,22 @@ public class PacienteVista extends javax.swing.JInternalFrame {
             pacienteActual.setEstado(estado);
             pacienteData.modificarPaciente(pacienteActual);
         }
+       }catch(NumberFormatException e ){
+           JOptionPane.showMessageDialog(this, "debe ingresar datos numericos donde lo requiera");
+       }
     }//GEN-LAST:event_jBGuardarActionPerformed
 
     private void jBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarActionPerformed
         if (pacienteActual != null) {
-            int confirmar = JOptionPane.showConfirmDialog(this, "¿Esta seguro que desea eliminar al paciente?", "Por favor confirme eliminacion", JOptionPane.YES_NO_OPTION);
+            int confirmar = JOptionPane.showConfirmDialog(this, "¿Está seguro que desea eliminar al paciente?", "Confirme eliminación", JOptionPane.YES_NO_OPTION);
             if (confirmar == JOptionPane.YES_OPTION) {
                 pacienteData.eliminarPaciente(pacienteActual.getIdPaciente());
                 limpiarDatos();
                 pacienteActual = null;
-                JOptionPane.showMessageDialog(this, "Paciente eliminado con exito");
-            } else {
-                JOptionPane.showMessageDialog(this, "No se encontro un paciente a eliminar");
+                JOptionPane.showMessageDialog(this, "Paciente eliminado con éxito");
             }
+        } else {
+            JOptionPane.showMessageDialog(this, "No se encontró un paciente para eliminar");
         }
     }//GEN-LAST:event_jBEliminarActionPerformed
 
@@ -268,15 +272,19 @@ public class PacienteVista extends javax.swing.JInternalFrame {
 
     private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
         String nombre = jTNombre.getText();
+        if (nombre.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "debe colocar un nombre para realizar la busqueda");
+            return;
+        }
         pacienteActual = pacienteData.buscarPacientePorNombre(nombre);
-        if(pacienteActual != null){
+        if (pacienteActual != null) {
             jTDni.setText(pacienteActual.getDni() + "");
-           jTEdad.setText(pacienteActual.getEdad() + "");
-           jTAltura.setText(pacienteActual.getAltura() + "");
-           jTPesoActual.setText(pacienteActual.getPesoActual() + "");
-           jTPesoEsperado.setText(pacienteActual.getPesoEsperado() + "");
-           jREstado.setSelected(pacienteActual.isEstado());
-       }
+            jTEdad.setText(pacienteActual.getEdad() + "");
+            jTAltura.setText(pacienteActual.getAltura() + "");
+            jTPesoActual.setText(pacienteActual.getPesoActual() + "");
+            jTPesoEsperado.setText(pacienteActual.getPesoEsperado() + "");
+            jREstado.setSelected(pacienteActual.isEstado());
+        }
     }//GEN-LAST:event_jBBuscarActionPerformed
 
 

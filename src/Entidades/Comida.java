@@ -11,26 +11,26 @@ public class Comida {
     private String tipoComida;
     private int caloriasPorcion;
     private String detalle;
-    private Boolean baja;
+    private Boolean estado;
 
     public Comida() {
     }
 
-    public Comida(String nombre, String tipoComida, int caloriasPorcion, String detalle, Boolean baja) {
+    public Comida(String nombre, String tipoComida, int caloriasPorcion, String detalle, Boolean estado) {
         this.nombre = nombre;
         this.tipoComida = tipoComida;
         this.caloriasPorcion = caloriasPorcion;
         this.detalle = detalle;
-        this.baja = baja;
+        this.estado = estado;
     }
 
-    public Comida(int idComida, String nombre, String tipoComida, int caloriasPorcion, String detalle, Boolean baja) {
+    public Comida(int idComida, String nombre, String tipoComida, int caloriasPorcion, String detalle, Boolean estado) {
         this.idComida = idComida;
         this.nombre = nombre;
         this.tipoComida = tipoComida;
         this.caloriasPorcion = caloriasPorcion;
         this.detalle = detalle;
-        this.baja = baja;
+        this.estado = estado;
     }
 
     public int getIdComida() {
@@ -73,18 +73,16 @@ public class Comida {
         this.detalle = detalle;
     }
 
-    public Boolean getBaja() {
-        return baja;
+    public Boolean getEstado() {
+        return estado;
     }
 
-    public void setBaja(Boolean baja) {
-        this.baja = baja;
+    public void setEstado(Boolean estado) {
+        this.estado = estado;
     }
 
     @Override
     public String toString() {
-        return "Comida{" + "idComida=" + idComida + ", nombre=" + nombre + ", tipoComida=" + tipoComida + ", caloriasPorcion=" + caloriasPorcion + ", detalle=" + detalle + ", baja=" + baja + '}';
+        return "Comida{" + "idComida=" + idComida + ", nombre=" + nombre + ", tipoComida=" + tipoComida + ", caloriasPorcion=" + caloriasPorcion + ", detalle=" + detalle + ", estado=" + estado + '}';
     }
-    
-    
 }

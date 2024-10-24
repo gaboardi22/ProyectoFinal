@@ -63,7 +63,7 @@ public class ComidaData {
 
     public Comida buscarComidaPorNombre(String nombre) {
         Comida comida = null;
-        String sql = "SELECT nombre, tipoComida, caloriasPorcion, detalle, estado FROM comida WHERE nombre  = ?";
+        String sql = "SELECT nombre, tipoComida, calorias_x_100g, detalle, estado FROM comida WHERE nombre  = ?";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, nombre);
@@ -72,7 +72,7 @@ public class ComidaData {
                 comida  = new Comida();
                 comida.setNombre(nombre);
                 comida.setTipoComida(rs.getString("tipoComida"));
-                comida.setCaloriasPorcion(rs.getInt("caloriasPorcion"));
+                comida.setCaloriasPorcion(rs.getInt("calorias_x_100g"));
                 comida.setDetalle(rs.getString("detalle"));
                 comida.setEstado(rs.getBoolean("estado"));
             }
@@ -99,7 +99,7 @@ public class ComidaData {
     }
     
     public List<Comida> listarComidas(){
-        String sql = "SELECT nombre, tipoComida, caloriasPorcion, detalle, estado FROM comida WHERE estado = 1";
+        String sql = "SELECT nombre, tipoComida, calorias_x_100g, detalle, estado FROM comida WHERE estado = 1";
         ArrayList<Comida> comidas = new ArrayList<>();
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
@@ -108,7 +108,7 @@ public class ComidaData {
                 Comida comida = new Comida();
                 comida.setNombre(rs.getString("nombre"));
                 comida.setTipoComida(rs.getString("tipoComida"));
-                comida.setCaloriasPorcion(rs.getInt("caloriasPorcion"));
+                comida.setCaloriasPorcion(rs.getInt("calorias_x_100g"));
                 comida.setDetalle(rs.getString("detalle"));
                 comida.setEstado(rs.getBoolean("estado"));
                 comidas.add(comida);

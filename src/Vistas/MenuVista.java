@@ -26,6 +26,7 @@ public class MenuVista extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
+        jMenuItemIngredientes = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -52,7 +53,16 @@ public class MenuVista extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Edit");
+        jMenu2.setText("DIETA");
+
+        jMenuItemIngredientes.setText("INGREDIENTES");
+        jMenuItemIngredientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemIngredientesActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItemIngredientes);
+
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
@@ -79,6 +89,15 @@ public class MenuVista extends javax.swing.JFrame {
        jDPMenu.add(cargaPaciente);
        jDPMenu.moveToFront(cargaPaciente);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItemIngredientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemIngredientesActionPerformed
+       jDPMenu.removeAll();
+       jDPMenu.repaint();
+       IngredienteVista ingred  =new IngredienteVista();
+       ingred.setVisible(true);
+       jDPMenu.add(ingred);
+       jDPMenu.moveToFront(ingred);
+    }//GEN-LAST:event_jMenuItemIngredientesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -124,5 +143,6 @@ public class MenuVista extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItemIngredientes;
     // End of variables declaration//GEN-END:variables
 }

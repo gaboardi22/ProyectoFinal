@@ -50,6 +50,8 @@ public class PacienteVista extends javax.swing.JInternalFrame {
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("PACIENTE");
 
+        jSeparator1.setForeground(new java.awt.Color(255, 102, 0));
+
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setText("NOMBRE");
 
@@ -65,6 +67,7 @@ public class PacienteVista extends javax.swing.JInternalFrame {
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel6.setText("PESO ESPERADO");
 
+        jBGuardar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jBGuardar.setText("GUARDAR");
         jBGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -72,6 +75,7 @@ public class PacienteVista extends javax.swing.JInternalFrame {
             }
         });
 
+        jBEliminar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jBEliminar.setText("ELIMINAR");
         jBEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -79,6 +83,7 @@ public class PacienteVista extends javax.swing.JInternalFrame {
             }
         });
 
+        jBSalir.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jBSalir.setText("SALIR");
         jBSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -86,6 +91,7 @@ public class PacienteVista extends javax.swing.JInternalFrame {
             }
         });
 
+        jBNuevo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jBNuevo.setText("NUEVO");
         jBNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -102,6 +108,7 @@ public class PacienteVista extends javax.swing.JInternalFrame {
             }
         });
 
+        jBBuscar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jBBuscar.setText("BUSCAR");
         jBBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -116,20 +123,14 @@ public class PacienteVista extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(75, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(25, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel6)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel4)
+                        .addComponent(jLabel5)
+                        .addComponent(jLabel6)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 424, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(121, 121, 121))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(273, 273, 273))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
@@ -155,16 +156,23 @@ public class PacienteVista extends javax.swing.JInternalFrame {
                                             .addComponent(jTDni))
                                         .addGap(28, 28, 28)))
                                 .addComponent(jBBuscar)
-                                .addContainerGap()))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jBNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(73, 73, 73)
-                            .addComponent(jBGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
-                            .addComponent(jBEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(64, 64, 64)
-                            .addComponent(jBSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(20, 20, 20)))))
+                                .addContainerGap())
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jBNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(73, 73, 73)
+                                .addComponent(jBGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
+                                .addComponent(jBEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(64, 64, 64)
+                                .addComponent(jBSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(20, 20, 20))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(273, 273, 273))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(167, 167, 167)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

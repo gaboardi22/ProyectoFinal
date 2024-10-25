@@ -23,22 +23,14 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="75" max="32767" attributes="0"/>
+          <Group type="102" attributes="0">
+              <EmptySpace pref="25" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                      <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="jSeparator1" min="-2" pref="424" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="121" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="273" max="-2" attributes="0"/>
-                          </Group>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
@@ -74,19 +66,28 @@
                               <Component id="jBBuscar" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <Component id="jBNuevo" min="-2" pref="95" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
-                          <Component id="jBGuardar" min="-2" pref="95" max="-2" attributes="0"/>
-                          <EmptySpace pref="80" max="32767" attributes="0"/>
-                          <Component id="jBEliminar" min="-2" pref="95" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
-                          <Component id="jBSalir" min="-2" pref="95" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Component id="jBNuevo" min="-2" pref="95" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
+                              <Component id="jBGuardar" min="-2" pref="95" max="-2" attributes="0"/>
+                              <EmptySpace pref="80" max="32767" attributes="0"/>
+                              <Component id="jBEliminar" min="-2" pref="95" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
+                              <Component id="jBSalir" min="-2" pref="95" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="273" max="-2" attributes="0"/>
+                  </Group>
               </Group>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="167" max="-2" attributes="0"/>
+              <Component id="jSeparator1" min="-2" pref="286" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -162,6 +163,11 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JSeparator" name="jSeparator1">
+      <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="0" green="66" red="ff" type="rgb"/>
+        </Property>
+      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
@@ -215,6 +221,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="jBGuardar">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="12" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="GUARDAR"/>
       </Properties>
       <Events>
@@ -223,6 +232,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="jBEliminar">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="12" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="ELIMINAR"/>
       </Properties>
       <Events>
@@ -231,6 +243,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="jBSalir">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="12" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="SALIR"/>
       </Properties>
       <Events>
@@ -239,6 +254,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="jBNuevo">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="12" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="NUEVO"/>
       </Properties>
       <Events>
@@ -260,6 +278,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="jBBuscar">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="12" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="BUSCAR"/>
       </Properties>
       <Events>

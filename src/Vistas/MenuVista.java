@@ -27,6 +27,9 @@ public class MenuVista extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItemIngredientes = new javax.swing.JMenuItem();
+        jMenus = new javax.swing.JMenuItem();
+        jMReporte = new javax.swing.JMenu();
+        jMSalir = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -63,7 +66,21 @@ public class MenuVista extends javax.swing.JFrame {
         });
         jMenu2.add(jMenuItemIngredientes);
 
+        jMenus.setText("MENUS");
+        jMenus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenusActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenus);
+
         jMenuBar1.add(jMenu2);
+
+        jMReporte.setText("REPORTE");
+        jMenuBar1.add(jMReporte);
+
+        jMSalir.setText("SALIR");
+        jMenuBar1.add(jMSalir);
 
         setJMenuBar(jMenuBar1);
 
@@ -98,6 +115,15 @@ public class MenuVista extends javax.swing.JFrame {
        jDPMenu.add(ingred);
        jDPMenu.moveToFront(ingred);
     }//GEN-LAST:event_jMenuItemIngredientesActionPerformed
+
+    private void jMenusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenusActionPerformed
+       jDPMenu.removeAll();
+       jDPMenu.repaint();
+       MenusDVista menu  =new MenusDVista();
+       menu.setVisible(true);
+       jDPMenu.add(menu);
+       jDPMenu.moveToFront(menu);
+    }//GEN-LAST:event_jMenusActionPerformed
 
     /**
      * @param args the command line arguments
@@ -139,10 +165,13 @@ public class MenuVista extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane jDPMenu;
+    private javax.swing.JMenu jMReporte;
+    private javax.swing.JMenu jMSalir;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItemIngredientes;
+    private javax.swing.JMenuItem jMenus;
     // End of variables declaration//GEN-END:variables
 }

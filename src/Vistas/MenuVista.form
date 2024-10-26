@@ -32,7 +32,25 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemIngredientesActionPerformed"/>
               </Events>
             </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenus">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="MENUS"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenusActionPerformed"/>
+              </Events>
+            </MenuItem>
           </SubComponents>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="jMReporte">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="REPORTE"/>
+          </Properties>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="jMSalir">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="SALIR"/>
+          </Properties>
         </Menu>
       </SubComponents>
     </Menu>

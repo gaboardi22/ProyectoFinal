@@ -1,6 +1,8 @@
 
 package Entidades;
 
+import java.util.List;
+
 /**
  *
  * @author Grupo 3
@@ -9,22 +11,22 @@ public class Menu {
     private int idMenu;
     private int diaNumero;
     private Boolean estado;
-    private Dieta dieta;
+    private List<RenglonMenu> renglonesMenu;
 
     public Menu() {
     }
 
-    public Menu(int diaNumero, Boolean estado, Dieta dieta) {
+    public Menu(int diaNumero, Boolean estado, List<RenglonMenu> renglonesMenu) {
         this.diaNumero = diaNumero;
         this.estado = estado;
-        this.dieta = dieta;
+        this.renglonesMenu = renglonesMenu;
     }
 
-    public Menu(int idMenu, int diaNumero, Boolean estado, Dieta dieta) {
+    public Menu(int idMenu, int diaNumero, Boolean estado, List<RenglonMenu> renglonesMenu) {
         this.idMenu = idMenu;
         this.diaNumero = diaNumero;
         this.estado = estado;
-        this.dieta = dieta;
+        this.renglonesMenu = renglonesMenu;
     }
 
     public int getIdMenu() {
@@ -51,18 +53,18 @@ public class Menu {
         this.estado = estado;
     }
 
-    public Dieta getDieta() {
-        return dieta;
+    public List<RenglonMenu> getRenglonesMenu() {
+        return renglonesMenu;
     }
 
-    public void setDieta(Dieta dieta) {
-        this.dieta = dieta;
+    public void setRenglonesMenu(List<RenglonMenu> renglonesMenu) {
+        this.renglonesMenu = renglonesMenu;
     }
 
     @Override
     public String toString() {
-        return "Menu{" + "idMenu=" + idMenu + ", diaNumero=" + diaNumero + ", estado=" + estado + ", dieta=" + dieta + '}';
+        return "Menu{" + "idMenu=" + idMenu + ", diaNumero=" + diaNumero + ", estado=" + estado + ", renglonesMenu=" + renglonesMenu + '}';
     }
-    
-    
+
+   
 }

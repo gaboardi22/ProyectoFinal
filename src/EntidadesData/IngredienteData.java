@@ -6,6 +6,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import org.mariadb.jdbc.Connection;
 
@@ -36,5 +40,71 @@ public class IngredienteData {
         } catch (SQLException ex) {
              JOptionPane.showMessageDialog(null, "error al acceder a la tabla ingrediente");
         }
+    }
+    
+    public void modificarIngrediente(Ingrediente ingrediente){
+        String sql  = "UPDATE ingrediente SET  nombre = ?, calorias = ? WHERE id_ingrediente = ? ";
+        
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, ingrediente.getNombre());
+            ps.setInt(2, ingrediente.getCalorias());
+            ps.setInt(3, ingrediente.getId_ingrediente());
+            ps.executeUpdate();
+            JOptionPane.showMessageDialog(null, "ingrediente modificado con exito");
+            ps.close();
+        } catch (SQLException ex) {
+             JOptionPane.showMessageDialog(null, "error al acceder a la tabla ingrediente");
+        }
+    }
+    
+    public void buscarIngredientePorNombre(String nombre){
+        Ingrediente ingrediente  = null;
+        String sql  = "SELECT id_ingrediente, nombre, calorias FROM ingrediente WHERE nombre  = ?";
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+             ps.setString(1, nombre);
+            ResultSet rs  = ps.executeQuery();
+            if(rs.next()){
+                ingrediente = new Ingrediente();
+                ingrediente.setId_ingrediente(rs.getInt("id_ingrediente"));
+                ingrediente.setNombre(nombre);
+                ingrediente.setCalorias(rs.getInt("calorias"));
+            }
+            ps.close();
+        } catch (SQLException ex) {
+           JOptionPane.showMessageDialog(null, "error al acceder a la tabla ingrediente");
+        } 
+    }
+    
+    public void eliminarIngrediente(int id){
+        Ingrediente ingrediente  = new Ingrediente();
+        id  = ingrediente.getId_ingrediente();
+         String sql = " UPDATE ingrediente SET estado = 0 WHERE id_ingrediente = ?";
+          try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, id);
+            int exito = ps.executeUpdate();
+             if(exito == 1){
+               JOptionPane.showMessageDialog(null, "ingrediente eliminado con exito");
+           }
+             ps.close();
+        } catch (SQLException ex) {
+           JOptionPane.showMessageDialog(null, "error al acceder a la tabla ingrediente");
+        }  
+    }
+
+    public List<Ingrediente> listarIngredientes() {
+        String sql = "SELECT nombre, calorias FROM ingrediente WHERE estado = 1;";
+        ArrayList<Ingrediente> ingredientes = new ArrayList<>();
+
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);;
+            ResultSet rs = ps.executeQuery();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "error al acceder a la tabla ingrediente");
+        }
+        return ingredientes;
     }
 }

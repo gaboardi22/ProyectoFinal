@@ -18,6 +18,7 @@ public class Comida {
     private List<Ingrediente>listaIngredientes;
 
     public Comida() {
+        listaIngredientes = new ArrayList<>();
     }
 
     public Comida(String nombre, String tipoComida, int caloriasPorcion, String detalle, Boolean estado) {

@@ -101,7 +101,13 @@ public class IngredienteData {
         try {
             PreparedStatement ps = conn.prepareStatement(sql);;
             ResultSet rs = ps.executeQuery();
-
+            while (rs.next()) {
+                Ingrediente ingrediente = new Ingrediente();
+                ingrediente.setId_ingrediente(rs.getInt("id_ingrediente"));
+                ingrediente.setCalorias(rs.getInt("calorias"));
+                ingredientes.add(ingrediente);
+            }
+            ps.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "error al acceder a la tabla ingrediente");
         }

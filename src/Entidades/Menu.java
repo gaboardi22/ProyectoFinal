@@ -11,18 +11,18 @@ public class Menu {
     private int idMenu;
     private int diaNumero;
     private Boolean estado;
-    private List<RenglonMenu> renglonesMenu;
+    private List<Renglon> renglonesMenu;
 
     public Menu() {
     }
 
-    public Menu(int diaNumero, Boolean estado, List<RenglonMenu> renglonesMenu) {
+    public Menu(int diaNumero, Boolean estado, List<Renglon> renglonesMenu) {
         this.diaNumero = diaNumero;
         this.estado = estado;
         this.renglonesMenu = renglonesMenu;
     }
 
-    public Menu(int idMenu, int diaNumero, Boolean estado, List<RenglonMenu> renglonesMenu) {
+    public Menu(int idMenu, int diaNumero, Boolean estado, List<Renglon> renglonesMenu) {
         this.idMenu = idMenu;
         this.diaNumero = diaNumero;
         this.estado = estado;
@@ -53,11 +53,11 @@ public class Menu {
         this.estado = estado;
     }
 
-    public List<RenglonMenu> getRenglonesMenu() {
+    public List<Renglon> getRenglonesMenu() {
         return renglonesMenu;
     }
 
-    public void setRenglonesMenu(List<RenglonMenu> renglonesMenu) {
+    public void setRenglonesMenu(List<Renglon> renglonesMenu) {
         this.renglonesMenu = renglonesMenu;
     }
 

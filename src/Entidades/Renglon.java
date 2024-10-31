@@ -5,22 +5,22 @@ package Entidades;
  *
  * @author Grupo 3
  */
-public class RenglonMenu {
+public class Renglon {
     private int idRenglon;
     private Comida comida;
     private int cantidadGramos;
     private int subTotalCalorias;
 
-    public RenglonMenu() {
+    public Renglon() {
     }
 
-    public RenglonMenu(Comida comida, int cantidadGramos, int subTotalCalorias) {
+    public Renglon(Comida comida, int cantidadGramos, int subTotalCalorias) {
         this.comida = comida;
         this.cantidadGramos = cantidadGramos;
         this.subTotalCalorias = subTotalCalorias;
     }
 
-    public RenglonMenu(int idRenglon, Comida comida, int cantidadGramos, int subTotalCalorias) {
+    public Renglon(int idRenglon, Comida comida, int cantidadGramos, int subTotalCalorias) {
         this.idRenglon = idRenglon;
         this.comida = comida;
         this.cantidadGramos = cantidadGramos;

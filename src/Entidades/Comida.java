@@ -15,14 +15,11 @@ public class Comida {
     private int caloriasPorcion;
     private String detalle;
     private Boolean estado;
-    private List<Ingrediente>listaIngredientes;
 
     public Comida() {
-        listaIngredientes = new ArrayList<>();
     }
 
     public Comida(String nombre, String tipoComida, int caloriasPorcion, String detalle, Boolean estado) {
-        listaIngredientes  =new ArrayList<>();
         this.nombre = nombre;
         this.tipoComida = tipoComida;
         this.caloriasPorcion = caloriasPorcion;
@@ -87,16 +84,13 @@ public class Comida {
         this.estado = estado;
     }
 
-    public List<Ingrediente> getListaIngredientes() {
-        return listaIngredientes;
-    }
-
-    public void setListaIngredientes(List<Ingrediente> listaIngredientes) {
-        this.listaIngredientes = listaIngredientes;
-    }
-
     @Override
     public String toString() {
-        return "Comida{" + "idComida=" + idComida + ", nombre=" + nombre + ", tipoComida=" + tipoComida + ", caloriasPorcion=" + caloriasPorcion + ", detalle=" + detalle + ", estado=" + estado + '}';
+        return "Comida{" + "idComida=" + idComida
+                + ", nombre=" + nombre 
+                + ", tipoComida=" + tipoComida 
+                + ", caloriasPorcion=" + caloriasPorcion 
+                + ", detalle=" + detalle 
+                + ", estado=" + estado + '}';
     }
 }

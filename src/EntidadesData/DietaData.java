@@ -15,7 +15,7 @@ public class DietaData {
         conn = Conexion.getConexion();
     }
     
-    public void guardarComida(Comida comida){
+    public void guardarDieta(Comida comida){
         
     }
 }

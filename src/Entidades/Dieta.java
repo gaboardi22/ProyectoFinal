@@ -11,7 +11,6 @@ import java.util.List;
 public class Dieta {
     private int idDieta;
     private String nombreDieta;
-    private List<Menu> menuDiario;
     private LocalDate fechaIncio;
     private LocalDate fechaFin;
     private Boolean estado;
@@ -21,9 +20,8 @@ public class Dieta {
     public Dieta() {
     }
 
-    public Dieta(String nombreDieta, List<Menu> menuDiario, LocalDate fechaIncio, LocalDate fechaFin, Boolean estado, int totalCalorias, Paciente paciente) {
+    public Dieta(String nombreDieta, LocalDate fechaIncio, LocalDate fechaFin, Boolean estado, int totalCalorias, Paciente paciente) {
         this.nombreDieta = nombreDieta;
-        this.menuDiario = menuDiario;
         this.fechaIncio = fechaIncio;
         this.fechaFin = fechaFin;
         this.estado = estado;
@@ -31,10 +29,10 @@ public class Dieta {
         this.paciente = paciente;
     }
 
-    public Dieta(int idDieta, String nombreDieta, List<Menu> menuDiario, LocalDate fechaIncio, LocalDate fechaFin, Boolean estado, int totalCalorias, Paciente paciente) {
+    public Dieta(int idDieta, String nombreDieta, LocalDate fechaIncio, LocalDate fechaFin, Boolean estado, int totalCalorias, Paciente paciente) {
         this.idDieta = idDieta;
         this.nombreDieta = nombreDieta;
-        this.menuDiario = menuDiario;
+
         this.fechaIncio = fechaIncio;
         this.fechaFin = fechaFin;
         this.estado = estado;
@@ -56,14 +54,6 @@ public class Dieta {
 
     public void setNombreDieta(String nombreDieta) {
         this.nombreDieta = nombreDieta;
-    }
-
-    public List<Menu> getMenuDiario() {
-        return menuDiario;
-    }
-
-    public void setMenuDiario(List<Menu> menuDiario) {
-        this.menuDiario = menuDiario;
     }
 
     public LocalDate getFechaIncio() {
@@ -108,7 +98,13 @@ public class Dieta {
 
     @Override
     public String toString() {
-        return "Dieta{" + "idDieta=" + idDieta + ", nombreDieta=" + nombreDieta + ", menuDiario=" + menuDiario + ", fechaIncio=" + fechaIncio + ", fechaFin=" + fechaFin + ", estado=" + estado + ", totalCalorias=" + totalCalorias + ", paciente=" + paciente + '}';
+        return "Dieta{" + "idDieta=" + idDieta
+                + ", nombreDieta=" + nombreDieta 
+                +  ", fechaIncio=" + fechaIncio 
+                + ", fechaFin=" + fechaFin
+                + ", estado=" + estado 
+                + ", totalCalorias=" + totalCalorias 
+                + ", paciente=" + paciente + '}';
     }
     
     

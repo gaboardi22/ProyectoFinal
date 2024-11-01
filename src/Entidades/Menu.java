@@ -1,6 +1,7 @@
 
 package Entidades;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -11,20 +12,32 @@ public class Menu {
     private int idMenu;
     private int diaNumero;
     private Boolean estado;
+    private List<Renglon>renglones;
    
 
     public Menu() {
+        renglones = new ArrayList<>();
     }
 
     public Menu(int diaNumero, Boolean estado) {
+        renglones = new ArrayList<>();
         this.diaNumero = diaNumero;
         this.estado = estado;
     }
 
     public Menu(int idMenu, int diaNumero, Boolean estado) {
+        renglones = new ArrayList<>();
         this.idMenu = idMenu;
         this.diaNumero = diaNumero;
         this.estado = estado;
+    }
+
+    public List<Renglon> getRenglones() {
+        return renglones;
+    }
+
+    public void setRenglones(List<Renglon> renglones) {
+        this.renglones = renglones;
     }
 
     public int getIdMenu() {
@@ -53,8 +66,12 @@ public class Menu {
 
     @Override
     public String toString() {
-        return "Menu{" + "idMenu=" + idMenu + ", diaNumero=" + diaNumero + ", estado=" + estado + '}';
+        return "Menu{" + "idMenu=" + idMenu 
+                + ", diaNumero=" + diaNumero 
+                + ", estado=" + estado
+                + ", renglones=" + renglones + '}';
     }
+
 
    
 }

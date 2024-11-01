@@ -2,6 +2,8 @@
 package Entidades;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -15,11 +17,14 @@ public class Dieta {
     private Boolean estado;
     private int totalCalorias;
     private Paciente paciente;
+    private List<Menu>menus;
 
     public Dieta() {
+        menus  =new ArrayList<>();
     }
 
     public Dieta(String nombreDieta, LocalDate fechaIncio, LocalDate fechaFin, Boolean estado, int totalCalorias, Paciente paciente) {
+         menus  =new ArrayList<>();
         this.nombreDieta = nombreDieta;
         this.fechaIncio = fechaIncio;
         this.fechaFin = fechaFin;
@@ -29,14 +34,22 @@ public class Dieta {
     }
 
     public Dieta(int idDieta, String nombreDieta, LocalDate fechaIncio, LocalDate fechaFin, Boolean estado, int totalCalorias, Paciente paciente) {
+         menus  =new ArrayList<>();
         this.idDieta = idDieta;
         this.nombreDieta = nombreDieta;
-
         this.fechaIncio = fechaIncio;
         this.fechaFin = fechaFin;
         this.estado = estado;
         this.totalCalorias = totalCalorias;
         this.paciente = paciente;
+    }
+
+    public List<Menu> getMenus() {
+        return menus;
+    }
+
+    public void setMenus(List<Menu> menus) {
+        this.menus = menus;
     }
 
     public int getIdDieta() {
@@ -97,14 +110,16 @@ public class Dieta {
 
     @Override
     public String toString() {
-        return "Dieta{" + "idDieta=" + idDieta
+        return "Dieta{" + "idDieta=" + idDieta 
                 + ", nombreDieta=" + nombreDieta 
-                +  ", fechaIncio=" + fechaIncio 
-                + ", fechaFin=" + fechaFin
-                + ", estado=" + estado 
+                + ", fechaIncio=" + fechaIncio 
+                + ", fechaFin=" + fechaFin + ", estado=" + estado 
                 + ", totalCalorias=" + totalCalorias 
-                + ", paciente=" + paciente + '}';
+                + ", paciente=" + paciente 
+                + ", menus=" + menus + '}';
     }
+
+
     
     
 }

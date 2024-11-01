@@ -56,7 +56,7 @@ public class IngredienteData {
         }
     }
     
-    public void buscarIngredientePorNombre(String nombre){
+    public Ingrediente buscarIngredientePorNombre(String nombre){
         Ingrediente ingrediente  = null;
         String sql  = "SELECT id_ingrediente, nombre, calorias FROM ingrediente WHERE nombre  = ?";
         try {
@@ -73,6 +73,7 @@ public class IngredienteData {
         } catch (SQLException ex) {
            JOptionPane.showMessageDialog(null, "error al acceder a la tabla ingrediente");
         } 
+        return ingrediente;
     }
     
     public void eliminarIngrediente(int id){
@@ -93,7 +94,7 @@ public class IngredienteData {
     }
 
     public List<Ingrediente> listarIngredientes() {
-        String sql = "SELECT nombre, calorias FROM ingrediente WHERE estado = 1;";
+        String sql = "SELECT id_ingrediente, nombre, calorias FROM ingrediente;";
         ArrayList<Ingrediente> ingredientes = new ArrayList<>();
 
         try {
@@ -102,6 +103,7 @@ public class IngredienteData {
             while (rs.next()) {
                 Ingrediente ingrediente = new Ingrediente();
                 ingrediente.setId_ingrediente(rs.getInt("id_ingrediente"));
+                ingrediente.setNombre(rs.getString("nombre"));
                 ingrediente.setCalorias(rs.getInt("calorias"));
                 ingredientes.add(ingrediente);
             }

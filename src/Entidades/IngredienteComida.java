@@ -19,19 +19,17 @@ public class IngredienteComida {
         listaIngredientes = new ArrayList<>();
     }
 
-    public IngredienteComida(Comida comida, int cantidad, List<Ingrediente> listaIngredientes) {
+    public IngredienteComida(Comida comida, int cantidad) {
         listaIngredientes = new ArrayList<>();
         this.comida = comida;
         this.cantidad = cantidad;
-        this.listaIngredientes = listaIngredientes;
     }
 
-    public IngredienteComida(int idingredienteComida, Comida comida, int cantidad, List<Ingrediente> listaIngredientes) {
+    public IngredienteComida(int idingredienteComida, Comida comida, int cantidad) {
         listaIngredientes = new ArrayList<>();
         this.idingredienteComida = idingredienteComida;
         this.comida = comida;
         this.cantidad = cantidad;
-        this.listaIngredientes = listaIngredientes;
     }
 
     public int getIdingredienteComida() {
@@ -68,8 +66,9 @@ public class IngredienteComida {
 
     @Override
     public String toString() {
-        return "IngredienteComida{" + "idingredienteComida=" + idingredienteComida + ", comida=" + comida + ", cantidad=" + cantidad + ", listaIngredientes=" + listaIngredientes + '}';
+        return "IngredienteComida{" + "idingredienteComida=" + idingredienteComida
+                + ", comida=" + comida 
+                + ", cantidad=" + cantidad 
+                + ", listaIngredientes=" + listaIngredientes + '}';
     }
-     
-     
 }

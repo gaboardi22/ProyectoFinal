@@ -3,6 +3,9 @@ package Vistas;
 
 import Entidades.Ingrediente;
 import EntidadesData.IngredienteData;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -11,11 +14,15 @@ import EntidadesData.IngredienteData;
 public class IngredienteVista extends javax.swing.JInternalFrame {
         private Ingrediente ingrediente = null;
         private IngredienteData ingredienteData = new IngredienteData();
+        private DefaultTableModel modelo;
     /**
      * Creates new form IngredienteVista
      */
     public IngredienteVista() {
         initComponents();
+         modelo  = new DefaultTableModel();
+        armarCabecera();
+        cargarTabla();
     }
 
     /**
@@ -195,7 +202,13 @@ public class IngredienteVista extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTCaloriasActionPerformed
 
     private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
-       
+         String nombre = jTNombre.getText();
+         ingrediente = ingredienteData.buscarIngredientePorNombre(nombre);
+    if (ingrediente != null) {
+        jTCalorias.setText(String.valueOf(ingrediente.getCalorias())); 
+    } else {
+        JOptionPane.showMessageDialog(this, "Ingrediente no encontrado");
+    }
     }//GEN-LAST:event_jBBuscarActionPerformed
 
     private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
@@ -211,6 +224,9 @@ public class IngredienteVista extends javax.swing.JInternalFrame {
         }else{
             ingrediente.setNombre(nombre);
             ingrediente.setCalorias(calorias);
+            ingredienteData.modificarIngrediente(ingrediente);
+            cargarTabla();
+       
         }
     }//GEN-LAST:event_jBGuardarActionPerformed
 
@@ -236,4 +252,20 @@ public class IngredienteVista extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTNombre;
     private javax.swing.JTable jTableIngredientes;
     // End of variables declaration//GEN-END:variables
+
+  private void armarCabecera(){
+       ArrayList<Object> filaCabecera = new ArrayList<>();
+       filaCabecera.add("Nombre");
+       filaCabecera.add("Calorias");
+       filaCabecera.forEach(elem -> modelo.addColumn(elem));
+        jTableIngredientes.setModel(modelo);
+  }
+public void cargarTabla(){
+    ArrayList<Ingrediente> ingredientes;
+    ingredientes  = (ArrayList<Ingrediente>) ingredienteData.listarIngredientes();
+    modelo.setRowCount(0);
+    for (Ingrediente ing : ingredientes) {
+                modelo.addRow(new Object[]{ing.getNombre(), ing.getCalorias()});
+            }
+}
 }

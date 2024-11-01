@@ -77,9 +77,7 @@ public class IngredienteData {
     }
     
     public void eliminarIngrediente(int id){
-        Ingrediente ingrediente  = new Ingrediente();
-        id  = ingrediente.getId_ingrediente();
-         String sql = " UPDATE ingrediente SET estado = 0 WHERE id_ingrediente = ?";
+        String sql = "DELETE FROM ingrediente WHERE id_ingrediente = ?";
           try {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, id);

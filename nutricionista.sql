@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-11-2024 a las 13:21:51
+-- Tiempo de generación: 01-11-2024 a las 16:19:09
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -72,7 +72,20 @@ CREATE TABLE `ingrediente` (
 --
 
 INSERT INTO `ingrediente` (`id_ingrediente`, `nombre`, `calorias`) VALUES
-(1, 'arroz', 130);
+(1, 'arroz', 130),
+(2, 'manzana', 52),
+(3, 'banana', 89),
+(5, 'zanahoria', 41),
+(6, 'tomate', 18),
+(7, 'espinaca', 23),
+(8, 'pollo', 165),
+(9, 'carne', 250),
+(10, 'carne de cerdo', 242),
+(11, 'huevo', 155),
+(12, 'leche entera', 60),
+(13, 'yogur natural', 61),
+(14, 'arroz', 131),
+(15, 'arroz', 131);
 
 -- --------------------------------------------------------
 
@@ -209,7 +222,7 @@ ALTER TABLE `dieta`
 -- AUTO_INCREMENT de la tabla `ingrediente`
 --
 ALTER TABLE `ingrediente`
-  MODIFY `id_ingrediente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_ingrediente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `ingredientecomida`

@@ -92,6 +92,11 @@ public class IngredienteVista extends javax.swing.JInternalFrame {
         jBEliminar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jBEliminar.setText("ELIMINAR");
         jBEliminar.setPreferredSize(new java.awt.Dimension(80, 23));
+        jBEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBEliminarActionPerformed(evt);
+            }
+        });
 
         jBSalir.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jBSalir.setText("SALIR");
@@ -235,6 +240,16 @@ public class IngredienteVista extends javax.swing.JInternalFrame {
        jTCalorias.setText("");
        ingrediente = null;
     }//GEN-LAST:event_jBNuevoActionPerformed
+
+    private void jBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarActionPerformed
+        if(ingrediente != null){
+            ingredienteData.eliminarIngrediente(ingrediente.getId_ingrediente());
+            ingrediente = null;
+            jTNombre.setText("");
+            jTCalorias.setText("");
+            cargarTabla();
+        }
+    }//GEN-LAST:event_jBEliminarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

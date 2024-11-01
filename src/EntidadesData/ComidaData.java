@@ -21,8 +21,8 @@ public class ComidaData {
     }
 
     public void guardarComida(Comida comida) {
-        String sql = "INSERT INTO comida(nombre, tipo_comida, calorias_x_100g, detalle, estado) VALUES "
-                + "(?,?,?,?,?)";
+        String sql = " INSERT INTO comida(nombre, tipo_comida, calorias_x_100g, detalle, estado)"
+                   + " VALUES (?,?,?,?,?)";
         try {
             PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, comida.getNombre());

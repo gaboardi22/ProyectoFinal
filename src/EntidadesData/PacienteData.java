@@ -130,4 +130,28 @@ public class PacienteData {
         }
         return pacientes;   
     } 
+    
+    public List<Paciente>listarPacientesQueLlegaron(){
+        String sql= "SELECT * FROM paciente WHERE peso_actual = peso_esperado";
+        ArrayList<Paciente> pacientes = new ArrayList<>();
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                Paciente paciente = new Paciente();
+                paciente.setDni(rs.getInt("dni"));
+                paciente.setNombre(rs.getString("nombre"));
+                paciente.setEdad(rs.getInt("edad"));
+                paciente.setAltura(rs.getDouble("altura"));
+                paciente.setPesoActual(rs.getDouble("peso_actual"));
+                paciente.setPesoEsperado(rs.getDouble("peso_esperado"));
+                paciente.setEstado(true);
+                pacientes.add(paciente);
+            }
+            ps.close();
+        } catch (SQLException ex) {
+           JOptionPane.showMessageDialog(null, "error al acceder a la tabla paciente");
+        }
+        return pacientes;   
+    } 
 }

@@ -5,6 +5,8 @@ import Entidades.Comida;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import org.mariadb.jdbc.Connection;
 
@@ -119,4 +121,27 @@ public class ComidaData {
         }
         return comidas;
     }
+    
+    public List<Comida> listarComidaXPorcion(int porcion){
+        ArrayList<Comida>comidas = new ArrayList<>();
+    String sql = "SELECT * FROM comida WHERE calorias_x_100g = ?";
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, porcion);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                Comida comida = new Comida();
+                comida.setNombre(rs.getString("nombre"));
+                comida.setTipoComida(rs.getString("tipoComida"));
+                comida.setCaloriasPorcion(rs.getInt("calorias_x_100g"));
+                comida.setDetalle(rs.getString("detalle"));
+                comida.setEstado(rs.getBoolean("estado"));
+                comidas.add(comida);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ComidaData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return comidas;
+    }
+    
 }

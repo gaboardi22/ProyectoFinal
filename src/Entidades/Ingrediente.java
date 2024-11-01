@@ -51,7 +51,5 @@ public class Ingrediente {
     @Override
     public String toString() {
         return "Ingrediente{" + "id_ingrediente=" + id_ingrediente + ", nombre=" + nombre + ", calorias=" + calorias + '}';
-    }
-    
-    
+    } 
 }

@@ -95,7 +95,7 @@ public class IngredienteData {
         String sql = "SELECT id_ingrediente, nombre, calorias FROM ingrediente;";
         ArrayList<Ingrediente> ingredientes = new ArrayList<>();
         try {
-            PreparedStatement ps = conn.prepareStatement(sql);;
+            PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Ingrediente ingrediente = new Ingrediente();

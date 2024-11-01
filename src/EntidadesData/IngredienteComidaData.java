@@ -8,8 +8,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import org.mariadb.jdbc.Connection;
 import org.mariadb.jdbc.Statement;
@@ -66,12 +64,14 @@ public class IngredienteComidaData {
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, idComida);
-             ResultSet rs = ps.executeQuery();
+            ResultSet rs = ps.executeQuery();
           while (rs.next()) {
                 Ingrediente ingrediente = new Ingrediente();
+               
                 ingrediente.setId_ingrediente(rs.getInt("id_ingrediente"));
                 ingrediente.setNombre(rs.getString("nombre"));
                 ingrediente.setCalorias(rs.getInt("calorias"));
+                
                 ingredientes.add(ingrediente);
             }
             ps.close();

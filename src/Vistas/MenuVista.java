@@ -21,15 +21,20 @@ public class MenuVista extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenu3 = new javax.swing.JMenu();
         jDPMenu = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuItemIngredientes = new javax.swing.JMenuItem();
-        jMenus = new javax.swing.JMenuItem();
+        jMenu4 = new javax.swing.JMenu();
+        jMenuIIngre = new javax.swing.JMenuItem();
+        jMenuIComida = new javax.swing.JMenuItem();
+        jMenuDieta = new javax.swing.JMenuItem();
+        jMenuDiario = new javax.swing.JMenuItem();
         jMReporte = new javax.swing.JMenu();
         jMSalir = new javax.swing.JMenu();
+
+        jMenu3.setText("jMenu3");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -56,25 +61,41 @@ public class MenuVista extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("DIETA");
+        jMenu4.setText("DIETA");
 
-        jMenuItemIngredientes.setText("INGREDIENTES");
-        jMenuItemIngredientes.addActionListener(new java.awt.event.ActionListener() {
+        jMenuIIngre.setText("INGREDIENTES");
+        jMenuIIngre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemIngredientesActionPerformed(evt);
+                jMenuIIngreActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItemIngredientes);
+        jMenu4.add(jMenuIIngre);
 
-        jMenus.setText("MENUS");
-        jMenus.addActionListener(new java.awt.event.ActionListener() {
+        jMenuIComida.setText("COMIDAS");
+        jMenuIComida.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenusActionPerformed(evt);
+                jMenuIComidaActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenus);
+        jMenu4.add(jMenuIComida);
 
-        jMenuBar1.add(jMenu2);
+        jMenuDieta.setText("TU DIETA");
+        jMenuDieta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuDietaActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuDieta);
+
+        jMenuDiario.setText("MENUS");
+        jMenuDiario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuDiarioActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuDiario);
+
+        jMenuBar1.add(jMenu4);
 
         jMReporte.setText("REPORTE");
         jMenuBar1.add(jMReporte);
@@ -107,23 +128,43 @@ public class MenuVista extends javax.swing.JFrame {
        jDPMenu.moveToFront(cargaPaciente);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
-    private void jMenuItemIngredientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemIngredientesActionPerformed
+    private void jMenuIIngreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuIIngreActionPerformed
        jDPMenu.removeAll();
        jDPMenu.repaint();
-       IngredienteVista ingred  =new IngredienteVista();
-       ingred.setVisible(true);
-       jDPMenu.add(ingred);
-       jDPMenu.moveToFront(ingred);
-    }//GEN-LAST:event_jMenuItemIngredientesActionPerformed
+       IngredienteVista cargaIngrediente = new IngredienteVista();
+       cargaIngrediente.setVisible(true);
+       jDPMenu.add(cargaIngrediente);
+       jDPMenu.moveToFront(cargaIngrediente);
+    }//GEN-LAST:event_jMenuIIngreActionPerformed
 
-    private void jMenusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenusActionPerformed
+    private void jMenuDiarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuDiarioActionPerformed
        jDPMenu.removeAll();
        jDPMenu.repaint();
        MenusDVista menu  =new MenusDVista();
        menu.setVisible(true);
        jDPMenu.add(menu);
        jDPMenu.moveToFront(menu);
-    }//GEN-LAST:event_jMenusActionPerformed
+    }//GEN-LAST:event_jMenuDiarioActionPerformed
+
+    private void jMenuIComidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuIComidaActionPerformed
+       jDPMenu.removeAll();
+       jDPMenu.repaint();
+       ComidaVista comida  =new ComidaVista();
+       comida.setVisible(true);
+       jDPMenu.add(comida);
+       jDPMenu.moveToFront(comida);
+    }//GEN-LAST:event_jMenuIComidaActionPerformed
+
+    private void jMenuDietaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuDietaActionPerformed
+       jDPMenu.removeAll();
+       jDPMenu.repaint();
+       DietaVista dieta  =new DietaVista();
+       dieta.setVisible(true);
+       jDPMenu.add(dieta);
+       jDPMenu.moveToFront(dieta);
+    }//GEN-LAST:event_jMenuDietaActionPerformed
+
+                                    
 
     /**
      * @param args the command line arguments
@@ -168,10 +209,13 @@ public class MenuVista extends javax.swing.JFrame {
     private javax.swing.JMenu jMReporte;
     private javax.swing.JMenu jMSalir;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuDiario;
+    private javax.swing.JMenuItem jMenuDieta;
+    private javax.swing.JMenuItem jMenuIComida;
+    private javax.swing.JMenuItem jMenuIIngre;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItemIngredientes;
-    private javax.swing.JMenuItem jMenus;
     // End of variables declaration//GEN-END:variables
 }

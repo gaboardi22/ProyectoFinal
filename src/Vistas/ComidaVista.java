@@ -18,7 +18,7 @@ public class ComidaVista extends javax.swing.JInternalFrame {
         private ComidaData comidaData = new ComidaData();
         private DefaultTableModel modelo;
         private ArrayList<Comida> listaComidas;
-        private ArrayList<TipoComida> listaTipoComidas;
+        //private ArrayList<TipoComida> listaTipoComidas;
    
     /**
      * Creates new form ComidaVista
@@ -294,7 +294,6 @@ public class ComidaVista extends javax.swing.JInternalFrame {
             comida.setCaloriasPorcion(calorias);
             comidaData.modificarComida(comida);
             cargarTabla();
-
         }
     }//GEN-LAST:event_jBGuardarActionPerformed
 
@@ -370,12 +369,12 @@ public class ComidaVista extends javax.swing.JInternalFrame {
         ArrayList<Comida> comidas;
         comidas = (ArrayList<Comida>) comidaData.listarComidas();
         modelo.setRowCount(0);
-        for (Comida ing : comidas) {
-            modelo.addRow(new Object[]{ing.getNombre(),
-                                       ing.getTipoComida(),
-                                       ing.getCaloriasPorcion(),
-                                       ing.getEstado(),
-                                       ing.getDetalle()});
+        for (Comida comdida : comidas) {
+            modelo.addRow(new Object[]{comdida.getNombre(),
+                                       comdida.getTipoComida(),
+                                       comdida.getCaloriasPorcion(),
+                                       comdida.getEstado(),
+                                       comdida.getDetalle()});
         }
     }
     private void borrarFilasTabla(){
@@ -384,9 +383,9 @@ public class ComidaVista extends javax.swing.JInternalFrame {
             modelo.removeRow(i);
         }
     }
-    private void cargarTiposComidas(){
+    private void cargarTiposComidas() {
         for (TipoComida tipo : TipoComida.values()) {
-        jCBTipo.addItem(tipo);
+            jCBTipo.addItem(tipo);
+        }
     }
-}
 }

@@ -23,7 +23,8 @@ public class PacienteData {
     
     public void guardarPaciente(Paciente paciente){
       
-            String sql = "INSERT INTO paciente (dni, nombre, edad, altura, peso_actual, peso_esperado, estado) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO paciente (dni, nombre, edad, altura, peso_actual, peso_esperado, estado)"
+                       + " VALUES (?, ?, ?, ?, ?, ?, ?)";
               try {
             PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, paciente.getDni());
@@ -46,7 +47,8 @@ public class PacienteData {
     }
     
     public void modificarPaciente(Paciente paciente){
-        String sql = "UPDATE paciente SET dni = ?, nombre = ?, edad = ?, altura = ?, peso_actual = ?, peso_esperado  = ?, estado = ? WHERE id_paciente = ? ";
+        String sql = "UPDATE paciente SET dni = ?, nombre = ?, edad = ?, altura = ?, peso_actual = ?, peso_esperado  = ?, estado = ?"
+                + " WHERE id_paciente = ? ";
         
         try {
             PreparedStatement ps = conn.prepareStatement(sql);

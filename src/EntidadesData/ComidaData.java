@@ -2,6 +2,7 @@
 package EntidadesData;
 
 import Entidades.Comida;
+import Entidades.TipoComida;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,15 +24,16 @@ public class ComidaData {
     }
 
     public void guardarComida(Comida comida) {
-        String sql = " INSERT INTO comida(nombre, tipo_comida, calorias_x_100g, detalle, estado)"
+        String sql = " INSERT INTO comida(nombre, tipoComida, calorias_x_100g, detalle, estado)"
                    + " VALUES (?,?,?,?,?)";
         try {
             PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, comida.getNombre());
-            ps.setString(2, comida.getTipoComida());
+            ps.setString(2, comida.getTipoComida().name());
             ps.setInt(3, comida.getCaloriasPorcion());
             ps.setString(4, comida.getDetalle());
             ps.setBoolean(5, comida.getEstado());
+            ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
                 JOptionPane.showMessageDialog(null, "comida guardada");
@@ -43,12 +45,12 @@ public class ComidaData {
     }
     
     public void modificarComida(Comida comida) {
-        String sql = "UPDATE comida SET nombre = ?, tipo_comida = ?, calorias_x_100g = ?, detalle = ?, estado = ? WHERE id_comida = ? ";
+        String sql = "UPDATE comida SET nombre = ?, tipoComida = ?, calorias_x_100g = ?, detalle = ?, estado = ? WHERE id_comida = ? ";
 
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, comida.getNombre());
-            ps.setString(2, comida.getTipoComida());
+            ps.setString(2, comida.getTipoComida().name());
             ps.setInt(3, comida.getCaloriasPorcion());
             ps.setString(4, comida.getDetalle());
             ps.setBoolean(5, comida.getEstado());
@@ -74,7 +76,7 @@ public class ComidaData {
                 comida  = new Comida();
                 comida.setIdComida(rs.getInt("id_comida"));
                 comida.setNombre(nombre);
-                comida.setTipoComida(rs.getString("tipoComida"));
+                 comida.setTipoComida(TipoComida.valueOf(rs.getString("tipoComida").toUpperCase()));
                 comida.setCaloriasPorcion(rs.getInt("calorias_x_100g"));
                 comida.setDetalle(rs.getString("detalle"));
                 comida.setEstado(rs.getBoolean("estado"));
@@ -110,7 +112,7 @@ public class ComidaData {
             while(rs.next()){
                 Comida comida = new Comida();
                 comida.setNombre(rs.getString("nombre"));
-                comida.setTipoComida(rs.getString("tipoComida"));
+                 comida.setTipoComida(TipoComida.valueOf(rs.getString("tipoComida").toUpperCase()));
                 comida.setCaloriasPorcion(rs.getInt("calorias_x_100g"));
                 comida.setDetalle(rs.getString("detalle"));
                 comida.setEstado(rs.getBoolean("estado"));
@@ -132,7 +134,7 @@ public class ComidaData {
             while(rs.next()){
                 Comida comida = new Comida();
                 comida.setNombre(rs.getString("nombre"));
-                comida.setTipoComida(rs.getString("tipoComida"));
+                 comida.setTipoComida(TipoComida.valueOf(rs.getString("tipoComida").toUpperCase()));
                 comida.setCaloriasPorcion(rs.getInt("calorias_x_100g"));
                 comida.setDetalle(rs.getString("detalle"));
                 comida.setEstado(rs.getBoolean("estado"));
@@ -143,5 +145,4 @@ public class ComidaData {
         }
         return comidas;
     }
-    
 }

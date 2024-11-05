@@ -71,7 +71,4 @@ public class Menu {
                 + ", estado=" + estado
                 + ", renglones=" + renglones + '}';
     }
-
-
-   
 }

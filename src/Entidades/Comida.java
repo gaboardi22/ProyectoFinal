@@ -9,7 +9,7 @@ package Entidades;
 public class Comida {
     private int idComida;
     private String nombre;
-    private String tipoComida;
+    private TipoComida tipoComida;
     private int caloriasPorcion;
     private String detalle;
     private Boolean estado;
@@ -17,7 +17,7 @@ public class Comida {
     public Comida() {
     }
 
-    public Comida(String nombre, String tipoComida, int caloriasPorcion, String detalle, Boolean estado) {
+    public Comida(String nombre, TipoComida tipoComida, int caloriasPorcion, String detalle, Boolean estado) {
         this.nombre = nombre;
         this.tipoComida = tipoComida;
         this.caloriasPorcion = caloriasPorcion;
@@ -25,7 +25,7 @@ public class Comida {
         this.estado = estado;
     }
 
-    public Comida(int idComida, String nombre, String tipoComida, int caloriasPorcion, String detalle, Boolean estado) {
+    public Comida(int idComida, String nombre, TipoComida tipoComida, int caloriasPorcion, String detalle, Boolean estado) {
         this.idComida = idComida;
         this.nombre = nombre;
         this.tipoComida = tipoComida;
@@ -33,6 +33,16 @@ public class Comida {
         this.detalle = detalle;
         this.estado = estado;
     }
+
+    public TipoComida getTipoComida() {
+        return tipoComida;
+    }
+
+    public void setTipoComida(TipoComida tipoComida) {
+        this.tipoComida = tipoComida;
+    }
+
+   
 
     public int getIdComida() {
         return idComida;
@@ -50,13 +60,6 @@ public class Comida {
         this.nombre = nombre;
     }
 
-    public String getTipoComida() {
-        return tipoComida;
-    }
-
-    public void setTipoComida(String tipoComida) {
-        this.tipoComida = tipoComida;
-    }
 
     public int getCaloriasPorcion() {
         return caloriasPorcion;

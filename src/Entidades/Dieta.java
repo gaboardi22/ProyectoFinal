@@ -20,7 +20,7 @@ public class Dieta {
     private float peso_inicial;
     private float peso_final;
     private int calorias_totales;
-
+    
     public Dieta() {
     }
 

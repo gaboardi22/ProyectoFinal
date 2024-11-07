@@ -27,7 +27,7 @@ public class DietaData {
         String sql = "INSERT INTO dietas (nombre, fecha_inicio, fecha_fin, id_paciente, peso_inicial, peso_final, calorias_totales) "
                 + "VALUES(?, ?, ?, ?, ?, ?, ?)";
         try {
-            PreparedStatement ps = con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, dieta.getNombre());
             ps.setDate(2, Date.valueOf(dieta.getFecha_inicio()));
             ps.setDate(3, Date.valueOf(dieta.getFecha_fin()));
@@ -45,10 +45,10 @@ public class DietaData {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla 'dietas'");
         }
     }
-    
-    public void modificarDieta(Dieta dieta){
-    String sql = "UPDATE dietas SET nombre = ?, fecha_inicio = ?, fecha_fin = ?, id_paciente = ?, peso_inicial = ?, peso_final = ?, calorias_totales = ? "
-            + "WHERE id_dieta = ?";
+
+    public void modificarDieta(Dieta dieta) {
+        String sql = "UPDATE dietas SET nombre = ?, fecha_inicio = ?, fecha_fin = ?, id_paciente = ?, peso_inicial = ?, peso_final = ?, calorias_totales = ? "
+                + "WHERE id_dieta = ?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, dieta.getNombre());
@@ -66,5 +66,17 @@ public class DietaData {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla 'dietas'");
         }
     }
-    
+
+    public void cargarPesoYFinalizar(float peso) {
+        
+    }
+
+    public void imprimirDietaCompleta() {
+
+    }
+
+    public int calcularDiferDePeso() {
+        int peso = 0;
+        return peso;
+    }
 }

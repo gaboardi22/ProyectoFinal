@@ -7,6 +7,8 @@ package Persistencia;
 import Entidades.Paciente;
 import org.mariadb.jdbc.Connection;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -102,7 +104,8 @@ public class PacienteData {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla 'pacientes'");
         }
     }
-        public void altaLogicaPaciente(Paciente paciente) {
+
+    public void altaLogicaPaciente(Paciente paciente) {
         String sql = "UPDATE INTO pacientes SET estado = true "
                 + "WHERE id_paciente = ?";
         try {
@@ -115,5 +118,28 @@ public class PacienteData {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla 'pacientes'");
         }
     }
-}
 
+    public List<Paciente> listarLosQueLLegaron() {
+        ArrayList<Paciente> lista = new ArrayList<>();
+        String sql = "SELECT * FROM pacientes WHERE "
+                + "peso_actual = peso_buscado";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                Paciente paciente = new Paciente();
+                paciente.setId_paciente(rs.getInt("id_paciente"));
+                paciente.setNombre(rs.getString("nombre"));
+                paciente.setEdad(rs.getInt("edad"));
+                paciente.setAltura(rs.getFloat("altura"));
+                paciente.setPeso_actual(rs.getFloat("peso_actual"));
+                paciente.setPeso_buscado(rs.getFloat("peso_buscado"));
+                lista.add(paciente);
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla 'pacientes'");
+        }
+
+        return lista;
+    }
+}

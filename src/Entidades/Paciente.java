@@ -16,16 +16,18 @@ public class Paciente {
     private float altura;
     private float peso_actual;
     private float peso_buscado;
+    private boolean estado;
 
     public Paciente() {
     }
 
-    public Paciente(String nombre, int edad, float altura, float peso_actual, float peso_buscado) {
+    public Paciente(String nombre, int edad, float altura, float peso_actual, float peso_buscado, boolean estado) {
         this.nombre = nombre;
         this.edad = edad;
         this.altura = altura;
         this.peso_actual = peso_actual;
         this.peso_buscado = peso_buscado;
+        this.estado = estado;
     }
 
     public int getId_paciente() {
@@ -76,9 +78,17 @@ public class Paciente {
         this.peso_buscado = peso_buscado;
     }
 
+    public boolean isEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
+    }
+
     @Override
     public String toString() {
-        return "Paciente{" + "id_paciente=" + id_paciente + ", nombre=" + nombre + ", edad=" + edad + ", altura=" + altura + ", peso_actual=" + peso_actual + ", peso_buscado=" + peso_buscado + '}';
+        return "Paciente{" + "id_paciente=" + id_paciente + ", nombre=" + nombre + ", edad=" + edad + ", altura=" + altura + ", peso_actual=" + peso_actual + ", peso_buscado=" + peso_buscado + ", estado=" + estado + '}';
     }
 
 }

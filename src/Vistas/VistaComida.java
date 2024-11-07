@@ -171,7 +171,7 @@ public class VistaComida extends javax.swing.JInternalFrame {
 
     private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
         String entrada = JOptionPane.showInputDialog(this, "Ingrese el nombre completo de la comida");
-        comidaActual = cd.buscarComida(entrada);
+        comidaActual = cd.buscarComidaPorNombre(entrada);
         if (comidaActual != null) {
             jLID.setText("ID: " + comidaActual.getId_comida());
             jTFNombre.setText(comidaActual.getNombre());

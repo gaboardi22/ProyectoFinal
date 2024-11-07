@@ -64,7 +64,7 @@ public class ComidaData {
         }
     }
 
-    public Comida buscarComida(String nombre) {
+    public Comida buscarComidaPorNombre(String nombre) {
         Comida comida = null;
         String sql = "SELECT * FROM comidas "
                 + "WHERE nombre = ?";
@@ -72,7 +72,7 @@ public class ComidaData {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, nombre);
             ResultSet rs = ps.executeQuery();
-            if(rs.next()){
+            if (rs.next()) {
                 comida = new Comida();
                 comida.setId_comida(rs.getInt("id_comida"));
                 comida.setNombre(rs.getString("nombre"));
@@ -87,12 +87,34 @@ public class ComidaData {
         return comida;
     }
 
-    public List<Comida> buscarComidasPorIngrediente(String ingrediente) {
+    public List<Comida> filtrarPorIngrediente(String ingrediente) {
         String sql = "SELECT * FROM comidas WHERE detalle LIKE ?";
         List<Comida> comidas = new ArrayList<>();
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, "%" + ingrediente + "%");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Comida comida = new Comida();
+                comida.setId_comida(rs.getInt("id_comida"));
+                comida.setNombre(rs.getString("nombre"));
+                comida.setCalorias_por_100g(rs.getInt("calorias_por_100g"));
+                comida.setTipo(rs.getString("tipo"));
+                comida.setDetalle(rs.getString("detalle"));
+                comidas.add(comida);
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla 'comidas'");
+        }
+        return comidas;
+    }
+
+    public List<Comida> filtraPorCalorias100(int calorias) {
+        String sql = "SELECT * FROM comidas WHERE calorias_por_100g = ?";
+        List<Comida> comidas = new ArrayList<>();
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, calorias);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Comida comida = new Comida();

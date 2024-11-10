@@ -76,7 +76,7 @@ public class ComidaData {
                 comida  = new Comida();
                 comida.setIdComida(rs.getInt("id_comida"));
                 comida.setNombre(nombre);
-                 comida.setTipoComida(TipoComida.valueOf(rs.getString("tipoComida").toUpperCase()));
+                comida.setTipoComida(TipoComida.valueOf(rs.getString("tipoComida").toUpperCase()));
                 comida.setCaloriasPorcion(rs.getInt("calorias_x_100g"));
                 comida.setDetalle(rs.getString("detalle"));
                 comida.setEstado(rs.getBoolean("estado"));

@@ -96,7 +96,7 @@ public class PacienteData {
     public void eliminarPaciente(int id){
         Paciente paciente = new Paciente();
         id  = paciente.getIdPaciente();
-        String sql = " UPDATE paciente SET estado = 0 WHERE id_paciente = ?";
+        String sql = "UPDATE paciente SET estado = 0 WHERE id_paciente = ?";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, id);

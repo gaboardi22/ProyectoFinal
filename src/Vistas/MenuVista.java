@@ -98,6 +98,11 @@ public class MenuVista extends javax.swing.JFrame {
         jMenuBar1.add(jMenu4);
 
         jMReporte.setText("REPORTE");
+        jMReporte.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMReporteActionPerformed(evt);
+            }
+        });
         jMenuBar1.add(jMReporte);
 
         jMSalir.setText("SALIR");
@@ -163,6 +168,15 @@ public class MenuVista extends javax.swing.JFrame {
        jDPMenu.add(dieta);
        jDPMenu.moveToFront(dieta);
     }//GEN-LAST:event_jMenuDietaActionPerformed
+
+    private void jMReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMReporteActionPerformed
+       jDPMenu.removeAll();
+       jDPMenu.repaint();
+       ReporteVista repo  =new ReporteVista();
+       repo.setVisible(true);
+       jDPMenu.add(repo);
+       jDPMenu.moveToFront(repo);
+    }//GEN-LAST:event_jMReporteActionPerformed
 
                                     
 

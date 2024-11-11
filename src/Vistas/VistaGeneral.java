@@ -32,15 +32,14 @@ public class VistaGeneral extends javax.swing.JFrame {
         jMGuardarPaciente = new javax.swing.JMenuItem();
         jMIComparar = new javax.swing.JMenuItem();
         jMIListar = new javax.swing.JMenuItem();
-        jMICargar = new javax.swing.JMenuItem();
         jMComidas = new javax.swing.JMenu();
         jMGuardarComida = new javax.swing.JMenuItem();
         jMMenus_diarios = new javax.swing.JMenu();
         jMDietas = new javax.swing.JMenu();
+        jMICargar = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Nutricionista");
-        setPreferredSize(new java.awt.Dimension(500, 500));
 
         escritorio.setPreferredSize(new java.awt.Dimension(500, 500));
 
@@ -81,14 +80,6 @@ public class VistaGeneral extends javax.swing.JFrame {
         });
         jMPacientes.add(jMIListar);
 
-        jMICargar.setText("Cargar peso");
-        jMICargar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMICargarActionPerformed(evt);
-            }
-        });
-        jMPacientes.add(jMICargar);
-
         jMenuBar1.add(jMPacientes);
 
         jMComidas.setText("Comidas");
@@ -117,6 +108,15 @@ public class VistaGeneral extends javax.swing.JFrame {
                 jMDietasActionPerformed(evt);
             }
         });
+
+        jMICargar.setText("Cargar peso y finalizar dieta");
+        jMICargar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMICargarActionPerformed(evt);
+            }
+        });
+        jMDietas.add(jMICargar);
+
         jMenuBar1.add(jMDietas);
 
         setJMenuBar(jMenuBar1);

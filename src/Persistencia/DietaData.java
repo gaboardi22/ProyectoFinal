@@ -67,8 +67,19 @@ public class DietaData {
         }
     }
 
-    public void cargarPesoYFinalizar(float peso) {
-        
+    public void cargarPesoYFinalizar(Dieta dieta, float peso) {
+        String slq = "UPDATE INTO dietas SET peso_final = ? "
+                + "WHERE id_dieta = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(slq);
+            ps.setFloat(1, peso);
+            ps.setInt(2, dieta.getId_dieta());
+            ps.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Dieta modificada");
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla 'dietas'");
+        }
     }
 
     public void imprimirDietaCompleta() {

@@ -30,6 +30,9 @@ public class VistaGeneral extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMPacientes = new javax.swing.JMenu();
         jMGuardarPaciente = new javax.swing.JMenuItem();
+        jMIComparar = new javax.swing.JMenuItem();
+        jMIListar = new javax.swing.JMenuItem();
+        jMICargar = new javax.swing.JMenuItem();
         jMComidas = new javax.swing.JMenu();
         jMGuardarComida = new javax.swing.JMenuItem();
         jMMenus_diarios = new javax.swing.JMenu();
@@ -62,6 +65,30 @@ public class VistaGeneral extends javax.swing.JFrame {
         });
         jMPacientes.add(jMGuardarPaciente);
 
+        jMIComparar.setText("Comparar peso");
+        jMIComparar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMICompararActionPerformed(evt);
+            }
+        });
+        jMPacientes.add(jMIComparar);
+
+        jMIListar.setText("Listar pacientes");
+        jMIListar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIListarActionPerformed(evt);
+            }
+        });
+        jMPacientes.add(jMIListar);
+
+        jMICargar.setText("Cargar peso");
+        jMICargar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMICargarActionPerformed(evt);
+            }
+        });
+        jMPacientes.add(jMICargar);
+
         jMenuBar1.add(jMPacientes);
 
         jMComidas.setText("Comidas");
@@ -77,9 +104,19 @@ public class VistaGeneral extends javax.swing.JFrame {
         jMenuBar1.add(jMComidas);
 
         jMMenus_diarios.setText("Menus Diarios");
+        jMMenus_diarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMMenus_diariosActionPerformed(evt);
+            }
+        });
         jMenuBar1.add(jMMenus_diarios);
 
         jMDietas.setText("Dietas");
+        jMDietas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMDietasActionPerformed(evt);
+            }
+        });
         jMenuBar1.add(jMDietas);
 
         setJMenuBar(jMenuBar1);
@@ -116,6 +153,51 @@ public class VistaGeneral extends javax.swing.JFrame {
         escritorio.moveToFront(vc);
         vc.setVisible(true);
     }//GEN-LAST:event_jMGuardarComidaActionPerformed
+
+    private void jMMenus_diariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMMenus_diariosActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        VistaMenuDiario vm = new VistaMenuDiario();
+        escritorio.add(vm);
+        escritorio.moveToFront(vm);
+        vm.setVisible(true);
+    }//GEN-LAST:event_jMMenus_diariosActionPerformed
+
+    private void jMICompararActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMICompararActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        VistaCompararPeso vc = new VistaCompararPeso();
+        escritorio.add(vc);
+        escritorio.moveToFront(vc);
+        vc.setVisible(true);
+    }//GEN-LAST:event_jMICompararActionPerformed
+
+    private void jMIListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIListarActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        VistaListarPacientes vc = new VistaListarPacientes();
+        escritorio.add(vc);
+        escritorio.moveToFront(vc);
+        vc.setVisible(true);
+    }//GEN-LAST:event_jMIListarActionPerformed
+
+    private void jMICargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMICargarActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        VistaCargarPesoYFinalizar vc = new VistaCargarPesoYFinalizar();
+        escritorio.add(vc);
+        escritorio.moveToFront(vc);
+        vc.setVisible(true);
+    }//GEN-LAST:event_jMICargarActionPerformed
+
+    private void jMDietasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMDietasActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        VistaDieta vd = new VistaDieta();
+        escritorio.add(vd);
+        escritorio.moveToFront(vd);
+        vd.setVisible(true);
+    }//GEN-LAST:event_jMDietasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -158,6 +240,9 @@ public class VistaGeneral extends javax.swing.JFrame {
     private javax.swing.JMenu jMDietas;
     private javax.swing.JMenuItem jMGuardarComida;
     private javax.swing.JMenuItem jMGuardarPaciente;
+    private javax.swing.JMenuItem jMICargar;
+    private javax.swing.JMenuItem jMIComparar;
+    private javax.swing.JMenuItem jMIListar;
     private javax.swing.JMenu jMMenus_diarios;
     private javax.swing.JMenu jMPacientes;
     private javax.swing.JMenuBar jMenuBar1;

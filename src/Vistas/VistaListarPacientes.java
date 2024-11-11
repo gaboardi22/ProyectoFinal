@@ -8,12 +8,12 @@ package Vistas;
  *
  * @author Ezequiel
  */
-public class VistaListarPacientesQueLLegaron extends javax.swing.JInternalFrame {
+public class VistaListarPacientes extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form VistaListarPacientesQueLLegaron
      */
-    public VistaListarPacientesQueLLegaron() {
+    public VistaListarPacientes() {
         initComponents();
     }
 

@@ -36,9 +36,7 @@ public class VistaGeneral extends javax.swing.JFrame {
         jMComidas = new javax.swing.JMenu();
         jMGuardarComida = new javax.swing.JMenuItem();
         jMMenus_diarios = new javax.swing.JMenu();
-        jMenu = new javax.swing.JMenuItem();
         jMDietas = new javax.swing.JMenu();
-        jMIDieta = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Nutricionista");
@@ -105,28 +103,20 @@ public class VistaGeneral extends javax.swing.JFrame {
 
         jMenuBar1.add(jMComidas);
 
-        jMMenus_diarios.setText("Menus");
-
-        jMenu.setText("Menu Diario");
-        jMenu.addActionListener(new java.awt.event.ActionListener() {
+        jMMenus_diarios.setText("Menus Diarios");
+        jMMenus_diarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuActionPerformed(evt);
+                jMMenus_diariosActionPerformed(evt);
             }
         });
-        jMMenus_diarios.add(jMenu);
-
         jMenuBar1.add(jMMenus_diarios);
 
         jMDietas.setText("Dietas");
-
-        jMIDieta.setText("Dietas");
-        jMIDieta.addActionListener(new java.awt.event.ActionListener() {
+        jMDietas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMIDietaActionPerformed(evt);
+                jMDietasActionPerformed(evt);
             }
         });
-        jMDietas.add(jMIDieta);
-
         jMenuBar1.add(jMDietas);
 
         setJMenuBar(jMenuBar1);
@@ -164,6 +154,15 @@ public class VistaGeneral extends javax.swing.JFrame {
         vc.setVisible(true);
     }//GEN-LAST:event_jMGuardarComidaActionPerformed
 
+    private void jMMenus_diariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMMenus_diariosActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        VistaMenuDiario vm = new VistaMenuDiario();
+        escritorio.add(vm);
+        escritorio.moveToFront(vm);
+        vm.setVisible(true);
+    }//GEN-LAST:event_jMMenus_diariosActionPerformed
+
     private void jMICompararActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMICompararActionPerformed
         escritorio.removeAll();
         escritorio.repaint();
@@ -191,23 +190,14 @@ public class VistaGeneral extends javax.swing.JFrame {
         vc.setVisible(true);
     }//GEN-LAST:event_jMICargarActionPerformed
 
-    private void jMIDietaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIDietaActionPerformed
+    private void jMDietasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMDietasActionPerformed
         escritorio.removeAll();
         escritorio.repaint();
         VistaDieta vd = new VistaDieta();
         escritorio.add(vd);
         escritorio.moveToFront(vd);
         vd.setVisible(true);
-    }//GEN-LAST:event_jMIDietaActionPerformed
-
-    private void jMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuActionPerformed
-        escritorio.removeAll();
-        escritorio.repaint();
-        VistaMenuDiario vm = new VistaMenuDiario();
-        escritorio.add(vm);
-        escritorio.moveToFront(vm);
-        vm.setVisible(true);
-    }//GEN-LAST:event_jMenuActionPerformed
+    }//GEN-LAST:event_jMDietasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -252,11 +242,9 @@ public class VistaGeneral extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMGuardarPaciente;
     private javax.swing.JMenuItem jMICargar;
     private javax.swing.JMenuItem jMIComparar;
-    private javax.swing.JMenuItem jMIDieta;
     private javax.swing.JMenuItem jMIListar;
     private javax.swing.JMenu jMMenus_diarios;
     private javax.swing.JMenu jMPacientes;
-    private javax.swing.JMenuItem jMenu;
     private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables
 }

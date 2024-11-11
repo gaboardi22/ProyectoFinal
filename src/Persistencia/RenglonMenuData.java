@@ -56,7 +56,7 @@ public class RenglonMenuData {
             ps.setInt(4, renglon.getSubtotal_calorias());
             ps.executeUpdate();
             JOptionPane.showMessageDialog(null, "Renglon modificado");
-            ps.close();
+            ps.close(); 
         } catch (SQLException ex) {
             Logger.getLogger(RenglonMenuData.class.getName()).log(Level.SEVERE, null, ex);
         }

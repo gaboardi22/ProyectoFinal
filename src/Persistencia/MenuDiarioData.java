@@ -37,6 +37,7 @@ public class MenuDiarioData {
                 JOptionPane.showMessageDialog(null, "Menu diario guardado");
                 menu.setId_menu_diario(rs.getInt(1));
             }
+            ps.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla 'menu_diario'");
         }
@@ -53,6 +54,7 @@ public class MenuDiarioData {
             ps.setInt(3, menu.getDieta().getId_dieta());
             ps.executeUpdate();
             JOptionPane.showMessageDialog(null, "Menu diario modificado");
+            ps.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla 'menu_diario'");
         }

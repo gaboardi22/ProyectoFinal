@@ -10,6 +10,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import Entidades.Dieta;
+import Entidades.Paciente;
 
 /**
  *
@@ -80,6 +81,32 @@ public class DietaData {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla 'dietas'");
         }
+    }
+    
+    public Dieta buscarDieta(Paciente paciente){
+    Dieta dieta = null;
+        String sql = "SELECT * FROM dietas WHERE id_paciente = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, paciente.getId_paciente());
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                dieta = new Dieta();
+                dieta.setId_dieta(rs.getInt("id_dieta"));
+                dieta.setNombre(rs.getString("nombre"));
+                dieta.setFecha_inicio(rs.getDate("fecha_inicio").toLocalDate());
+                dieta.setFecha_fin(rs.getDate("fecha_fin").toLocalDate());
+                dieta.setPaciente(paciente);
+                dieta.setPeso_inicial(rs.getFloat("peso_inicial"));
+                dieta.setPeso_final(rs.getFloat("peso_final"));
+                dieta.setCalorias_totales(rs.getInt("calorias_totales"));
+                dieta.setEstado(rs.getBoolean("estado"));
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(DietaData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return dieta;
     }
 
     public void imprimirDietaCompleta() {

@@ -4,6 +4,11 @@
  */
 package Vistas;
 
+import Entidades.Paciente;
+import Persistencia.DietaData;
+import Persistencia.PacienteData;
+import java.util.List;
+
 /**
  *
  * @author Ezequiel
@@ -13,8 +18,13 @@ public class VistaCompararPeso extends javax.swing.JInternalFrame {
     /**
      * Creates new form VistaCompararPeso
      */
+    PacienteData pd = new PacienteData();
+    DietaData dd = new DietaData();
+    List<Paciente> listaPacientes = pd.listarPacientes();
+
     public VistaCompararPeso() {
         initComponents();
+        cargarCombo();
     }
 
     /**
@@ -27,35 +37,42 @@ public class VistaCompararPeso extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jCBPacientes = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        jLPeso_actual = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        jLPeso_inicio = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        jLPeso_buscado = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        jLLe_falta = new javax.swing.JLabel();
+
+        setClosable(true);
 
         jLabel1.setText("Paciente:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jCBPacientes.setToolTipText("");
+        jCBPacientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCBPacientesActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Peso actual:");
 
-        jLabel3.setText("...");
+        jLPeso_actual.setText("...");
 
         jLabel4.setText("Peso inicio de la dieta:");
 
-        jLabel5.setText("...");
+        jLPeso_inicio.setText("...");
 
         jLabel6.setText("Peso buscado: ");
 
-        jLabel7.setText("...");
+        jLPeso_buscado.setText("...");
 
         jLabel8.setText("Le falta:");
 
-        jLabel9.setText("...");
+        jLLe_falta.setText("...");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -64,25 +81,25 @@ public class VistaCompararPeso extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel3))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel5))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel7))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel8)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel9)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jLLe_falta))
+                    .addComponent(jLabel1)
+                    .addComponent(jCBPacientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLPeso_actual))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLPeso_inicio))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLPeso_buscado)))
+                .addContainerGap(340, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -90,40 +107,57 @@ public class VistaCompararPeso extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jCBPacientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jLabel3))
+                    .addComponent(jLPeso_actual))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jLabel5))
+                    .addComponent(jLPeso_inicio))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jLabel7))
+                    .addComponent(jLPeso_buscado))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(jLabel9))
+                    .addComponent(jLLe_falta))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jCBPacientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBPacientesActionPerformed
+        Paciente pacienteSeleccionado = (Paciente) jCBPacientes.getSelectedItem();
+        float pesoActual = pacienteSeleccionado.getPeso_actual();
+        float pesoBuscado = pacienteSeleccionado.getPeso_buscado();
+        float pesoInicio = dd.buscarDieta(pacienteSeleccionado).getPeso_inicial();
+        float diferenciaPeso = pesoActual - pesoBuscado;
+        jLPeso_actual.setText(String.valueOf(pesoActual));
+        jLPeso_buscado.setText(String.valueOf(pesoBuscado));
+        jLPeso_inicio.setText(String.valueOf(pesoInicio));
+        jLLe_falta.setText(String.valueOf(diferenciaPeso));
+    }//GEN-LAST:event_jCBPacientesActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<Paciente> jCBPacientes;
+    private javax.swing.JLabel jLLe_falta;
+    private javax.swing.JLabel jLPeso_actual;
+    private javax.swing.JLabel jLPeso_buscado;
+    private javax.swing.JLabel jLPeso_inicio;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     // End of variables declaration//GEN-END:variables
+    private void cargarCombo() {
+        for (Paciente paciente : listaPacientes) {
+            jCBPacientes.addItem(paciente);
+        }
+    }
 }

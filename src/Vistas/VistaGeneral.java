@@ -102,6 +102,11 @@ public class VistaGeneral extends javax.swing.JFrame {
         jMComidas.add(jMGuardarComida);
 
         jMenuItem5.setText("Listar todas comidas");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
         jMComidas.add(jMenuItem5);
 
         jMenuBar1.add(jMComidas);
@@ -236,6 +241,15 @@ public class VistaGeneral extends javax.swing.JFrame {
         escritorio.moveToFront(vd);
         vd.setVisible(true);
     }//GEN-LAST:event_jMDietasActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        VistaListarComida vlc = new VistaListarComida();
+        escritorio.add(vlc);
+        escritorio.moveToFront(vlc);
+        vlc.setVisible(true);
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     /**
      * @param args the command line arguments

@@ -4,6 +4,9 @@
  */
 package Vistas;
 
+import Persistencia.PacienteData;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Ezequiel
@@ -13,6 +16,9 @@ public class VistaListarPacientes extends javax.swing.JInternalFrame {
     /**
      * Creates new form VistaListarPacientesQueLLegaron
      */
+    PacienteData pd = new PacienteData();
+    DefaultTableModel modelo = new DefaultTableModel();
+
     public VistaListarPacientes() {
         initComponents();
     }
@@ -30,7 +36,7 @@ public class VistaListarPacientes extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
 
-        jLabel1.setText("Lista de todos los pacientes que cumplieron su objetivo:");
+        jLabel1.setText("Lista de todos los pacientes que no cumplieron su objetivo:");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -77,4 +83,8 @@ public class VistaListarPacientes extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
+    private void cargarTable() {
+        String[] columnas = {"ID", "Nombre", "Edad", "Altura", "Peso Actual", "Peso Buscado"};
+        modelo.setColumnIdentifiers(columnas);
+    }
 }

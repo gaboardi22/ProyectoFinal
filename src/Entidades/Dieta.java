@@ -21,7 +21,7 @@ public class Dieta {
     private float peso_final;
     private int calorias_totales;
     private boolean estado;
-    
+
     public Dieta() {
     }
 
@@ -113,5 +113,4 @@ public class Dieta {
         return "Dieta{" + "id_dieta=" + id_dieta + ", nombre=" + nombre + ", fecha_inicio=" + fecha_inicio + ", fecha_fin=" + fecha_fin + ", paciente=" + paciente + ", peso_inicial=" + peso_inicial + ", peso_final=" + peso_final + ", calorias_totales=" + calorias_totales + ", estado=" + estado + '}';
     }
 
-  
 }

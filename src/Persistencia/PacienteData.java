@@ -121,12 +121,14 @@ public class PacienteData {
 
     public List<Paciente> listarLosQueLLegaron() {
         ArrayList<Paciente> lista = new ArrayList<>();
-        String sql = "SELECT * FROM pacientes WHERE "
-                + "peso_actual = peso_buscado";
+        String sql = "SELECT p.* "
+                + "FROM pacientes p "
+                + "JOIN dieta d ON p.id_paciente = d.id_paciente "
+                + "WHERE p.peso_actual < p.peso_buscado AND d.estado = FALSE";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
-            if(rs.next()){
+            if (rs.next()) {
                 Paciente paciente = new Paciente();
                 paciente.setId_paciente(rs.getInt("id_paciente"));
                 paciente.setNombre(rs.getString("nombre"));
@@ -136,6 +138,7 @@ public class PacienteData {
                 paciente.setPeso_buscado(rs.getFloat("peso_buscado"));
                 lista.add(paciente);
             }
+            ps.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla 'pacientes'");
         }

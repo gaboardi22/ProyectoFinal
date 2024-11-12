@@ -46,7 +46,7 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Lista de todos los pacientes que cumplieron su objetivo:"/>
+        <Property name="text" type="java.lang.String" value="Lista de todos los pacientes que no cumplieron su objetivo:"/>
       </Properties>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">

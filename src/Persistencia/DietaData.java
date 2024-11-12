@@ -24,8 +24,8 @@ public class DietaData {
     }
 
     public void guardarDieta(Dieta dieta) {
-        String sql = "INSERT INTO dietas (nombre, fecha_inicio, fecha_fin, id_paciente, peso_inicial, peso_final, calorias_totales) "
-                + "VALUES(?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO dietas (nombre, fecha_inicio, fecha_fin, id_paciente, peso_inicial, peso_final, calorias_totales,estado) "
+                + "VALUES(?, ?, ?, ?, ?, ?, ?, true)";
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, dieta.getNombre());
@@ -68,14 +68,14 @@ public class DietaData {
     }
 
     public void cargarPesoYFinalizar(Dieta dieta, float peso) {
-        String slq = "UPDATE INTO dietas SET peso_final = ? "
+        String slq = "UPDATE INTO dietas SET peso_final = ?, estado = false "
                 + "WHERE id_dieta = ?";
         try {
             PreparedStatement ps = con.prepareStatement(slq);
             ps.setFloat(1, peso);
             ps.setInt(2, dieta.getId_dieta());
             ps.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Dieta modificada");
+            JOptionPane.showMessageDialog(null, "Dieta finalizada");
             ps.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla 'dietas'");

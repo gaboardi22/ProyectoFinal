@@ -5,10 +5,11 @@
         <group>
             <file>file:/C:/Users/Ezequiel/Documents/GitHub/ProyectoFinal/src/Persistencia/DietaData.java</file>
             <file>file:/C:/Users/Ezequiel/Documents/GitHub/ProyectoFinal/src/Vistas/VistaListarPacientes.java</file>
-            <file>file:/C:/Users/Ezequiel/Documents/GitHub/ProyectoFinal/src/Entidades/MenuDiario.java</file>
-            <file>file:/C:/Users/Ezequiel/Documents/GitHub/ProyectoFinal/src/Persistencia/MenuDiarioData.java</file>
+            <file>file:/C:/Users/Ezequiel/Documents/GitHub/ProyectoFinal/src/Vistas/VistaDieta.java</file>
             <file>file:/C:/Users/Ezequiel/Documents/GitHub/ProyectoFinal/src/Persistencia/RenglonMenuData.java</file>
+            <file>file:/C:/Users/Ezequiel/Documents/GitHub/ProyectoFinal/src/Persistencia/MenuDiarioData.java</file>
             <file>file:/C:/Users/Ezequiel/Documents/GitHub/ProyectoFinal/src/Vistas/VistaGeneral.java</file>
+            <file>file:/C:/Users/Ezequiel/Documents/GitHub/ProyectoFinal/src/Vistas/VistaCargarPesoYFinalizar.java</file>
         </group>
     </open-files>
 </project-private>

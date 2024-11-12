@@ -20,12 +20,12 @@ public class Dieta {
     private float peso_inicial;
     private float peso_final;
     private int calorias_totales;
+    private boolean estado;
     
     public Dieta() {
     }
 
-    public Dieta(int id_dieta, String nombre, LocalDate fecha_inicio, LocalDate fecha_fin, Paciente paciente, float peso_inicial, float peso_final, int calorias_totales) {
-        this.id_dieta = id_dieta;
+    public Dieta(String nombre, LocalDate fecha_inicio, LocalDate fecha_fin, Paciente paciente, float peso_inicial, float peso_final, int calorias_totales, boolean estado) {
         this.nombre = nombre;
         this.fecha_inicio = fecha_inicio;
         this.fecha_fin = fecha_fin;
@@ -33,6 +33,7 @@ public class Dieta {
         this.peso_inicial = peso_inicial;
         this.peso_final = peso_final;
         this.calorias_totales = calorias_totales;
+        this.estado = estado;
     }
 
     public int getId_dieta() {
@@ -99,9 +100,18 @@ public class Dieta {
         this.calorias_totales = calorias_totales;
     }
 
-    @Override
-    public String toString() {
-        return "Dieta{" + "id_dieta=" + id_dieta + ", nombre=" + nombre + ", fecha_inicio=" + fecha_inicio + ", fecha_fin=" + fecha_fin + ", paciente=" + paciente + ", peso_inicial=" + peso_inicial + ", peso_final=" + peso_final + ", calorias_totales=" + calorias_totales + '}';
+    public boolean isEstado() {
+        return estado;
     }
 
+    public void setEstado(boolean estado) {
+        this.estado = estado;
+    }
+
+    @Override
+    public String toString() {
+        return "Dieta{" + "id_dieta=" + id_dieta + ", nombre=" + nombre + ", fecha_inicio=" + fecha_inicio + ", fecha_fin=" + fecha_fin + ", paciente=" + paciente + ", peso_inicial=" + peso_inicial + ", peso_final=" + peso_final + ", calorias_totales=" + calorias_totales + ", estado=" + estado + '}';
+    }
+
+  
 }

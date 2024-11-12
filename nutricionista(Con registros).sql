@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-11-2024 a las 20:35:24
+-- Tiempo de generación: 12-11-2024 a las 14:38:34
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -62,19 +62,20 @@ CREATE TABLE `dietas` (
   `id_paciente` int(11) DEFAULT NULL,
   `peso_inicial` float DEFAULT NULL,
   `peso_final` float DEFAULT NULL,
-  `calorias_totales` int(11) DEFAULT NULL
+  `calorias_totales` int(11) DEFAULT NULL,
+  `estado` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `dietas`
 --
 
-INSERT INTO `dietas` (`id_dieta`, `nombre`, `fecha_inicio`, `fecha_fin`, `id_paciente`, `peso_inicial`, `peso_final`, `calorias_totales`) VALUES
-(1, 'Dieta Lunar', '2024-11-01', '2024-11-07', 1, 87, 85, 1500),
-(2, 'Dieta Baja en Calorías', '2024-11-01', '2024-11-05', 2, 65, 63, 1200),
-(3, 'Dieta Detox', '2024-11-01', '2024-11-03', 3, 90, 88, 1300),
-(4, 'Dieta Vegana', '2024-11-01', '2024-11-07', 4, 70, 68, 1400),
-(5, 'Dieta Mediterránea', '2024-11-01', '2024-11-10', 5, 85, 80, 1600);
+INSERT INTO `dietas` (`id_dieta`, `nombre`, `fecha_inicio`, `fecha_fin`, `id_paciente`, `peso_inicial`, `peso_final`, `calorias_totales`, `estado`) VALUES
+(1, 'Dieta Lunar', '2024-11-01', '2024-11-07', 1, 87, 85, 1500, 0),
+(2, 'Dieta Baja en Calorías', '2024-11-01', '2024-11-05', 2, 65, 63, 1200, 0),
+(3, 'Dieta Detox', '2024-11-01', '2024-11-03', 3, 90, 88, 1300, 0),
+(4, 'Dieta Vegana', '2024-11-01', '2024-11-07', 4, 70, 68, 1400, 0),
+(5, 'Dieta Mediterránea', '2024-11-01', '2024-11-10', 5, 85, 80, 1600, 0);
 
 -- --------------------------------------------------------
 
@@ -112,19 +113,20 @@ CREATE TABLE `pacientes` (
   `edad` int(11) DEFAULT NULL,
   `altura` float DEFAULT NULL,
   `peso_actual` float DEFAULT NULL,
-  `peso_buscado` float DEFAULT NULL
+  `peso_buscado` float DEFAULT NULL,
+  `estado` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `pacientes`
 --
 
-INSERT INTO `pacientes` (`id_paciente`, `nombre`, `edad`, `altura`, `peso_actual`, `peso_buscado`) VALUES
-(1, 'Juan Pérez', 30, 1.75, 87, 80),
-(2, 'Ana Martínez', 25, 1.65, 65, 60),
-(3, 'Carlos Gómez', 40, 1.8, 90, 85),
-(4, 'Lucía Fernández', 28, 1.6, 70, 55),
-(5, 'Pedro López', 35, 1.78, 85, 78);
+INSERT INTO `pacientes` (`id_paciente`, `nombre`, `edad`, `altura`, `peso_actual`, `peso_buscado`, `estado`) VALUES
+(1, 'Juan Pérez', 30, 1.75, 87, 80, 0),
+(2, 'Ana Martínez', 25, 1.65, 65, 60, 0),
+(3, 'Carlos Gómez', 40, 1.8, 90, 85, 0),
+(4, 'Lucía Fernández', 28, 1.6, 70, 55, 0),
+(5, 'Pedro López', 35, 1.78, 85, 78, 0);
 
 -- --------------------------------------------------------
 

@@ -4,7 +4,9 @@
  */
 package Vistas;
 
+import Entidades.Paciente;
 import Persistencia.PacienteData;
+import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -17,10 +19,12 @@ public class VistaListarPacientes extends javax.swing.JInternalFrame {
      * Creates new form VistaListarPacientesQueLLegaron
      */
     PacienteData pd = new PacienteData();
-    DefaultTableModel modelo = new DefaultTableModel();
+    DefaultTableModel modelo;
 
     public VistaListarPacientes() {
         initComponents();
+        modelo = new DefaultTableModel();
+        cargarTable();
     }
 
     /**
@@ -35,6 +39,8 @@ public class VistaListarPacientes extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+
+        setClosable(true);
 
         jLabel1.setText("Lista de todos los pacientes que no cumplieron su objetivo:");
 
@@ -86,5 +92,18 @@ public class VistaListarPacientes extends javax.swing.JInternalFrame {
     private void cargarTable() {
         String[] columnas = {"ID", "Nombre", "Edad", "Altura", "Peso Actual", "Peso Buscado"};
         modelo.setColumnIdentifiers(columnas);
+        List<Paciente> listaPacientes = pd.listarLosQueLLegaron();
+        for (Paciente paciente : listaPacientes) {
+            Object[] fila = {
+                paciente.getId_paciente(),
+                paciente.getNombre(),
+                paciente.getEdad(),
+                paciente.getAltura(),
+                paciente.getPeso_actual(),
+                paciente.getPeso_buscado()
+            };
+            modelo.addRow(fila);
+        }
+        jTable1.setModel(modelo);
     }
 }

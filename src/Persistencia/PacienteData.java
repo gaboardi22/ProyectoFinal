@@ -123,8 +123,8 @@ public class PacienteData {
         ArrayList<Paciente> lista = new ArrayList<>();
         String sql = "SELECT p.* "
                 + "FROM pacientes p "
-                + "JOIN dieta d ON p.id_paciente = d.id_paciente "
-                + "WHERE p.peso_actual < p.peso_buscado AND d.estado = FALSE";
+                + "JOIN dietas d ON p.id_paciente = d.id_paciente "
+                + "WHERE p.peso_actual != p.peso_buscado AND d.estado = FALSE";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
@@ -137,6 +137,7 @@ public class PacienteData {
                 paciente.setPeso_actual(rs.getFloat("peso_actual"));
                 paciente.setPeso_buscado(rs.getFloat("peso_buscado"));
                 lista.add(paciente);
+                System.out.println("A");
             }
             ps.close();
         } catch (SQLException ex) {

@@ -51,6 +51,7 @@ public class VistaComida extends javax.swing.JInternalFrame {
         jBGuardar = new javax.swing.JButton();
 
         setClosable(true);
+        setTitle("Carga de comida");
 
         jLID.setText("ID: --");
 

@@ -168,11 +168,11 @@ public class VistaGeneral extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(escritorio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(escritorio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(escritorio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(escritorio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -218,10 +218,10 @@ public class VistaGeneral extends javax.swing.JFrame {
     private void jMIListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIListarActionPerformed
         escritorio.removeAll();
         escritorio.repaint();
-        VistaListarPacientes vc = new VistaListarPacientes();
-        escritorio.add(vc);
-        escritorio.moveToFront(vc);
-        vc.setVisible(true);
+        VistaListarPacientes vl = new VistaListarPacientes();
+        escritorio.add(vl);
+        escritorio.moveToFront(vl);
+        vl.setVisible(true);
     }//GEN-LAST:event_jMIListarActionPerformed
 
     private void jMICargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMICargarActionPerformed

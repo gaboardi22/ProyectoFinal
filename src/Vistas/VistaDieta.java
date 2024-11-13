@@ -4,7 +4,14 @@
  */
 package Vistas;
 
+import Entidades.Dieta;
 import Entidades.Paciente;
+import Persistencia.DietaData;
+import Persistencia.PacienteData;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -12,11 +19,16 @@ import Entidades.Paciente;
  */
 public class VistaDieta extends javax.swing.JInternalFrame {
 
+    PacienteData pd = new PacienteData();
+    List<Paciente> listaPacientes = pd.listarPacientes();
+    private Dieta dieta = new Dieta();
+    private DietaData dietaData = new DietaData();
     /**
      * Creates new form VistaDieta
      */
     public VistaDieta() {
         initComponents();
+        cargarCombo();
     }
 
     /**
@@ -36,7 +48,12 @@ public class VistaDieta extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jCBPacientes = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
+        jBGuardar = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        jTCalorias = new javax.swing.JTextField();
+
+        setClosable(true);
+        setTitle("Carga de Dieta");
 
         jLabel1.setText("Nombre de la dieta:");
 
@@ -52,12 +69,14 @@ public class VistaDieta extends javax.swing.JInternalFrame {
 
         jLabel4.setText("Paciente:");
 
-        jButton1.setText("Guardar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jBGuardar.setText("Guardar");
+        jBGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jBGuardarActionPerformed(evt);
             }
         });
+
+        jLabel5.setText("Calorias totales:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -69,7 +88,7 @@ public class VistaDieta extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jCBPacientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1))
+                        .addComponent(jBGuardar))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
@@ -78,7 +97,10 @@ public class VistaDieta extends javax.swing.JInternalFrame {
                             .addComponent(jDCFecha_fin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3)
                             .addComponent(jLabel4)
-                            .addComponent(jTFNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTFNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jTCalorias, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGap(0, 68, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -97,13 +119,17 @@ public class VistaDieta extends javax.swing.JInternalFrame {
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jDCFecha_fin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTCalorias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jCBPacientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jBGuardar))
+                .addGap(15, 15, 15))
         );
 
         pack();
@@ -113,20 +139,38 @@ public class VistaDieta extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTFNombreActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
+        String nombre = jTFNombre.getText().trim();
+        Date fechaIn = JDCFecha_inicio.getDate();
+        LocalDate lD = fechaIn.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        Date fechaFin = jDCFecha_fin.getDate();
+        LocalDate lD2 = fechaFin.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        int calorias = Integer.parseInt(jTCalorias.getText());
+        Paciente paciente = (Paciente) jCBPacientes.getSelectedItem();
+        if(dieta == null){
+            dieta = new Dieta(nombre, lD ,lD2, paciente, calorias);
+            dietaData.guardarDieta(dieta);
+        }
+    }//GEN-LAST:event_jBGuardarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.toedter.calendar.JDateChooser JDCFecha_inicio;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jBGuardar;
     private javax.swing.JComboBox<Paciente> jCBPacientes;
     private com.toedter.calendar.JDateChooser jDCFecha_fin;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JTextField jTCalorias;
     private javax.swing.JTextField jTFNombre;
     // End of variables declaration//GEN-END:variables
+
+    private void cargarCombo() {
+        for (Paciente paciente : listaPacientes) {
+            jCBPacientes.addItem(paciente);
+        }
+    }
 }

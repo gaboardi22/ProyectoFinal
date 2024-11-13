@@ -48,6 +48,7 @@ public class VistaCompararPeso extends javax.swing.JInternalFrame {
         jLLe_falta = new javax.swing.JLabel();
 
         setClosable(true);
+        setTitle("Comparar el peso ");
 
         jLabel1.setText("Paciente:");
 
@@ -99,7 +100,7 @@ public class VistaCompararPeso extends javax.swing.JInternalFrame {
                         .addComponent(jLabel6)
                         .addGap(18, 18, 18)
                         .addComponent(jLPeso_buscado)))
-                .addContainerGap(340, Short.MAX_VALUE))
+                .addContainerGap(120, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

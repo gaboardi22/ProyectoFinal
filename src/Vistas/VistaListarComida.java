@@ -44,6 +44,8 @@ public class VistaListarComida extends javax.swing.JInternalFrame {
         jBLimpiar = new javax.swing.JButton();
 
         setClosable(true);
+        setTitle("Lista de Comidas");
+        setToolTipText("");
 
         jLabel1.setText("Filtrar por ingrediente:");
 

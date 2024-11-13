@@ -41,6 +41,8 @@ public class VistaListarPacientes extends javax.swing.JInternalFrame {
         jTable1 = new javax.swing.JTable();
 
         setClosable(true);
+        setTitle("Listar pacientes");
+        setToolTipText("");
 
         jLabel1.setText("Lista de todos los pacientes que no cumplieron su objetivo:");
 

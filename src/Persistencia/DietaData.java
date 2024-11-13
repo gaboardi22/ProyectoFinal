@@ -100,7 +100,7 @@ public class DietaData {
                 dieta.setPeso_inicial(rs.getFloat("peso_inicial"));
                 dieta.setPeso_final(rs.getFloat("peso_final"));
                 dieta.setCalorias_totales(rs.getInt("calorias_totales"));
-                dieta.setEstado(rs.getBoolean("estado"));
+//                dieta.setEstado(rs.getBoolean("estado"));
             }
             ps.close();
         } catch (SQLException ex) {

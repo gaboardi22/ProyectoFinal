@@ -36,6 +36,9 @@ public class VistaRenglonDeMenu extends javax.swing.JInternalFrame {
         jTextField2 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
 
+        setClosable(true);
+        setTitle("Reglon de manu");
+
         jLabel1.setText("Menu diario:");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));

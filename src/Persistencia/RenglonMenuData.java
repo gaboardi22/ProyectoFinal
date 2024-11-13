@@ -47,7 +47,7 @@ public class RenglonMenuData {
 
     public void modificarRenglonMenu(RenglonMenu renglon) {
         String sql = "UPDATE renglones_menu SET id_menu_diario = ?,id_comida = ?, cantidad_gramos = ?, subtotal_calorias = ? "
-                + "WHERE id_renglon_menu = ?";
+                + "WHERE id_renglon = ?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, renglon.getMenu_diario().getId_menu_diario());
@@ -59,8 +59,32 @@ public class RenglonMenuData {
             JOptionPane.showMessageDialog(null, "Renglon modificado");
             ps.close(); 
         } catch (SQLException ex) {
-            Logger.getLogger(RenglonMenuData.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla 'renglones_menu'");
         }
 
+    }
+    
+    public RenglonMenu buscarRenglonPorID(int id){
+        RenglonMenu renglon = null;
+        MenuDiarioData mdd = new MenuDiarioData();
+        ComidaData cd = new ComidaData();
+        String sql = "SELECT * FROM renglones_menu WHERE id_renglon = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                renglon = new RenglonMenu();
+                renglon.setId_renglon(rs.getInt("id_renglon"));
+                renglon.setMenu_diario(mdd.buscarMenuPorID(id));
+                renglon.setComida(cd.buscarComidaPorID(rs.getInt("id_comida")));
+                renglon.setCantidad_gramos(rs.getInt("cantidad_gramos"));
+                renglon.setSubtotal_calorias(rs.getInt("subtotal_calorias"));
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla 'renglones_menu'");
+        }
+        return renglon;
     }
 }

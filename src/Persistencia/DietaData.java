@@ -11,6 +11,8 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import Entidades.Dieta;
 import Entidades.Paciente;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -82,15 +84,15 @@ public class DietaData {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla 'dietas'");
         }
     }
-    
-    public Dieta buscarDieta(Paciente paciente){
-    Dieta dieta = null;
+
+    public Dieta buscarDieta(Paciente paciente) {
+        Dieta dieta = null;
         String sql = "SELECT * FROM dietas WHERE id_paciente = ?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, paciente.getId_paciente());
             ResultSet rs = ps.executeQuery();
-            if(rs.next()){
+            if (rs.next()) {
                 dieta = new Dieta();
                 dieta.setId_dieta(rs.getInt("id_dieta"));
                 dieta.setNombre(rs.getString("nombre"));
@@ -104,17 +106,59 @@ public class DietaData {
             }
             ps.close();
         } catch (SQLException ex) {
-            Logger.getLogger(DietaData.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla 'dietas'");
         }
         return dieta;
     }
 
-    public void imprimirDietaCompleta() {
-
+    public List<Dieta> listarDietas() {
+        ArrayList<Dieta> lista = new ArrayList<>();
+        PacienteData pd = new PacienteData();
+        String sql = "SELECT * FROM dietas WHERE 1";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Dieta dieta = new Dieta();
+                dieta.setId_dieta(rs.getInt("id_dieta"));
+                dieta.setNombre(rs.getString("nombre"));
+                dieta.setFecha_inicio(rs.getDate("fecha_inicio").toLocalDate());
+                dieta.setFecha_fin(rs.getDate("fecha_fin").toLocalDate());
+                dieta.setPaciente(pd.buscarPacientePorID(rs.getInt("id_paciente")));
+                dieta.setPeso_inicial(rs.getFloat("peso_inicial"));
+                dieta.setPeso_final(rs.getFloat("peso_final"));
+                dieta.setCalorias_totales(rs.getInt("calorias_totales"));
+                lista.add(dieta);
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla 'dietas'");
+        }
+        return lista;
     }
-
-    public int calcularDiferDePeso() {
-        int peso = 0;
-        return peso;
+    public Dieta buscarDietaPorID(int id) {
+        Dieta dieta = null;
+        PacienteData pd = new PacienteData();
+        String sql = "SELECT * FROM dietas WHERE id_paciente = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                dieta = new Dieta();
+                dieta.setId_dieta(rs.getInt("id_dieta"));
+                dieta.setNombre(rs.getString("nombre"));
+                dieta.setFecha_inicio(rs.getDate("fecha_inicio").toLocalDate());
+                dieta.setFecha_fin(rs.getDate("fecha_fin").toLocalDate());
+                dieta.setPaciente(pd.buscarPacientePorID(rs.getInt("id_paciente")));
+                dieta.setPeso_inicial(rs.getFloat("peso_inicial"));
+                dieta.setPeso_final(rs.getFloat("peso_final"));
+                dieta.setCalorias_totales(rs.getInt("calorias_totales"));
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla 'dietas'");
+        }
+        return dieta;
     }
 }

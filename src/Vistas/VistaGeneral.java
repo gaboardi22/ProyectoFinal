@@ -35,6 +35,10 @@ public class VistaGeneral extends javax.swing.JFrame {
         jMComidas = new javax.swing.JMenu();
         jMGuardarComida = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
+        jMDietas = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem6 = new javax.swing.JMenuItem();
+        jMICargar = new javax.swing.JMenuItem();
         jMMenus_diarios = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
@@ -42,10 +46,6 @@ public class VistaGeneral extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
-        jMDietas = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
-        jMICargar = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Nutricionista");
@@ -60,7 +60,7 @@ public class VistaGeneral extends javax.swing.JFrame {
         );
         escritorioLayout.setVerticalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
+            .addGap(0, 501, Short.MAX_VALUE)
         );
 
         jMPacientes.setText("Pacientes");
@@ -111,6 +111,29 @@ public class VistaGeneral extends javax.swing.JFrame {
 
         jMenuBar1.add(jMComidas);
 
+        jMDietas.setText("Dietas");
+        jMDietas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMDietasActionPerformed(evt);
+            }
+        });
+
+        jMenuItem2.setText("Guardar/modificar dieta");
+        jMDietas.add(jMenuItem2);
+
+        jMenuItem6.setText("Generar dieta automaticamente");
+        jMDietas.add(jMenuItem6);
+
+        jMICargar.setText("Cargar peso y finalizar dieta");
+        jMICargar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMICargarActionPerformed(evt);
+            }
+        });
+        jMDietas.add(jMICargar);
+
+        jMenuBar1.add(jMDietas);
+
         jMMenus_diarios.setText("Menus Diarios");
         jMMenus_diarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -139,29 +162,6 @@ public class VistaGeneral extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jMDietas.setText("Dietas");
-        jMDietas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMDietasActionPerformed(evt);
-            }
-        });
-
-        jMenuItem2.setText("Guardar/modificar dieta");
-        jMDietas.add(jMenuItem2);
-
-        jMenuItem6.setText("Generar dieta automaticamente");
-        jMDietas.add(jMenuItem6);
-
-        jMICargar.setText("Cargar peso y finalizar dieta");
-        jMICargar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMICargarActionPerformed(evt);
-            }
-        });
-        jMDietas.add(jMICargar);
-
-        jMenuBar1.add(jMDietas);
-
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -172,7 +172,7 @@ public class VistaGeneral extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(escritorio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(escritorio, javax.swing.GroupLayout.DEFAULT_SIZE, 501, Short.MAX_VALUE)
         );
 
         pack();
@@ -196,15 +196,6 @@ public class VistaGeneral extends javax.swing.JFrame {
         escritorio.moveToFront(vc);
         vc.setVisible(true);
     }//GEN-LAST:event_jMGuardarComidaActionPerformed
-
-    private void jMMenus_diariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMMenus_diariosActionPerformed
-        escritorio.removeAll();
-        escritorio.repaint();
-        VistaMenuDiario vm = new VistaMenuDiario();
-        escritorio.add(vm);
-        escritorio.moveToFront(vm);
-        vm.setVisible(true);
-    }//GEN-LAST:event_jMMenus_diariosActionPerformed
 
     private void jMICompararActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMICompararActionPerformed
         escritorio.removeAll();
@@ -250,6 +241,15 @@ public class VistaGeneral extends javax.swing.JFrame {
         escritorio.moveToFront(vlc);
         vlc.setVisible(true);
     }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void jMMenus_diariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMMenus_diariosActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        VistaMenuDiario vm = new VistaMenuDiario();
+        escritorio.add(vm);
+        escritorio.moveToFront(vm);
+        vm.setVisible(true);
+    }//GEN-LAST:event_jMMenus_diariosActionPerformed
 
     /**
      * @param args the command line arguments

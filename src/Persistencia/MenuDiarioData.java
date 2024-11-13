@@ -7,6 +7,8 @@ package Persistencia;
 import Entidades.MenuDiario;
 import org.mariadb.jdbc.Connection;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -59,5 +61,28 @@ public class MenuDiarioData {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla 'menu_diario'");
         }
 
+    }
+
+    public List<MenuDiario> listarMenusDiarios() {
+        ArrayList<MenuDiario> lista = new ArrayList<>();
+        DietaData dd = new DietaData();
+        String sql = "SELECT * FROM menus_diarios WHERE 1";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                MenuDiario menu = new MenuDiario();
+                menu.setId_menu_diario(rs.getInt("id_menu_diario"));
+                menu.setDia(rs.getInt("dia"));
+                menu.setCalorias(rs.getInt("calorias"));
+                menu.setDieta(dd.buscarDietaPorID(rs.getInt("id_paciente")));
+                lista.add(menu);
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla 'menu_diario'");
+        }
+
+        return lista;
     }
 }

@@ -16,7 +16,6 @@ public class MenuDiario {
     private int dia;
     private int calorias;
     private Dieta dieta;
-    private List<RenglonMenu> renglones;
 
     public MenuDiario() {
     }
@@ -59,17 +58,12 @@ public class MenuDiario {
         this.dieta = dieta;
     }
 
-    public List<RenglonMenu> getRenglones() {
-        return renglones;
-    }
-
-    public void setRenglones(List<RenglonMenu> renglones) {
-        this.renglones = renglones;
-    }
-
     @Override
     public String toString() {
-        return "MenuDiario{" + "id_menu_diario=" + id_menu_diario + ", dia=" + dia + ", calorias=" + calorias + ", dieta=" + dieta + ", renglones=" + renglones + '}';
+        return "MenuDiario{" + "id_menu_diario=" + id_menu_diario + ", dia=" + dia + ", calorias=" + calorias + ", dieta=" + dieta + '}';
     }
+
+ 
+
 
 }

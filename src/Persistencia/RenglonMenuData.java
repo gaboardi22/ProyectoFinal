@@ -54,6 +54,7 @@ public class RenglonMenuData {
             ps.setInt(2, renglon.getComida().getId_comida());
             ps.setInt(3, renglon.getCantidad_gramos());
             ps.setInt(4, renglon.getSubtotal_calorias());
+            ps.setInt(5, renglon.getId_renglon());
             ps.executeUpdate();
             JOptionPane.showMessageDialog(null, "Renglon modificado");
             ps.close(); 

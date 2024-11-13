@@ -170,4 +170,27 @@ public class PacienteData {
         return lista;
     }
 
+    public Paciente buscarPacientePorID(int id) {
+        Paciente paciente = null;
+        String sql = "SELECT * FROM pacientes "
+                + "WHERE id_paciente = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                paciente = new Paciente();
+                paciente.setId_paciente(rs.getInt("id_paciente"));
+                paciente.setNombre(rs.getString("nombre"));
+                paciente.setEdad(rs.getInt("edad"));
+                paciente.setAltura(rs.getFloat("altura"));
+                paciente.setPeso_actual(rs.getFloat("peso_actual"));
+                paciente.setPeso_buscado(rs.getFloat("peso_buscado"));
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla 'pacientes'");
+        }
+        return paciente;
+    }
 }

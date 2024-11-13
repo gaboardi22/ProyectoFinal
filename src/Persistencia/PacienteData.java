@@ -124,7 +124,7 @@ public class PacienteData {
         String sql = "SELECT p.* "
                 + "FROM pacientes p "
                 + "JOIN dietas d ON p.id_paciente = d.id_paciente "
-                + "WHERE p.peso_actual != p.peso_buscado AND d.estado = FALSE";
+                + "WHERE p.peso_actual != p.peso_buscado ";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
@@ -142,7 +142,7 @@ public class PacienteData {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla 'pacientes'");
         }
-
+// AND d.estado = FALSE
         return lista;
     }
 

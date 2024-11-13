@@ -32,6 +32,7 @@ public class VistaGeneral extends javax.swing.JFrame {
         jMGuardarPaciente = new javax.swing.JMenuItem();
         jMIComparar = new javax.swing.JMenuItem();
         jMIListar = new javax.swing.JMenuItem();
+        jMIListaIMC = new javax.swing.JMenuItem();
         jMComidas = new javax.swing.JMenu();
         jMGuardarComida = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
@@ -89,6 +90,14 @@ public class VistaGeneral extends javax.swing.JFrame {
         });
         jMPacientes.add(jMIListar);
 
+        jMIListaIMC.setText("Listar pacientes por IMC");
+        jMIListaIMC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIListaIMCActionPerformed(evt);
+            }
+        });
+        jMPacientes.add(jMIListaIMC);
+
         jMenuBar1.add(jMPacientes);
 
         jMComidas.setText("Comidas");
@@ -112,11 +121,6 @@ public class VistaGeneral extends javax.swing.JFrame {
         jMenuBar1.add(jMComidas);
 
         jMDietas.setText("Dietas");
-        jMDietas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMDietasActionPerformed(evt);
-            }
-        });
 
         jMenuItem2.setText("Guardar/modificar dieta");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
@@ -140,13 +144,13 @@ public class VistaGeneral extends javax.swing.JFrame {
         jMenuBar1.add(jMDietas);
 
         jMMenus_diarios.setText("Menus Diarios");
-        jMMenus_diarios.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMMenus_diariosActionPerformed(evt);
-            }
-        });
 
         jMenuItem1.setText("Guardar/Modificar menu diario");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         jMMenus_diarios.add(jMenuItem1);
 
         jMenuItem3.setText("Calcular calorias del dia");
@@ -158,11 +162,6 @@ public class VistaGeneral extends javax.swing.JFrame {
         jMenuBar1.add(jMMenus_diarios);
 
         jMenu1.setText("Renglon de menu");
-        jMenu1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu1ActionPerformed(evt);
-            }
-        });
 
         jMenuItem7.setText("Guardar/ modificar renglon de menu");
         jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
@@ -239,15 +238,6 @@ public class VistaGeneral extends javax.swing.JFrame {
         vc.setVisible(true);
     }//GEN-LAST:event_jMICargarActionPerformed
 
-    private void jMDietasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMDietasActionPerformed
-        escritorio.removeAll();
-        escritorio.repaint();
-        VistaDieta vd = new VistaDieta();
-        escritorio.add(vd);
-        escritorio.moveToFront(vd);
-        vd.setVisible(true);
-    }//GEN-LAST:event_jMDietasActionPerformed
-
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
         escritorio.removeAll();
         escritorio.repaint();
@@ -256,19 +246,6 @@ public class VistaGeneral extends javax.swing.JFrame {
         escritorio.moveToFront(vlc);
         vlc.setVisible(true);
     }//GEN-LAST:event_jMenuItem5ActionPerformed
-
-    private void jMMenus_diariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMMenus_diariosActionPerformed
-        escritorio.removeAll();
-        escritorio.repaint();
-        VistaMenuDiario vm = new VistaMenuDiario();
-        escritorio.add(vm);
-        escritorio.moveToFront(vm);
-        vm.setVisible(true);
-    }//GEN-LAST:event_jMMenus_diariosActionPerformed
-
-    private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
-
-    }//GEN-LAST:event_jMenu1ActionPerformed
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
         escritorio.removeAll();
@@ -287,6 +264,24 @@ public class VistaGeneral extends javax.swing.JFrame {
         escritorio.moveToFront(vd);
         vd.setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        VistaMenuDiario vm = new VistaMenuDiario();
+        escritorio.add(vm);
+        escritorio.moveToFront(vm);
+        vm.setVisible(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMIListaIMCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIListaIMCActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        VistaListarPorIMC vimc = new VistaListarPorIMC();
+        escritorio.add(vimc);
+        escritorio.moveToFront(vimc);
+        vimc.setVisible(true);
+    }//GEN-LAST:event_jMIListaIMCActionPerformed
 
     /**
      * @param args the command line arguments
@@ -331,6 +326,7 @@ public class VistaGeneral extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMGuardarPaciente;
     private javax.swing.JMenuItem jMICargar;
     private javax.swing.JMenuItem jMIComparar;
+    private javax.swing.JMenuItem jMIListaIMC;
     private javax.swing.JMenuItem jMIListar;
     private javax.swing.JMenu jMMenus_diarios;
     private javax.swing.JMenu jMPacientes;

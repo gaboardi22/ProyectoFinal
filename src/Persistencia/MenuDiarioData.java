@@ -77,7 +77,6 @@ public class MenuDiarioData {
                 menu.setCalorias(rs.getInt("calorias_totales"));
                 menu.setDieta(dd.buscarDietaPorID(rs.getInt("id_dieta")));
                 lista.add(menu);
-                System.out.println("a");
             }
             rs.close();
             ps.close();
@@ -86,5 +85,26 @@ public class MenuDiarioData {
         }
 
         return lista;
+    }
+    public MenuDiario buscarMenuPorID(int id){
+        MenuDiario menu = null;
+        DietaData dd = new DietaData();
+            String sql = "SELECT * FROM menus_diarios WHERE id_menu_diario = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                menu = new MenuDiario();
+                menu.setId_menu_diario(rs.getInt("id_menu_diario"));
+                menu.setDia(rs.getInt("dia"));
+                menu.setDieta(dd.buscarDietaPorID(rs.getInt("id_dieta")));
+                menu.setCalorias(rs.getInt("calorias_totales"));
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla 'menu_diario'");
+        }
+        return menu;
     }
 }

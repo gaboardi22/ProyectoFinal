@@ -153,4 +153,26 @@ public class ComidaData {
         }
         return comidas;
     }
+    public Comida buscarComidaPorID(int id) {
+        Comida comida = null;
+        String sql = "SELECT * FROM comidas "
+                + "WHERE id_comida = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                comida = new Comida();
+                comida.setId_comida(rs.getInt("id_comida"));
+                comida.setNombre(rs.getString("nombre"));
+                comida.setCalorias_por_100g(rs.getInt("calorias_por_100g"));
+                comida.setTipo(rs.getString("tipo"));
+                comida.setDetalle(rs.getString("detalle"));
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(ComidaData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return comida;
+    }
 }

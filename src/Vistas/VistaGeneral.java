@@ -119,6 +119,11 @@ public class VistaGeneral extends javax.swing.JFrame {
         });
 
         jMenuItem2.setText("Guardar/modificar dieta");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMDietas.add(jMenuItem2);
 
         jMenuItem6.setText("Generar dieta automaticamente");
@@ -273,6 +278,15 @@ public class VistaGeneral extends javax.swing.JFrame {
         escritorio.moveToFront(vrm);
         vrm.setVisible(true);
     }//GEN-LAST:event_jMenuItem7ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        VistaDieta vd = new VistaDieta();
+        escritorio.add(vd);
+        escritorio.moveToFront(vd);
+        vd.setVisible(true);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     /**
      * @param args the command line arguments

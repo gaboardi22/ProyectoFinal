@@ -8,10 +8,12 @@ import Entidades.Dieta;
 import Entidades.Paciente;
 import Persistencia.DietaData;
 import Persistencia.PacienteData;
+import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -140,17 +142,28 @@ public class VistaDieta extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTFNombreActionPerformed
 
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
-        String nombre = jTFNombre.getText().trim();
-        Date fechaIn = JDCFecha_inicio.getDate();
-        LocalDate lD = fechaIn.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        Date fechaFin = jDCFecha_fin.getDate();
-        LocalDate lD2 = fechaFin.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        int calorias = Integer.parseInt(jTCalorias.getText());
-        Paciente paciente = (Paciente) jCBPacientes.getSelectedItem();
-        if(dieta == null){
-            dieta = new Dieta(nombre, lD ,lD2, paciente, calorias);
-            dietaData.guardarDieta(dieta);
-        }
+        try{ 
+            String nombre = jTFNombre.getText().trim();
+            Date fechaIn = JDCFecha_inicio.getDate();
+            LocalDate lD = fechaIn.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            Date fechaFin = jDCFecha_fin.getDate();
+            LocalDate lD2 = fechaFin.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            int calorias = Integer.parseInt(jTCalorias.getText());
+            Paciente paciente = (Paciente) jCBPacientes.getSelectedItem();
+            if(dieta == null){
+                dieta = new Dieta(nombre, lD ,lD2, paciente, calorias);
+                dietaData.guardarDieta(dieta);
+                JOptionPane.showMessageDialog(this, "Dieta guardada con éxito");
+            }
+        } catch (NullPointerException e) {
+            JOptionPane.showConfirmDialog(this, "Se debe rellenar todos los campos");
+        } catch (DateTimeException e) {
+            JOptionPane.showConfirmDialog(this, "Error! Verifique que sean válidas");
+        } catch (NumberFormatException e) {
+            JOptionPane.showConfirmDialog(this, "Las calorias deben ser numeros enteros");
+        } catch (Exception e) {
+           JOptionPane.showConfirmDialog(this, "Ocurrió un error inesperado");
+        } 
     }//GEN-LAST:event_jBGuardarActionPerformed
 
 

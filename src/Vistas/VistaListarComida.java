@@ -7,6 +7,7 @@ package Vistas;
 import Entidades.Comida;
 import Persistencia.ComidaData;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -123,17 +124,21 @@ public class VistaListarComida extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
-        String ingrediente = jTFFiltro.getText();
-        List<Comida> lista = cd.filtrarPorIngrediente(ingrediente);
-        modelo.setRowCount(0);
-        for (Comida comida : lista) {
-            Object[] fila = {
-                comida.getNombre(),
-                comida.getTipo(),
-                comida.getDetalle()
-            };
-            modelo.addRow(fila);
-        }
+        try{   
+            String ingrediente = jTFFiltro.getText();
+            List<Comida> lista = cd.filtrarPorIngrediente(ingrediente);
+            modelo.setRowCount(0);
+            for (Comida comida : lista) {
+                Object[] fila = {
+                    comida.getNombre(),
+                    comida.getTipo(),
+                    comida.getDetalle()
+                };
+                modelo.addRow(fila);
+            }
+        } catch (NullPointerException e) {
+            JOptionPane.showConfirmDialog(this, "Se debe rellenar el campo");
+        } 
     }//GEN-LAST:event_jBBuscarActionPerformed
 
     private void jBLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiarActionPerformed

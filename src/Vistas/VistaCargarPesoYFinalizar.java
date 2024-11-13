@@ -9,6 +9,7 @@ import Entidades.Paciente;
 import Persistencia.DietaData;
 import Persistencia.PacienteData;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -116,21 +117,39 @@ public class VistaCargarPesoYFinalizar extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Paciente paciente = (Paciente) jCBPacientes.getSelectedItem();
-        int idP = paciente.getId_paciente();
-        DietaData d =  new DietaData();
-        Dieta dieta = d.buscarDieta(paciente);
-        float peso = Float.parseFloat(jTFPeso_final.getText());
-        DietaData dd = new DietaData();
-        dd.cargarPesoYFinalizar(dieta, peso);
+        try{   
+            Paciente paciente = (Paciente) jCBPacientes.getSelectedItem();
+            if (paciente == null) {
+                throw new NullPointerException("Se debe seleccionar un paciente");
+            }
+            int idP = paciente.getId_paciente();
+            DietaData d =  new DietaData();
+            Dieta dieta = d.buscarDieta(paciente);
+            float peso = Float.parseFloat(jTFPeso_final.getText());
+            DietaData dd = new DietaData();
+            dd.cargarPesoYFinalizar(dieta, peso);
+            JOptionPane.showMessageDialog(this, "Dieta finalizada correctamente.");
+        } catch (NumberFormatException e) {
+           JOptionPane.showConfirmDialog(this, "El peso debe ser un numero valido");
+        }    
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jCBPacientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBPacientesActionPerformed
-        Paciente paciente = (Paciente) jCBPacientes.getSelectedItem();
-        int idP = paciente.getId_paciente();
-        DietaData d =  new DietaData();
-        Dieta dieta = d.buscarDieta(paciente);
-        jLDieta.setText(dieta.getNombre());
+        try{
+            Paciente paciente = (Paciente) jCBPacientes.getSelectedItem();
+            if (paciente == null) {
+                throw new NullPointerException("Se debe seleccionar un paciente");
+            }
+            int idP = paciente.getId_paciente();
+            DietaData d =  new DietaData();
+            Dieta dieta = d.buscarDieta(paciente);
+            if (dieta == null) {
+                throw new NullPointerException("No se encontró una dieta asociada al paciente seleccionado");
+            }
+            jLDieta.setText(dieta.getNombre());
+        } catch (Exception e) {
+           JOptionPane.showConfirmDialog(this, "Ocurrió un error inesperado");
+        }
     }//GEN-LAST:event_jCBPacientesActionPerformed
 
 

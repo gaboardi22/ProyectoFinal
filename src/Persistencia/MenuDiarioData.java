@@ -74,10 +74,12 @@ public class MenuDiarioData {
                 MenuDiario menu = new MenuDiario();
                 menu.setId_menu_diario(rs.getInt("id_menu_diario"));
                 menu.setDia(rs.getInt("dia"));
-                menu.setCalorias(rs.getInt("calorias"));
-                menu.setDieta(dd.buscarDietaPorID(rs.getInt("id_paciente")));
+                menu.setCalorias(rs.getInt("calorias_totales"));
+                menu.setDieta(dd.buscarDietaPorID(rs.getInt("id_dieta")));
                 lista.add(menu);
+                System.out.println("a");
             }
+            rs.close();
             ps.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla 'menu_diario'");

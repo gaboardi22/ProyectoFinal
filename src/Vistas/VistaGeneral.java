@@ -153,8 +153,18 @@ public class VistaGeneral extends javax.swing.JFrame {
         jMenuBar1.add(jMMenus_diarios);
 
         jMenu1.setText("Renglon de menu");
+        jMenu1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu1ActionPerformed(evt);
+            }
+        });
 
         jMenuItem7.setText("Guardar/ modificar renglon de menu");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem7);
 
         jMenuItem8.setText("Imprimir renglon");
@@ -250,6 +260,19 @@ public class VistaGeneral extends javax.swing.JFrame {
         escritorio.moveToFront(vm);
         vm.setVisible(true);
     }//GEN-LAST:event_jMMenus_diariosActionPerformed
+
+    private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
+
+    }//GEN-LAST:event_jMenu1ActionPerformed
+
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        VistaRenglonDeMenu vrm = new VistaRenglonDeMenu();
+        escritorio.add(vrm);
+        escritorio.moveToFront(vrm);
+        vrm.setVisible(true);
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     /**
      * @param args the command line arguments

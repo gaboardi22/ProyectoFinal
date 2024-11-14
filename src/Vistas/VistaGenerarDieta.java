@@ -24,6 +24,8 @@ public class VistaGenerarDieta extends javax.swing.JInternalFrame {
     private MenuDiarioData menuData;
     private RenglonMenuData renglonData;
     private ComidaData comidaData;
+    private PacienteData pacienteData;
+    private List<Paciente> listaPaciente;
 
     public VistaGenerarDieta() {
         initComponents();
@@ -31,6 +33,8 @@ public class VistaGenerarDieta extends javax.swing.JInternalFrame {
         menuData = new MenuDiarioData();
         renglonData = new RenglonMenuData();
         comidaData = new ComidaData();
+        pacienteData = new PacienteData();
+        listaPaciente = pacienteData.listarPacientes();
     }
 
     /**
@@ -194,5 +198,10 @@ public class VistaGenerarDieta extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
     private Comida elegirComidaAleatoria(List<Comida> comidas) {
         return comidas.get((int) (Math.random() * comidas.size()));
+    }
+    private void cargarCombo(){
+        for (Paciente paciente : listaPaciente) {
+            jCBpacientes.addItem(paciente);
+        }
     }
 }

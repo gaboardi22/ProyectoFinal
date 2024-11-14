@@ -3,7 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Vistas;
+
 import com.formdev.flatlaf.intellijthemes.FlatGradiantoNatureGreenIJTheme;
+
 /**
  *
  * @author Ezequiel
@@ -50,7 +52,6 @@ public class VistaGeneral extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Nutricionista");
-        setPreferredSize(new java.awt.Dimension(620, 524));
 
         escritorio.setPreferredSize(new java.awt.Dimension(500, 500));
 
@@ -142,6 +143,11 @@ public class VistaGeneral extends javax.swing.JFrame {
         jMDietas.add(jMenuItem2);
 
         jMenuItem6.setText("Generar dieta automaticamente");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
         jMDietas.add(jMenuItem6);
 
         jMImprimirDieta.setText("Imprimir dieta");
@@ -327,6 +333,14 @@ public class VistaGeneral extends javax.swing.JFrame {
         escritorio.moveToFront(vm);
         vm.setVisible(true);
     }//GEN-LAST:event_jMImprimirDietaActionPerformed
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        VistaGenerarDieta vgd = new VistaGenerarDieta();
+        escritorio.add(vgd);
+        escritorio.moveToFront(vgd);
+        vgd.setVisible(true);    }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     /**
      * @param args the command line arguments

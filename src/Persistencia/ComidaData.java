@@ -153,6 +153,7 @@ public class ComidaData {
         }
         return comidas;
     }
+
     public Comida buscarComidaPorID(int id) {
         Comida comida = null;
         String sql = "SELECT * FROM comidas "
@@ -174,5 +175,35 @@ public class ComidaData {
             Logger.getLogger(ComidaData.class.getName()).log(Level.SEVERE, null, ex);
         }
         return comida;
+    }
+
+    public List<Comida> filtrarPorAlimentosProhibidos(List<String> alimentosProhibidos) {
+        StringBuilder valoresProhibidos = new StringBuilder();
+        for (String alimento : alimentosProhibidos) {
+            valoresProhibidos.append("'").append(alimento).append("',");
+        }
+        String valoresProhibidosStr = valoresProhibidos.toString().replaceAll(",$", "");
+
+        String sql = "SELECT * FROM comidas WHERE tipo NOT IN (" + valoresProhibidosStr + ")";
+        List<Comida> comidas = new ArrayList<>();
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Comida comida = new Comida();
+                comida.setId_comida(rs.getInt("id_comida"));
+                comida.setNombre(rs.getString("nombre"));
+                comida.setCalorias_por_100g(rs.getInt("calorias_por_100g"));
+                comida.setTipo(rs.getString("tipo"));
+                comida.setDetalle(rs.getString("detalle"));
+                comidas.add(comida);
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla 'comidas'");
+        }
+
+        return comidas;
     }
 }

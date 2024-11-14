@@ -50,6 +50,10 @@ public class VistaGeneral extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Nutricionista");
+<<<<<<< Updated upstream
+=======
+        setPreferredSize(new java.awt.Dimension(620, 524));
+>>>>>>> Stashed changes
 
         escritorio.setPreferredSize(new java.awt.Dimension(500, 500));
 

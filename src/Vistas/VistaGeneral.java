@@ -40,17 +40,18 @@ public class VistaGeneral extends javax.swing.JFrame {
         jMDietas = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
+        jMImprimirDieta = new javax.swing.JMenuItem();
         jMMenus_diarios = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem7 = new javax.swing.JMenuItem();
-        jMenuItem8 = new javax.swing.JMenuItem();
+        jMImprimirRenglon = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Nutricionista");
         setPreferredSize(new java.awt.Dimension(620, 524));
+
         escritorio.setPreferredSize(new java.awt.Dimension(500, 500));
 
         javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
@@ -143,6 +144,14 @@ public class VistaGeneral extends javax.swing.JFrame {
         jMenuItem6.setText("Generar dieta automaticamente");
         jMDietas.add(jMenuItem6);
 
+        jMImprimirDieta.setText("Imprimir dieta");
+        jMImprimirDieta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMImprimirDietaActionPerformed(evt);
+            }
+        });
+        jMDietas.add(jMImprimirDieta);
+
         jMenuBar1.add(jMDietas);
 
         jMMenus_diarios.setText("Menus Diarios");
@@ -163,9 +172,6 @@ public class VistaGeneral extends javax.swing.JFrame {
         });
         jMMenus_diarios.add(jMenuItem3);
 
-        jMenuItem4.setText("Imprimir menu diario");
-        jMMenus_diarios.add(jMenuItem4);
-
         jMenuBar1.add(jMMenus_diarios);
 
         jMenu1.setText("Renglon de menu");
@@ -178,8 +184,13 @@ public class VistaGeneral extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem7);
 
-        jMenuItem8.setText("Imprimir renglon");
-        jMenu1.add(jMenuItem8);
+        jMImprimirRenglon.setText("Imprimir renglon");
+        jMImprimirRenglon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMImprimirRenglonActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMImprimirRenglon);
 
         jMenuBar1.add(jMenu1);
 
@@ -299,6 +310,24 @@ public class VistaGeneral extends javax.swing.JFrame {
         vcc.setVisible(true);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
+    private void jMImprimirRenglonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMImprimirRenglonActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        VistaImprimirRenglon vm = new VistaImprimirRenglon();
+        escritorio.add(vm);
+        escritorio.moveToFront(vm);
+        vm.setVisible(true);
+    }//GEN-LAST:event_jMImprimirRenglonActionPerformed
+
+    private void jMImprimirDietaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMImprimirDietaActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        VistaImprimirDieta vm = new VistaImprimirDieta();
+        escritorio.add(vm);
+        escritorio.moveToFront(vm);
+        vm.setVisible(true);
+    }//GEN-LAST:event_jMImprimirDietaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -345,6 +374,8 @@ public class VistaGeneral extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMIComparar;
     private javax.swing.JMenuItem jMIListaIMC;
     private javax.swing.JMenuItem jMIListar;
+    private javax.swing.JMenuItem jMImprimirDieta;
+    private javax.swing.JMenuItem jMImprimirRenglon;
     private javax.swing.JMenu jMMenus_diarios;
     private javax.swing.JMenu jMPacientes;
     private javax.swing.JMenu jMenu1;
@@ -352,10 +383,8 @@ public class VistaGeneral extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
     // End of variables declaration//GEN-END:variables
 }

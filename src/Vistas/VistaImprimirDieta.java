@@ -4,17 +4,33 @@
  */
 package Vistas;
 
+import Entidades.Dieta;
+import Entidades.MenuDiario;
+import Persistencia.DietaData;
+import Persistencia.MenuDiarioData;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Usuario
  */
-public class VistaImprimirMenu extends javax.swing.JInternalFrame {
+public class VistaImprimirDieta extends javax.swing.JInternalFrame {
 
+   Dieta d = new Dieta();
+   DietaData dd = new DietaData();
+   List<Dieta> listaD =  dd.listarDietas();
+   MenuDiarioData mdd = new  MenuDiarioData();
+   MenuDiario md = new  MenuDiario();
+   DefaultTableModel modelo = new DefaultTableModel();
+   
     /**
      * Creates new form VistaImprimirMenu
      */
-    public VistaImprimirMenu() {
+    public VistaImprimirDieta() {
         initComponents();
+        cargaCombo();
+        cargarTabla();
     }
 
     /**
@@ -44,7 +60,13 @@ public class VistaImprimirMenu extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jLabel1.setText("Lista de todos los pacientes segun su Indice de Masa Corporal (IMC):");
+        jLabel1.setText("Lista de todas las dietas:");
+
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -53,7 +75,7 @@ public class VistaImprimirMenu extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 382, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 466, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(0, 0, Short.MAX_VALUE))
@@ -75,11 +97,43 @@ public class VistaImprimirMenu extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+       Dieta combo = (Dieta) jComboBox1.getSelectedItem();
+        if (combo !=null){
+            int id = combo.getId_dieta();
+            List<MenuDiario> listaM = (List<MenuDiario>) mdd.listarMenusDiariosPorDieta(id);System.out.println("listaM"+listaM);
+            modelo.setRowCount(0);
+                    for (MenuDiario menus : listaM) {
+                        Object[] fila = {
+                            menus.getId_menu_diario(),
+                            menus.getDia(),
+                            menus.getCalorias(),
+                            menus.getDieta(),
+                        };
+                        modelo.addRow(fila);
+                    }
+                    jTable1.updateUI();
+    }                                     
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<Dieta> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
+
+    private void cargaCombo(){
+        for (Dieta list : listaD ){
+            jComboBox1.addItem(list);
+        }
+    }
+
+    private void cargarTabla() {
+        String[] columnas = {"ID", "dia", "caloria", "dieta"};
+        modelo.setColumnIdentifiers(columnas);
+        jTable1.setModel(modelo);
+    }
+
 }

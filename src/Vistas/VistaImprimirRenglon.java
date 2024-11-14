@@ -4,7 +4,9 @@
  */
 package Vistas;
 
+import Entidades.MenuDiario;
 import Entidades.RenglonMenu;
+import Persistencia.MenuDiarioData;
 import Persistencia.RenglonMenuData;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
@@ -16,9 +18,8 @@ import javax.swing.table.DefaultTableModel;
 public class VistaImprimirRenglon extends javax.swing.JInternalFrame {
 
    RenglonMenuData rmd = new  RenglonMenuData();
-   RenglonMenu rm = new RenglonMenu();
-   int id = rm.getId_renglon();
-   List<RenglonMenu> listaR = rmd.listarRenglonMenu(id);
+   MenuDiarioData mdd = new MenuDiarioData();
+   List<MenuDiario> listaM = mdd.listarMenusDiarios();
    DefaultTableModel modelo = new DefaultTableModel();
    
     /**
@@ -28,6 +29,7 @@ public class VistaImprimirRenglon extends javax.swing.JInternalFrame {
         initComponents();
         cargaCombo();
         cargarTabla();
+        
     }
 
     /**
@@ -75,7 +77,7 @@ public class VistaImprimirRenglon extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 484, Short.MAX_VALUE)
                     .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -95,10 +97,12 @@ public class VistaImprimirRenglon extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        RenglonMenu combo = (RenglonMenu) jComboBox1.getSelectedItem();
+        MenuDiario combo = (MenuDiario) jComboBox1.getSelectedItem();
         if (combo !=null){
             modelo.setRowCount(0);
-                    for (RenglonMenu renglon : listaR) {
+            int id = combo.getId_menu_diario();
+            List<RenglonMenu> lista = rmd.listarRenglonMenu(id);
+                    for (RenglonMenu renglon : lista) {
                         Object[] fila = {
                             renglon.getId_renglon(),
                             renglon.getComida(),
@@ -112,14 +116,14 @@ public class VistaImprimirRenglon extends javax.swing.JInternalFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<RenglonMenu> jComboBox1;
+    private javax.swing.JComboBox<MenuDiario> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
     
     private void cargaCombo(){
-        for (RenglonMenu lista : listaR ){
+        for (MenuDiario lista : listaM ){
             jComboBox1.addItem(lista);
         }
     }

@@ -129,4 +129,29 @@ public class MenuDiarioData {
         }
         return num;
     }
+
+    public List<MenuDiario> listarMenusDiariosPorDieta(int id) {
+        ArrayList<MenuDiario> lista = new ArrayList<>();
+        DietaData dd = new DietaData();
+        String sql = "SELECT * FROM menus_diarios WHERE id_dieta = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                MenuDiario menu = new MenuDiario();
+                menu.setId_menu_diario(rs.getInt("id_menu_diario"));
+                menu.setDia(rs.getInt("dia"));
+                menu.setCalorias(rs.getInt("calorias_totales"));
+                menu.setDieta(dd.buscarDietaPorID(rs.getInt("id_dieta")));
+                lista.add(menu);
+            }
+            rs.close();
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla 'menu_diario'");
+        }
+
+        return lista;
+    }
 }

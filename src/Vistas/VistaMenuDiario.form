@@ -3,6 +3,7 @@
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JInternalFrameFormInfo">
   <Properties>
     <Property name="closable" type="boolean" value="true"/>
+    <Property name="resizable" type="boolean" value="true"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -27,7 +28,10 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <Component id="jPanel1" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -37,25 +41,27 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
+              <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="jScrollPane1" pref="468" max="32767" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLCalorias" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jTFCalorias" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jTFCalorias" min="-2" pref="149" max="-2" attributes="0"/>
                               </Group>
                               <Component id="jLID" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLDia" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jTFDia" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jTFDia" min="-2" pref="123" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jLCalorias1" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="jComboBox" min="-2" pref="247" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
@@ -65,9 +71,9 @@
                               <Component id="jBGuardar" alignment="1" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace min="0" pref="1" max="32767" attributes="0"/>
-                          <Component id="jScrollPane1" min="-2" pref="390" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -78,6 +84,14 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                          <Component id="jBBuscar" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="jBNuevo" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="jBGuardar" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLID" min="-2" max="-2" attributes="0"/>
@@ -91,21 +105,18 @@
                               <Component id="jLCalorias" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jTFCalorias" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                          <Component id="jBBuscar" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="jBNuevo" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="jBGuardar" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jLCalorias1" min="-2" max="-2" attributes="0"/>
+                              <Component id="jComboBox" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="jScrollPane1" min="-2" pref="118" max="-2" attributes="0"/>
-                  <EmptySpace pref="25" max="32767" attributes="0"/>
+                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="jScrollPane1" pref="157" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -183,6 +194,24 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Buscar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBBuscarActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLCalorias1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Dieta:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="jComboBox">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="0"/>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Dieta&gt;"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>

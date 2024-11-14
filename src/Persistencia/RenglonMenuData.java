@@ -7,6 +7,8 @@ package Persistencia;
 import Entidades.RenglonMenu;
 import org.mariadb.jdbc.Connection;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -86,5 +88,29 @@ public class RenglonMenuData {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla 'renglones_menu'");
         }
         return renglon;
+    }
+    
+    public List<RenglonMenu> listarRenglonMenu(){
+        ArrayList<RenglonMenu> lista = new ArrayList();
+        ComidaData cd = new ComidaData();
+        MenuDiarioData mdd = new MenuDiarioData();
+        String sql = "SELECT * FROM renglones_menu";
+           try {
+               PreparedStatement ps = con.prepareStatement(sql);
+               ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                RenglonMenu renglon = new RenglonMenu();
+                renglon.setId_renglon(rs.getInt("id_renglon")); 
+                renglon.setMenu_diario(mdd.buscarMenuPorID(rs.getInt("id_menu_diario")));
+                renglon.setComida(cd.buscarComidaPorID( rs.getInt("id_comida")));
+                renglon.setCantidad_gramos(rs.getInt("cantidad_gramos"));
+                renglon.setSubtotal_calorias(rs.getInt("subtotal_calorias"));
+                
+                lista.add(renglon);
+            }
+           } catch (SQLException ex) {
+              JOptionPane.showMessageDialog(null, "error al acceder a la tabla ingredientecomida");
+           }
+          return lista;
     }
 }

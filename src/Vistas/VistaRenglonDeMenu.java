@@ -221,7 +221,7 @@ public class VistaRenglonDeMenu extends javax.swing.JInternalFrame {
                 renglonActual.setComida(comida);
                 renglonActual.setCantidad_gramos(cantidadGramos);
                 renglonActual.setSubtotal_calorias(subtotal);
-                rmd.agregarRenglonMenu(renglonActual);
+                rmd.guardarRenglonMenu(renglonActual);
                 jLID.setText("ID: " + renglonActual.getId_renglon());
             }
         } catch (NumberFormatException e) {

@@ -68,7 +68,7 @@ public class RenglonMenu {
 
     @Override
     public String toString() {
-        return "RenglonMenu{" + "id_renglon=" + id_renglon + ", menu_diario=" + menu_diario + ", comida=" + comida + ", cantidad_gramos=" + cantidad_gramos + ", subtotal_calorias=" + subtotal_calorias + '}';
+        return "id: " + id_renglon + ", menu diario: " + menu_diario + ", comida: " + comida + ", cantidad en gramos: " + cantidad_gramos + ", subtotal de calorias: " + subtotal_calorias;
     }
 
 }

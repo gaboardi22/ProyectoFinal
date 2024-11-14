@@ -60,7 +60,7 @@ public class MenuDiario {
 
     @Override
     public String toString() {
-        return "MenuDiario{" + "id_menu_diario=" + id_menu_diario + ", dia=" + dia + ", calorias=" + calorias + ", dieta=" + dieta + '}';
+        return "id: " + id_menu_diario + ", dia: " + dia + ", calorias: " + calorias + ", dieta: " + dieta;
     }
 
  

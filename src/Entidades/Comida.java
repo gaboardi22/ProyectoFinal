@@ -68,7 +68,7 @@ public class Comida {
 
     @Override
     public String toString() {
-        return "Comida{" + "id_comida=" + id_comida + ", nombre=" + nombre + ", calorias_por_100g=" + calorias_por_100g + ", tipo=" + tipo + ", detalle=" + detalle + '}';
+        return "id: " + id_comida + ", nombre: " + nombre + ", calorias por 100g: " + calorias_por_100g + ", tipo: " + tipo + ", detalle: " + detalle;
     }
 
 }

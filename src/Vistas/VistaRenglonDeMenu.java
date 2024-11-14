@@ -77,6 +77,7 @@ public class VistaRenglonDeMenu extends javax.swing.JInternalFrame {
 
         jTFSubtotal_de_calorias.setEnabled(false);
 
+        jBBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/search.png"))); // NOI18N
         jBBuscar.setText("Buscar");
         jBBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -84,6 +85,7 @@ public class VistaRenglonDeMenu extends javax.swing.JInternalFrame {
             }
         });
 
+        jBGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/favorites_white_button_icon_227827.png"))); // NOI18N
         jBGuardar.setText("Guardar");
         jBGuardar.setEnabled(false);
         jBGuardar.addActionListener(new java.awt.event.ActionListener() {
@@ -92,6 +94,7 @@ public class VistaRenglonDeMenu extends javax.swing.JInternalFrame {
             }
         });
 
+        jBNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/add_white_button_icon_227863.png"))); // NOI18N
         jBNuevo.setText("Nuevo");
         jBNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -163,8 +166,6 @@ public class VistaRenglonDeMenu extends javax.swing.JInternalFrame {
                         .addComponent(jTFSubtotal_de_calorias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
-
-        getAccessibleContext().setAccessibleName("Reglon de menu");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

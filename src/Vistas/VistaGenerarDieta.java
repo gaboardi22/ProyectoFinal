@@ -35,6 +35,7 @@ public class VistaGenerarDieta extends javax.swing.JInternalFrame {
         comidaData = new ComidaData();
         pacienteData = new PacienteData();
         listaPaciente = pacienteData.listarPacientes();
+        cargarCombo();
     }
 
     /**
@@ -145,15 +146,16 @@ public class VistaGenerarDieta extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTFnombreActionPerformed
 
     private void jBGenerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGenerarActionPerformed
+      try{  
         String nombre = jTFnombre.getText();
-    String prohibidos = jTFprohibido.getText();
-    Integer dia = Integer.valueOf(jTFdias.getText());
-    Paciente paciente = (Paciente) jCBpacientes.getSelectedItem();
+        String prohibidos = jTFprohibido.getText();
+        Integer dia = Integer.valueOf(jTFdias.getText());
+        Paciente paciente = (Paciente) jCBpacientes.getSelectedItem();
     
     if (nombre.isEmpty() || prohibidos.isEmpty() || dia == 0 || paciente == null) {
         JOptionPane.showMessageDialog(null, "Complete todos los campos");
         return;
-    }
+    } 
     
     Dieta dieta = new Dieta();
     dieta.setNombre(nombre);
@@ -180,6 +182,9 @@ public class VistaGenerarDieta extends javax.swing.JInternalFrame {
             renglon.setSubtotal_calorias(50);
             renglonData.guardarRenglonMenu(renglon);
         }
+    } JOptionPane.showConfirmDialog(this, "Dieta generada exitosamente");
+      } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Ocurrió un error inesperado: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
     }
     }//GEN-LAST:event_jBGenerarActionPerformed
 

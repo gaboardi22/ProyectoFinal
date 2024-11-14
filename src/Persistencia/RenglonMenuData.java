@@ -90,13 +90,14 @@ public class RenglonMenuData {
         return renglon;
     }
     
-    public List<RenglonMenu> listarRenglonMenu(){
+    public List<RenglonMenu> listarRenglonMenu(int id){
         ArrayList<RenglonMenu> lista = new ArrayList();
         ComidaData cd = new ComidaData();
         MenuDiarioData mdd = new MenuDiarioData();
-        String sql = "SELECT * FROM renglones_menu";
+        String sql = "SELECT * FROM renglones_menu WHERE id_menu_diario = ?";
            try {
                PreparedStatement ps = con.prepareStatement(sql);
+               ps.setInt(1, id);
                ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 RenglonMenu renglon = new RenglonMenu();

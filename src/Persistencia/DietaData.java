@@ -123,7 +123,12 @@ public class DietaData {
                 dieta.setId_dieta(rs.getInt("id_dieta"));
                 dieta.setNombre(rs.getString("nombre"));
                 dieta.setFecha_inicio(rs.getDate("fecha_inicio").toLocalDate());
-                dieta.setFecha_fin(rs.getDate("fecha_fin").toLocalDate());
+                Date fechaFin = rs.getDate("fecha_fin");
+                if (fechaFin != null) {
+                    dieta.setFecha_fin(fechaFin.toLocalDate());
+                } else {
+                    dieta.setFecha_fin(null);
+                }
                 dieta.setPaciente(pd.buscarPacientePorID(rs.getInt("id_paciente")));
                 dieta.setPeso_inicial(rs.getFloat("peso_inicial"));
                 dieta.setPeso_final(rs.getFloat("peso_final"));

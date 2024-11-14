@@ -20,7 +20,6 @@ import javax.swing.table.DefaultTableModel;
  */
 public class VistaMenuDiario extends javax.swing.JInternalFrame {
 
-     
     /**
      * Creates new form VistaMenuDiario
      */
@@ -30,6 +29,7 @@ public class VistaMenuDiario extends javax.swing.JInternalFrame {
     List<Dieta> listaDieta = d.listarDietas();
     DefaultTableModel modelo = new DefaultTableModel();
     RenglonMenuData rmd = new RenglonMenuData();
+
     public VistaMenuDiario() {
         initComponents();
         cargarCombo();
@@ -197,8 +197,9 @@ public class VistaMenuDiario extends javax.swing.JInternalFrame {
     private void jBNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNuevoActionPerformed
         activarCampos();
         limpiarCampos();
+        cargarCombo();
         menuActual = null;
-        
+
     }//GEN-LAST:event_jBNuevoActionPerformed
 
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
@@ -206,7 +207,7 @@ public class VistaMenuDiario extends javax.swing.JInternalFrame {
             Integer dia = Integer.parseInt(jTFDia.getText());
             Integer calorias = Integer.parseInt(jTFCalorias.getText());
             Dieta dieta = (Dieta) jComboBox.getSelectedItem();
-            if (menuActual !=null){
+            if (menuActual != null) {
                 menuActual.setCalorias(calorias);
                 menuActual.setDia(dia);
                 menuActual.setDieta(dieta);
@@ -218,13 +219,52 @@ public class VistaMenuDiario extends javax.swing.JInternalFrame {
                 mdd.guardarMenuDiario(menuActual);
             }
         } catch (NumberFormatException ex) {
-                JOptionPane.showMessageDialog(null, "Error al ingresar los tipos de datos, ingrese un numero");
+            JOptionPane.showMessageDialog(null, "Error al ingresar los tipos de datos, ingrese un numero");
         }
 
     }//GEN-LAST:event_jBGuardarActionPerformed
 
     private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
-        
+        String entrada = JOptionPane.showInputDialog(this, "Ingrese el ID del menú diario");
+
+        if (entrada != null && !entrada.isEmpty()) {
+            try {
+                Integer id = Integer.parseInt(entrada);
+                menuActual = mdd.buscarMenuPorID(id);
+
+                if (menuActual != null) {
+                    jLID.setText("ID: " + menuActual.getId_menu_diario());
+                    jTFDia.setText(String.valueOf(menuActual.getDia()));
+                    jTFCalorias.setText(String.valueOf(menuActual.getCalorias()));
+                    for (int i = 0; i < jComboBox.getItemCount(); i++) {
+                        Dieta dieta = (Dieta) jComboBox.getItemAt(i);
+                        if (dieta.getId_dieta() == menuActual.getDieta().getId_dieta()) {
+                            jComboBox.setSelectedIndex(i);
+                            break;
+                        }
+                    }
+                    modelo.setRowCount(0);
+                    List<RenglonMenu> listaRenglon = rmd.listarRenglonMenu(id);
+
+                    for (RenglonMenu renglon : listaRenglon) {
+                        Object[] fila = {
+                            renglon.getId_renglon(),
+                            renglon.getComida(),
+                            renglon.getCantidad_gramos(),
+                            renglon.getSubtotal_calorias()
+                        };
+                        modelo.addRow(fila);
+                    }
+                    jTable1.updateUI();
+                } else {
+                    JOptionPane.showMessageDialog(this, "Menú diario no encontrado");
+                }
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(this, "Ingrese un ID válido");
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
+            }
+        }
     }//GEN-LAST:event_jBBuscarActionPerformed
 
 
@@ -244,37 +284,28 @@ public class VistaMenuDiario extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTFDia;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
-    private void activarCampos(){
+    private void activarCampos() {
         jTFDia.setEnabled(true);
         jTFCalorias.setEnabled(true);
         jBGuardar.setEnabled(true);
     }
-    private void limpiarCampos(){
+
+    private void limpiarCampos() {
+        modelo.setRowCount(0);
         jTFCalorias.setText("");
         jTFDia.setText("");
         jLID.setText("ID: --");
     }
-    private void cargarCombo(){
-        for(Dieta diet : listaDieta){
+
+    private void cargarCombo() {
+        for (Dieta diet : listaDieta) {
             jComboBox.addItem(diet);
         }
     }
-    
-    private void cargarTabla(){
-        String[] columnas = {"ID", "Menu Diario", "Comida", "Cantdad en gramos", "SubCalorias"};
+
+    private void cargarTabla() {
+        String[] columnas = {"ID", "Comida", "Cantidad en gramos", "SubCalorias"};
         modelo.setColumnIdentifiers(columnas);
-        List<RenglonMenu> listaRenglon = rmd.listarRenglonMenu();
-        
-        for (RenglonMenu renglon : listaRenglon){
-            Object[] fila = {
-                renglon.getId_renglon(),
-                renglon.getMenu_diario(),
-                renglon.getComida(),
-                renglon.getCantidad_gramos(),
-                renglon.getSubtotal_calorias()
-            };
-            modelo.addRow(fila);
-        }
         jTable1.setModel(modelo);
     }
 }

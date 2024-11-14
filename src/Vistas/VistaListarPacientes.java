@@ -43,6 +43,7 @@ public class VistaListarPacientes extends javax.swing.JInternalFrame {
         setClosable(true);
         setTitle("Listar pacientes");
         setToolTipText("");
+        setPreferredSize(new java.awt.Dimension(510, 355));
 
         jLabel1.setText("Lista de todos los pacientes que no cumplieron su objetivo:");
 
@@ -68,8 +69,8 @@ public class VistaListarPacientes extends javax.swing.JInternalFrame {
                 .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(7, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 475, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(

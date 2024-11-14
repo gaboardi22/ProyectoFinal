@@ -59,7 +59,7 @@ public class VistaRenglonDeMenu extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setResizable(true);
-        setTitle("Reglon de manu");
+        setTitle("Reglon de menu");
 
         jLabel1.setText("Menu diario:");
 

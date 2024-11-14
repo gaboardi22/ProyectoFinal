@@ -62,6 +62,7 @@ public class VistaMenuDiario extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setResizable(true);
+        setTitle("Menu Diario");
 
         jLID.setText("ID: --");
 

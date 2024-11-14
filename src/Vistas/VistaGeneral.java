@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Vistas;
-
+import com.formdev.flatlaf.intellijthemes.FlatGradiantoNatureGreenIJTheme;
 /**
  *
  * @author Ezequiel
@@ -33,13 +33,13 @@ public class VistaGeneral extends javax.swing.JFrame {
         jMIComparar = new javax.swing.JMenuItem();
         jMIListar = new javax.swing.JMenuItem();
         jMIListaIMC = new javax.swing.JMenuItem();
+        jMICargar = new javax.swing.JMenuItem();
         jMComidas = new javax.swing.JMenu();
         jMGuardarComida = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMDietas = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
-        jMICargar = new javax.swing.JMenuItem();
         jMMenus_diarios = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
@@ -50,6 +50,7 @@ public class VistaGeneral extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Nutricionista");
+        setPreferredSize(new java.awt.Dimension(600, 524));
 
         escritorio.setPreferredSize(new java.awt.Dimension(500, 500));
 
@@ -57,12 +58,14 @@ public class VistaGeneral extends javax.swing.JFrame {
         escritorio.setLayout(escritorioLayout);
         escritorioLayout.setHorizontalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
+            .addGap(0, 499, Short.MAX_VALUE)
         );
         escritorioLayout.setVerticalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 501, Short.MAX_VALUE)
         );
+
+        jMenuBar1.setName(""); // NOI18N
 
         jMPacientes.setText("Pacientes");
 
@@ -98,6 +101,14 @@ public class VistaGeneral extends javax.swing.JFrame {
         });
         jMPacientes.add(jMIListaIMC);
 
+        jMICargar.setText("Cargar peso y finalizar dieta");
+        jMICargar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMICargarActionPerformed(evt);
+            }
+        });
+        jMPacientes.add(jMICargar);
+
         jMenuBar1.add(jMPacientes);
 
         jMComidas.setText("Comidas");
@@ -132,14 +143,6 @@ public class VistaGeneral extends javax.swing.JFrame {
 
         jMenuItem6.setText("Generar dieta automaticamente");
         jMDietas.add(jMenuItem6);
-
-        jMICargar.setText("Cargar peso y finalizar dieta");
-        jMICargar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMICargarActionPerformed(evt);
-            }
-        });
-        jMDietas.add(jMICargar);
 
         jMenuBar1.add(jMDietas);
 
@@ -182,7 +185,7 @@ public class VistaGeneral extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(escritorio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(escritorio, javax.swing.GroupLayout.DEFAULT_SIZE, 499, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -309,13 +312,14 @@ public class VistaGeneral extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(VistaGeneral.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        FlatGradiantoNatureGreenIJTheme.setup();
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new VistaGeneral().setVisible(true);
             }
         });
+        FlatGradiantoNatureGreenIJTheme.setup();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

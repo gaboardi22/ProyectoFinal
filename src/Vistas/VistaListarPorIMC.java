@@ -39,6 +39,9 @@ public class VistaListarPorIMC extends javax.swing.JInternalFrame {
         jTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
 
+        setTitle("Listar pacientes");
+        setPreferredSize(new java.awt.Dimension(510, 355));
+
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},

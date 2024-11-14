@@ -54,7 +54,7 @@ public class VistaPaciente extends javax.swing.JInternalFrame {
         setClosable(true);
         setResizable(true);
         setTitle("Paciente");
-        setPreferredSize(new java.awt.Dimension(300, 400));
+        setPreferredSize(new java.awt.Dimension(300, 430));
 
         jPanel1.setPreferredSize(new java.awt.Dimension(100, 300));
 
@@ -188,7 +188,7 @@ public class VistaPaciente extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 387, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 373, Short.MAX_VALUE)
         );
 
         pack();

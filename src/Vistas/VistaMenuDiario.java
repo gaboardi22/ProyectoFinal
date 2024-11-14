@@ -113,6 +113,8 @@ public class VistaMenuDiario extends javax.swing.JInternalFrame {
 
         jLCalorias1.setText("Dieta:");
 
+        jComboBox.setEnabled(false);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -257,6 +259,7 @@ public class VistaMenuDiario extends javax.swing.JInternalFrame {
                         modelo.addRow(fila);
                     }
                     jTable1.updateUI();
+                    activarCampos();
                 } else {
                     JOptionPane.showMessageDialog(this, "Menú diario no encontrado");
                 }
@@ -289,6 +292,7 @@ public class VistaMenuDiario extends javax.swing.JInternalFrame {
         jTFDia.setEnabled(true);
         jTFCalorias.setEnabled(true);
         jBGuardar.setEnabled(true);
+        jComboBox.setEnabled(true);
     }
 
     private void limpiarCampos() {
@@ -296,6 +300,7 @@ public class VistaMenuDiario extends javax.swing.JInternalFrame {
         jTFCalorias.setText("");
         jTFDia.setText("");
         jLID.setText("ID: --");
+        jComboBox.setSelectedIndex(0);
     }
 
     private void cargarCombo() {

@@ -50,7 +50,6 @@ public class VistaGeneral extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Nutricionista");
-        setPreferredSize(new java.awt.Dimension(600, 524));
 
         escritorio.setPreferredSize(new java.awt.Dimension(500, 500));
 
@@ -157,6 +156,11 @@ public class VistaGeneral extends javax.swing.JFrame {
         jMMenus_diarios.add(jMenuItem1);
 
         jMenuItem3.setText("Calcular calorias del dia");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
         jMMenus_diarios.add(jMenuItem3);
 
         jMenuItem4.setText("Imprimir menu diario");
@@ -285,6 +289,15 @@ public class VistaGeneral extends javax.swing.JFrame {
         escritorio.moveToFront(vimc);
         vimc.setVisible(true);
     }//GEN-LAST:event_jMIListaIMCActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        VistaCalcularCalorias vcc = new VistaCalcularCalorias();
+        escritorio.add(vcc);
+        escritorio.moveToFront(vcc);
+        vcc.setVisible(true);
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     /**
      * @param args the command line arguments

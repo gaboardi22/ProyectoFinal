@@ -58,6 +58,8 @@ public class VistaGenerarDieta extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         jBGenerar = new javax.swing.JButton();
 
+        setClosable(true);
+
         jLabel1.setText("Nombre de la dieta:");
 
         jTFnombre.addActionListener(new java.awt.event.ActionListener() {

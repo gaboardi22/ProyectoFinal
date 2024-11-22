@@ -10,7 +10,9 @@ import Entidades.RenglonMenu;
 import Persistencia.DietaData;
 import Persistencia.MenuDiarioData;
 import Persistencia.RenglonMenuData;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -117,6 +119,11 @@ public class VistaMenuDiario extends javax.swing.JInternalFrame {
         jLCalorias1.setText("Dieta:");
 
         jComboBox.setEnabled(false);
+        jComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -274,6 +281,10 @@ public class VistaMenuDiario extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jBBuscarActionPerformed
 
+    private void jComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBBuscar;
@@ -307,7 +318,12 @@ public class VistaMenuDiario extends javax.swing.JInternalFrame {
     }
 
     private void cargarCombo() {
+        jComboBox.removeAllItems();
+        Set<Dieta> set = new HashSet<>();
         for (Dieta diet : listaDieta) {
+            set.add(diet);
+        }
+        for (Dieta diet : set) {
             jComboBox.addItem(diet);
         }
     }

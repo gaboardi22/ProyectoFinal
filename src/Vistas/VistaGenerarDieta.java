@@ -6,6 +6,7 @@ package Vistas;
 
 import Entidades.*;
 import Persistencia.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -148,46 +149,7 @@ public class VistaGenerarDieta extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTFnombreActionPerformed
 
     private void jBGenerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGenerarActionPerformed
-      try{  
-        String nombre = jTFnombre.getText();
-        String prohibidos = jTFprohibido.getText();
-        Integer dia = Integer.valueOf(jTFdias.getText());
-        Paciente paciente = (Paciente) jCBpacientes.getSelectedItem();
-    
-    if (nombre.isEmpty() || prohibidos.isEmpty() || dia == 0 || paciente == null) {
-        JOptionPane.showMessageDialog(null, "Complete todos los campos");
-        return;
-    } 
-    
-    Dieta dieta = new Dieta();
-    dieta.setNombre(nombre);
-    dieta.setPaciente(paciente);
-    dietaData.guardarDieta(dieta);
-    
-    String[] alimentosProhibidos = prohibidos.split(",");
-    List<String> alimentosProhibidosList = Arrays.asList(alimentosProhibidos);
-    
-    for (int i = 0; i < dia; i++) {
-        MenuDiario menu = new MenuDiario();
-        menu.setDia(i + 1);
-        menu.setCalorias(2000); 
-        menu.setDieta(dieta);
-        menuData.guardarMenuDiario(menu);
         
-        List<Comida> comidasDisponibles = comidaData.filtrarPorAlimentosProhibidos(alimentosProhibidosList);
-        
-        for (int j = 0; j < 5; j++) {
-            RenglonMenu renglon = new RenglonMenu();
-            renglon.setMenu_diario(menu);
-            renglon.setComida(elegirComidaAleatoria(comidasDisponibles));
-            renglon.setCantidad_gramos(100);
-            renglon.setSubtotal_calorias(50);
-            renglonData.guardarRenglonMenu(renglon);
-        }
-    } JOptionPane.showConfirmDialog(this, "Dieta generada exitosamente");
-      } catch (Exception e) {
-        JOptionPane.showMessageDialog(null, "Ocurrió un error inesperado: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-    }
     }//GEN-LAST:event_jBGenerarActionPerformed
 
 
@@ -206,7 +168,8 @@ public class VistaGenerarDieta extends javax.swing.JInternalFrame {
     private Comida elegirComidaAleatoria(List<Comida> comidas) {
         return comidas.get((int) (Math.random() * comidas.size()));
     }
-    private void cargarCombo(){
+
+    private void cargarCombo() {
         for (Paciente paciente : listaPaciente) {
             jCBpacientes.addItem(paciente);
         }

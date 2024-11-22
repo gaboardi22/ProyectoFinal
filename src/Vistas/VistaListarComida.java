@@ -154,6 +154,7 @@ public class VistaListarComida extends javax.swing.JInternalFrame {
             };
             modelo.addRow(fila);
         }
+        jTFFiltro.setText("");
     }//GEN-LAST:event_jBLimpiarActionPerformed
 
 

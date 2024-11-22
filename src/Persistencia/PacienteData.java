@@ -26,8 +26,8 @@ public class PacienteData {
     }
 
     public void guardarPaciente(Paciente paciente) {
-        String sql = "INSERT INTO pacientes (nombre, edad, altura, peso_actual, peso_buscado, estado) "
-                + "VALUES (?, ?, ? ,? ,?, ?)";
+        String sql = "INSERT INTO pacientes (nombre, edad, altura, peso_actual, peso_buscado) "
+                + "VALUES (?, ?, ? ,? ,?)";
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, paciente.getNombre());
@@ -35,7 +35,6 @@ public class PacienteData {
             ps.setFloat(3, paciente.getAltura());
             ps.setFloat(4, paciente.getPeso_actual());
             ps.setFloat(5, paciente.getPeso_buscado());
-            ps.setBoolean(6, true);
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
@@ -89,34 +88,6 @@ public class PacienteData {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla 'pacientes'");
         }
         return paciente;
-    }
-
-    public void bajaLogicaPaciente(Paciente paciente) {
-        String sql = "UPDATE INTO pacientes SET estado = false "
-                + "WHERE id_paciente = ?";
-        try {
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, paciente.getId_paciente());
-            JOptionPane.showMessageDialog(null, "Paciente dado de baja");
-            ps.executeUpdate();
-            ps.close();
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla 'pacientes'");
-        }
-    }
-
-    public void altaLogicaPaciente(Paciente paciente) {
-        String sql = "UPDATE INTO pacientes SET estado = true "
-                + "WHERE id_paciente = ?";
-        try {
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, paciente.getId_paciente());
-            JOptionPane.showMessageDialog(null, "Paciente dado de alta");
-            ps.executeUpdate();
-            ps.close();
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla 'pacientes'");
-        }
     }
 
     public List<Paciente> listarLosQueLLegaron() {

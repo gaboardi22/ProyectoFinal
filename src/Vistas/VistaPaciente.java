@@ -48,8 +48,6 @@ public class VistaPaciente extends javax.swing.JInternalFrame {
         jBNuevo = new javax.swing.JButton();
         jBGuardar = new javax.swing.JButton();
         jBBuscar = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
-        jRBEstado = new javax.swing.JRadioButton();
 
         setClosable(true);
         setResizable(true);
@@ -106,8 +104,6 @@ public class VistaPaciente extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel6.setText("Estado:");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -138,10 +134,7 @@ public class VistaPaciente extends javax.swing.JInternalFrame {
                             .addComponent(jTFNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLID)
                             .addComponent(jLabel3)
-                            .addComponent(jLabel4)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jRBEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel6)))
+                            .addComponent(jLabel4))
                         .addGap(0, 85, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -176,11 +169,7 @@ public class VistaPaciente extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTFPeso_buscado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jBNuevo))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jRBEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(69, 69, 69))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -204,14 +193,12 @@ public class VistaPaciente extends javax.swing.JInternalFrame {
             Float altura = Float.valueOf(jTFAltura.getText());
             Float peso_actual = Float.valueOf(jTFPeso_actual.getText());
             Float peso_buscado = Float.valueOf((jTFPeso_buscado.getText()));
-            Boolean estado = jRBEstado.isSelected();
             if (pacienteActual != null) {
                 pacienteActual.setNombre(nombre);
                 pacienteActual.setEdad(edad);
                 pacienteActual.setAltura(altura);
                 pacienteActual.setPeso_actual(peso_actual);
                 pacienteActual.setPeso_buscado(peso_buscado);
-                pacienteActual.setEstado(estado);
                 pd.modificarPaciente(pacienteActual);
             }else{
                 pacienteActual = new Paciente();
@@ -220,7 +207,6 @@ public class VistaPaciente extends javax.swing.JInternalFrame {
                 pacienteActual.setAltura(altura);
                 pacienteActual.setPeso_actual(peso_actual);
                 pacienteActual.setPeso_buscado(peso_buscado);
-                pacienteActual.setEstado(estado);
                 pd.guardarPaciente(pacienteActual);
             }
             jLID.setText("ID: "+pacienteActual.getId_paciente());
@@ -265,9 +251,7 @@ public class VistaPaciente extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JRadioButton jRBEstado;
     private javax.swing.JTextField jTFAltura;
     private javax.swing.JTextField jTFEdad;
     private javax.swing.JTextField jTFNombre;

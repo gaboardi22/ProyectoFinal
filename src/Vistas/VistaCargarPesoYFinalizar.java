@@ -128,7 +128,8 @@ public class VistaCargarPesoYFinalizar extends javax.swing.JInternalFrame {
             float peso = Float.parseFloat(jTFPeso_final.getText());
             DietaData dd = new DietaData();
             dd.cargarPesoYFinalizar(dieta, peso);
-            JOptionPane.showMessageDialog(this, "Dieta finalizada correctamente.");
+            paciente.setPeso_actual(peso);
+            pd.modificarPaciente(paciente);
         } catch (NumberFormatException e) {
            JOptionPane.showConfirmDialog(this, "El peso debe ser un numero valido");
         }    

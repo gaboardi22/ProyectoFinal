@@ -5,6 +5,9 @@
 package Vistas;
 
 import com.formdev.flatlaf.intellijthemes.FlatGradiantoNatureGreenIJTheme;
+import java.awt.Graphics;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -28,194 +31,200 @@ public class VistaGeneral extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        escritorio = new javax.swing.JDesktopPane();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMPacientes = new javax.swing.JMenu();
-        jMGuardarPaciente = new javax.swing.JMenuItem();
-        jMIComparar = new javax.swing.JMenuItem();
-        jMIListar = new javax.swing.JMenuItem();
-        jMIListaIMC = new javax.swing.JMenuItem();
-        jMComidas = new javax.swing.JMenu();
-        jMGuardarComida = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMDietas = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMICargar = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
-        jMImprimirDieta = new javax.swing.JMenuItem();
-        jMMenus_diarios = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem7 = new javax.swing.JMenuItem();
-        jMImprimirRenglon = new javax.swing.JMenuItem();
+        ImageIcon icono = new ImageIcon(getClass().getResource("/img/fondo.jpg"));
+        Image imagen = icono.getImage();
+        escritorio = new javax.swing.JDesktopPane(){
+            public void paintComponent(Graphics g){
+                g.drawImage(imagen,0,0,getWidth(),getHeight(),this);
+            }   }
+            ;
+            jMenuBar1 = new javax.swing.JMenuBar();
+            jMPacientes = new javax.swing.JMenu();
+            jMGuardarPaciente = new javax.swing.JMenuItem();
+            jMIComparar = new javax.swing.JMenuItem();
+            jMIListar = new javax.swing.JMenuItem();
+            jMIListaIMC = new javax.swing.JMenuItem();
+            jMComidas = new javax.swing.JMenu();
+            jMGuardarComida = new javax.swing.JMenuItem();
+            jMenuItem5 = new javax.swing.JMenuItem();
+            jMDietas = new javax.swing.JMenu();
+            jMenuItem2 = new javax.swing.JMenuItem();
+            jMICargar = new javax.swing.JMenuItem();
+            jMenuItem6 = new javax.swing.JMenuItem();
+            jMImprimirDieta = new javax.swing.JMenuItem();
+            jMMenus_diarios = new javax.swing.JMenu();
+            jMenuItem1 = new javax.swing.JMenuItem();
+            jMenuItem3 = new javax.swing.JMenuItem();
+            jMenu1 = new javax.swing.JMenu();
+            jMenuItem7 = new javax.swing.JMenuItem();
+            jMImprimirRenglon = new javax.swing.JMenuItem();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Nutricionista");
+            setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+            setTitle("Nutricionista");
 
-        escritorio.setPreferredSize(new java.awt.Dimension(500, 500));
+            escritorio.setPreferredSize(new java.awt.Dimension(500, 500));
 
-        javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
-        escritorio.setLayout(escritorioLayout);
-        escritorioLayout.setHorizontalGroup(
-            escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 499, Short.MAX_VALUE)
-        );
-        escritorioLayout.setVerticalGroup(
-            escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 501, Short.MAX_VALUE)
-        );
+            javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
+            escritorio.setLayout(escritorioLayout);
+            escritorioLayout.setHorizontalGroup(
+                escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(0, 660, Short.MAX_VALUE)
+            );
+            escritorioLayout.setVerticalGroup(
+                escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(0, 0, Short.MAX_VALUE)
+            );
 
-        jMenuBar1.setName(""); // NOI18N
+            jMenuBar1.setName(""); // NOI18N
 
-        jMPacientes.setText("Pacientes");
+            jMPacientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/profile.png"))); // NOI18N
 
-        jMGuardarPaciente.setText("Guardar/Modificar paciente");
-        jMGuardarPaciente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMGuardarPacienteActionPerformed(evt);
-            }
-        });
-        jMPacientes.add(jMGuardarPaciente);
+            jMGuardarPaciente.setText("Guardar/Modificar paciente");
+            jMGuardarPaciente.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jMGuardarPacienteActionPerformed(evt);
+                }
+            });
+            jMPacientes.add(jMGuardarPaciente);
 
-        jMIComparar.setText("Comparar peso");
-        jMIComparar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMICompararActionPerformed(evt);
-            }
-        });
-        jMPacientes.add(jMIComparar);
+            jMIComparar.setText("Comparar peso");
+            jMIComparar.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jMICompararActionPerformed(evt);
+                }
+            });
+            jMPacientes.add(jMIComparar);
 
-        jMIListar.setText("Listar pacientes que no llegaron");
-        jMIListar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMIListarActionPerformed(evt);
-            }
-        });
-        jMPacientes.add(jMIListar);
+            jMIListar.setText("Listar pacientes que no llegaron");
+            jMIListar.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jMIListarActionPerformed(evt);
+                }
+            });
+            jMPacientes.add(jMIListar);
 
-        jMIListaIMC.setText("Listar pacientes por IMC");
-        jMIListaIMC.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMIListaIMCActionPerformed(evt);
-            }
-        });
-        jMPacientes.add(jMIListaIMC);
+            jMIListaIMC.setText("Listar pacientes por IMC");
+            jMIListaIMC.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jMIListaIMCActionPerformed(evt);
+                }
+            });
+            jMPacientes.add(jMIListaIMC);
 
-        jMenuBar1.add(jMPacientes);
+            jMenuBar1.add(jMPacientes);
 
-        jMComidas.setText("Comidas");
+            jMComidas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/chicken-leg.png"))); // NOI18N
 
-        jMGuardarComida.setText("Guardar/Modificar comida");
-        jMGuardarComida.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMGuardarComidaActionPerformed(evt);
-            }
-        });
-        jMComidas.add(jMGuardarComida);
+            jMGuardarComida.setText("Guardar/Modificar comida");
+            jMGuardarComida.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jMGuardarComidaActionPerformed(evt);
+                }
+            });
+            jMComidas.add(jMGuardarComida);
 
-        jMenuItem5.setText("Listar todas comidas");
-        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem5ActionPerformed(evt);
-            }
-        });
-        jMComidas.add(jMenuItem5);
+            jMenuItem5.setText("Listar todas comidas");
+            jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jMenuItem5ActionPerformed(evt);
+                }
+            });
+            jMComidas.add(jMenuItem5);
 
-        jMenuBar1.add(jMComidas);
+            jMenuBar1.add(jMComidas);
 
-        jMDietas.setText("Dietas");
+            jMDietas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/nutrition-plan.png"))); // NOI18N
 
-        jMenuItem2.setText("Guardar/modificar dieta");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
-            }
-        });
-        jMDietas.add(jMenuItem2);
+            jMenuItem2.setText("Guardar/modificar dieta");
+            jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jMenuItem2ActionPerformed(evt);
+                }
+            });
+            jMDietas.add(jMenuItem2);
 
-        jMICargar.setText("Cargar peso y finalizar dieta");
-        jMICargar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMICargarActionPerformed(evt);
-            }
-        });
-        jMDietas.add(jMICargar);
+            jMICargar.setText("Cargar peso y finalizar dieta");
+            jMICargar.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jMICargarActionPerformed(evt);
+                }
+            });
+            jMDietas.add(jMICargar);
 
-        jMenuItem6.setText("Generar dieta automaticamente");
-        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem6ActionPerformed(evt);
-            }
-        });
-        jMDietas.add(jMenuItem6);
+            jMenuItem6.setText("Generar dieta automaticamente");
+            jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jMenuItem6ActionPerformed(evt);
+                }
+            });
+            jMDietas.add(jMenuItem6);
 
-        jMImprimirDieta.setText("Imprimir dieta");
-        jMImprimirDieta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMImprimirDietaActionPerformed(evt);
-            }
-        });
-        jMDietas.add(jMImprimirDieta);
+            jMImprimirDieta.setText("Imprimir dieta");
+            jMImprimirDieta.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jMImprimirDietaActionPerformed(evt);
+                }
+            });
+            jMDietas.add(jMImprimirDieta);
 
-        jMenuBar1.add(jMDietas);
+            jMenuBar1.add(jMDietas);
 
-        jMMenus_diarios.setText("Menus Diarios");
+            jMMenus_diarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/menu.png"))); // NOI18N
 
-        jMenuItem1.setText("Guardar/Modificar menu diario");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
-            }
-        });
-        jMMenus_diarios.add(jMenuItem1);
+            jMenuItem1.setText("Guardar/Modificar menu diario");
+            jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jMenuItem1ActionPerformed(evt);
+                }
+            });
+            jMMenus_diarios.add(jMenuItem1);
 
-        jMenuItem3.setText("Calcular calorias del dia");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
-            }
-        });
-        jMMenus_diarios.add(jMenuItem3);
+            jMenuItem3.setText("Calcular calorias del dia");
+            jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jMenuItem3ActionPerformed(evt);
+                }
+            });
+            jMMenus_diarios.add(jMenuItem3);
 
-        jMenuBar1.add(jMMenus_diarios);
+            jMenuBar1.add(jMMenus_diarios);
 
-        jMenu1.setText("Renglon de menu");
+            jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/order.png"))); // NOI18N
 
-        jMenuItem7.setText("Guardar/ modificar renglon de menu");
-        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem7ActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jMenuItem7);
+            jMenuItem7.setText("Guardar/ modificar renglon de menu");
+            jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jMenuItem7ActionPerformed(evt);
+                }
+            });
+            jMenu1.add(jMenuItem7);
 
-        jMImprimirRenglon.setText("Imprimir renglon");
-        jMImprimirRenglon.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMImprimirRenglonActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jMImprimirRenglon);
+            jMImprimirRenglon.setText("Imprimir renglon");
+            jMImprimirRenglon.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jMImprimirRenglonActionPerformed(evt);
+                }
+            });
+            jMenu1.add(jMImprimirRenglon);
 
-        jMenuBar1.add(jMenu1);
+            jMenuBar1.add(jMenu1);
 
-        setJMenuBar(jMenuBar1);
+            setJMenuBar(jMenuBar1);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(escritorio, javax.swing.GroupLayout.DEFAULT_SIZE, 499, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(escritorio, javax.swing.GroupLayout.DEFAULT_SIZE, 501, Short.MAX_VALUE)
-        );
+            javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+            getContentPane().setLayout(layout);
+            layout.setHorizontalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(escritorio, javax.swing.GroupLayout.DEFAULT_SIZE, 660, Short.MAX_VALUE)
+            );
+            layout.setVerticalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(escritorio, javax.swing.GroupLayout.DEFAULT_SIZE, 453, Short.MAX_VALUE)
+            );
 
-        pack();
-        setLocationRelativeTo(null);
-    }// </editor-fold>//GEN-END:initComponents
+            pack();
+            setLocationRelativeTo(null);
+        }// </editor-fold>//GEN-END:initComponents
 
     private void jMGuardarPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMGuardarPacienteActionPerformed
         escritorio.removeAll();

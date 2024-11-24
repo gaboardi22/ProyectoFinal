@@ -74,24 +74,21 @@ public class VistaComida extends javax.swing.JInternalFrame {
 
         jLabel5.setText("Detalle:");
 
-        jBNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/add_white_button_icon_227863.png"))); // NOI18N
-        jBNuevo.setText("Nuevo");
+        jBNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/document.png"))); // NOI18N
         jBNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBNuevoActionPerformed(evt);
             }
         });
 
-        jBBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/search.png"))); // NOI18N
-        jBBuscar.setText("Buscar");
+        jBBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/search-results.png"))); // NOI18N
         jBBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBBuscarActionPerformed(evt);
             }
         });
 
-        jBGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/favorites_white_button_icon_227827.png"))); // NOI18N
-        jBGuardar.setText("Guardar");
+        jBGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/favorite.png"))); // NOI18N
         jBGuardar.setEnabled(false);
         jBGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

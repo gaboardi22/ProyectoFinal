@@ -50,8 +50,7 @@ public class VistaListarComida extends javax.swing.JInternalFrame {
 
         jLabel1.setText("Filtrar por ingrediente:");
 
-        jBBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/search.png"))); // NOI18N
-        jBBuscar.setText("Buscar");
+        jBBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/search-results.png"))); // NOI18N
         jBBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBBuscarActionPerformed(evt);
@@ -71,8 +70,7 @@ public class VistaListarComida extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jBLimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/add_white_button_icon_227863.png"))); // NOI18N
-        jBLimpiar.setText("Limpiar");
+        jBLimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/document.png"))); // NOI18N
         jBLimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBLimpiarActionPerformed(evt);
@@ -86,15 +84,16 @@ public class VistaListarComida extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 523, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jTFFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jBBuscar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jBLimpiar)))
+                        .addComponent(jBBuscar)
+                        .addGap(18, 18, 18)
+                        .addComponent(jBLimpiar)
+                        .addGap(30, 30, 30)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(

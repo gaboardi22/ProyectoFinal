@@ -103,7 +103,7 @@ public class VistaImprimirDieta extends javax.swing.JInternalFrame {
        Dieta combo = (Dieta) jComboBox1.getSelectedItem();
         if (combo !=null){
             int id = combo.getId_dieta();
-            List<MenuDiario> listaM = (List<MenuDiario>) mdd.listarMenusDiariosPorDieta(id);System.out.println("listaM"+listaM);
+            List<MenuDiario> listaM = (List<MenuDiario>) mdd.listarMenusDiariosPorDieta(id);
             modelo.setRowCount(0);
                     for (MenuDiario menus : listaM) {
                         Object[] fila = {

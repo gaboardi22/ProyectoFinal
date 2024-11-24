@@ -58,8 +58,7 @@ public class VistaCargarPesoYFinalizar extends javax.swing.JInternalFrame {
 
         jLabel2.setText("Peso final:");
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/check.png"))); // NOI18N
-        jButton1.setText("Finalizar");
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/check-mark_10015028.png"))); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);

@@ -20,7 +20,7 @@ public class Dieta {
     private float peso_inicial;
     private float peso_final;
     private int calorias_totales;
-//    private boolean estado;
+
 
     public Dieta() {
     }
@@ -41,7 +41,6 @@ public class Dieta {
         this.peso_inicial = peso_inicial;
         this.peso_final = peso_final;
         this.calorias_totales = calorias_totales;
-//        this.estado = estado; boolean estado
     }
 
     public int getId_dieta() {
@@ -107,14 +106,7 @@ public class Dieta {
     public void setCalorias_totales(int calorias_totales) {
         this.calorias_totales = calorias_totales;
     }
-
-//    public boolean isEstado() {
-//        return estado;
-//    }
-//
-//    public void setEstado(boolean estado) {
-//        this.estado = estado;
-//    } estado + 
+ 
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {

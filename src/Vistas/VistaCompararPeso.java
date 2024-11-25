@@ -4,6 +4,7 @@
  */
 package Vistas;
 
+import Entidades.Dieta;
 import Entidades.Paciente;
 import Persistencia.DietaData;
 import Persistencia.PacienteData;
@@ -135,12 +136,20 @@ public class VistaCompararPeso extends javax.swing.JInternalFrame {
         Paciente pacienteSeleccionado = (Paciente) jCBPacientes.getSelectedItem();
         float pesoActual = pacienteSeleccionado.getPeso_actual();
         float pesoBuscado = pacienteSeleccionado.getPeso_buscado();
-        float pesoInicio = dd.buscarDieta(pacienteSeleccionado).getPeso_inicial();
-        float diferenciaPeso = pesoActual - pesoBuscado;
-        jLPeso_actual.setText(String.valueOf(pesoActual));
-        jLPeso_buscado.setText(String.valueOf(pesoBuscado));
-        jLPeso_inicio.setText(String.valueOf(pesoInicio));
-        jLLe_falta.setText(String.valueOf(diferenciaPeso));
+        Dieta dieta = dd.buscarDieta(pacienteSeleccionado);
+        if (dieta != null) {
+            float pesoInicio = dieta.getPeso_inicial();
+            float diferenciaPeso = pesoActual - pesoBuscado;
+            jLPeso_actual.setText(String.valueOf(pesoActual));
+            jLPeso_buscado.setText(String.valueOf(pesoBuscado));
+            jLPeso_inicio.setText(String.valueOf(pesoInicio));
+            jLLe_falta.setText(String.valueOf(diferenciaPeso));
+        } else {
+            jLPeso_actual.setText(String.valueOf(pesoActual));
+            jLPeso_buscado.setText(String.valueOf(pesoBuscado));
+            jLPeso_inicio.setText("No tiene dieta asignada");
+            jLLe_falta.setText("No tiene dieta asignada");
+        }
     }//GEN-LAST:event_jCBPacientesActionPerformed
 
 

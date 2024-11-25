@@ -218,12 +218,19 @@ public class VistaMenuDiario extends javax.swing.JInternalFrame {
             Integer dia = Integer.parseInt(jTFDia.getText());
             Integer calorias = Integer.parseInt(jTFCalorias.getText());
             Dieta dieta = (Dieta) jComboBox.getSelectedItem();
+            
+            if (dieta == null){
+                JOptionPane.showMessageDialog(this, "Debe seleccionar una dieta");
+            }
+//            int idM = entrada;
             if (menuActual != null) {
                 menuActual.setCalorias(calorias);
                 menuActual.setDia(dia);
                 menuActual.setDieta(dieta);
+                menuActual.getId_menu_diario();
                 mdd.modificarMenuDiario(menuActual);
             } else {
+                menuActual = new MenuDiario();
                 menuActual.setCalorias(calorias);
                 menuActual.setDia(dia);
                 menuActual.setDieta(dieta);
@@ -317,11 +324,11 @@ public class VistaMenuDiario extends javax.swing.JInternalFrame {
 
     private void cargarCombo() {
         jComboBox.removeAllItems();
-        Set<Dieta> set = new HashSet<>();
+//        Set<Dieta> set = new HashSet<>();
+//        for (Dieta diet : ) {
+//            set.add(diet);set
+//        }
         for (Dieta diet : listaDieta) {
-            set.add(diet);
-        }
-        for (Dieta diet : set) {
             jComboBox.addItem(diet);
         }
     }

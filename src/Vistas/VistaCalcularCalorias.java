@@ -97,16 +97,16 @@ public class VistaCalcularCalorias extends javax.swing.JInternalFrame {
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         MenuDiario menuSeleccionado = (MenuDiario) jComboBox1.getSelectedItem();
-        List<RenglonMenu> renglones = rmd.listarRenglonMenu(menuSeleccionado.getId_menu_diario());
-        long totalCalorias = 0;
-        if (!renglones.isEmpty()) {
-            for (RenglonMenu renglon : renglones) {
-                totalCalorias += renglon.getSubtotal_calorias() + (renglon.getCantidad_gramos() * 9);
-            }
-                jLCalorias.setText("Calorias totales:  "+totalCalorias);
-        } else {
-            JOptionPane.showMessageDialog(this, "No hay renglones para el menú seleccionado");
+    List<RenglonMenu> renglones = rmd.listarRenglonMenu(menuSeleccionado.getId_menu_diario());
+    long totalCalorias = 0;
+    if (!renglones.isEmpty()) {
+        for (RenglonMenu renglon : renglones) {
+            totalCalorias += renglon.getSubtotal_calorias();
         }
+        jLCalorias.setText("Calorias totales:  "+totalCalorias);
+    } else {
+        JOptionPane.showMessageDialog(this, "No hay renglones para el menú seleccionado");
+    }
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
 

@@ -110,17 +110,6 @@ public class VistaDieta extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jbNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jbBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jBGuardar))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(18, 18, 18)
-                        .addComponent(jCBPacientes, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
                         .addComponent(jTFNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -132,7 +121,18 @@ public class VistaDieta extends javax.swing.JInternalFrame {
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                             .addComponent(jLabel2)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(JDCFecha_inicio, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(JDCFecha_inicio, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jCBPacientes, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jbNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(29, 29, 29)
+                                .addComponent(jbBuscar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jBGuardar)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -154,9 +154,9 @@ public class VistaDieta extends javax.swing.JInternalFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jCBPacientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbNuevo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jbNuevo, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jbBuscar)
                     .addComponent(jBGuardar))
                 .addGap(21, 21, 21))
@@ -179,12 +179,34 @@ public class VistaDieta extends javax.swing.JInternalFrame {
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
         try{ 
             String nombre = jTFNombre.getText().trim();
+            if (nombre.isEmpty()){
+                JOptionPane.showMessageDialog(this, "Se debe rellenar todos los campos");
+                return;
+            }
             Date fechaIn = JDCFecha_inicio.getDate();
-            LocalDate lD = fechaIn.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
             Date fechaFin = jDCFecha_fin.getDate();
+            if (fechaIn == null || fechaFin == null) {
+            JOptionPane.showMessageDialog(this, "Se deben rellenar las fechas de inicio y fin");
+            return;
+        }
+            LocalDate lD = fechaIn.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
             LocalDate lD2 = fechaFin.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            if (lD2.isBefore(lD)) {
+            JOptionPane.showMessageDialog(this, "La fecha final no puede ser anterior a la fecha inicial.");
+            return;
+        }
             Paciente paciente = (Paciente) jCBPacientes.getSelectedItem();
-            if(dieta == null){
+            if (paciente == null) {
+            JOptionPane.showMessageDialog(this, "Debe seleccionar un paciente");
+            return;
+        }
+            if(dieta != null){
+                dieta.setNombre(nombre);
+                dieta.setFecha_inicio(lD);
+                dieta.setFecha_fin(lD2);
+                dieta.setPaciente(paciente);
+                dietaData.modificarDieta(dieta);
+            } else {
                 dieta = new Dieta(nombre, lD ,lD2, paciente,0);
                 dietaData.guardarDieta(dieta);
             }
@@ -251,7 +273,7 @@ public class VistaDieta extends javax.swing.JInternalFrame {
        jTFNombre.setEnabled(true);
        jTFNombre.setText("");
        jCBPacientes.setEnabled(true);
-       jCBPacientes.setSelectedItem(0);
+       jCBPacientes.setSelectedItem(null);
        jBGuardar.setEnabled(true);
     }//GEN-LAST:event_jbNuevoActionPerformed
 

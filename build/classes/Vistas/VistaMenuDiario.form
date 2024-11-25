@@ -71,6 +71,7 @@
                               <Component id="jBBuscar" alignment="1" min="-2" max="-2" attributes="0"/>
                               <Component id="jBGuardar" alignment="1" min="-2" max="-2" attributes="0"/>
                           </Group>
+                          <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
@@ -85,14 +86,6 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                          <Component id="jBBuscar" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="jBNuevo" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="jBGuardar" min="-2" max="-2" attributes="0"/>
-                      </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLID" min="-2" max="-2" attributes="0"/>
@@ -112,11 +105,19 @@
                               <Component id="jComboBox" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                          <Component id="jBBuscar" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                          <Component id="jBNuevo" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jBGuardar" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="jScrollPane1" pref="125" max="32767" attributes="0"/>
+                  <Component id="jScrollPane1" pref="145" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -177,9 +178,8 @@
         <Component class="javax.swing.JButton" name="jBGuardar">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/img/favorites_white_button_icon_227827.png"/>
+              <Image iconType="3" name="/img/favorite.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Guardar"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <Events>
@@ -189,9 +189,8 @@
         <Component class="javax.swing.JButton" name="jBNuevo">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/img/add_white_button_icon_227863.png"/>
+              <Image iconType="3" name="/img/document.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Nuevo"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBNuevoActionPerformed"/>
@@ -200,9 +199,8 @@
         <Component class="javax.swing.JButton" name="jBBuscar">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/img/search.png"/>
+              <Image iconType="3" name="/img/search-results.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Buscar"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBBuscarActionPerformed"/>

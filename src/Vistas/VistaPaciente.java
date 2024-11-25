@@ -168,7 +168,7 @@ public class VistaPaciente extends javax.swing.JInternalFrame {
                         .addComponent(jBNuevo)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTFPeso_buscado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(120, 120, 120))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -179,7 +179,9 @@ public class VistaPaciente extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 421, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -192,6 +194,22 @@ public class VistaPaciente extends javax.swing.JInternalFrame {
             Float altura = Float.valueOf(jTFAltura.getText());
             Float peso_actual = Float.valueOf(jTFPeso_actual.getText());
             Float peso_buscado = Float.valueOf((jTFPeso_buscado.getText()));
+            if (edad < 0 || edad > 120) {
+                JOptionPane.showMessageDialog(null, "Edad inválida. Debe ser entre 0 y 120 años.");
+                return;
+            }
+            if (altura < 0.5 || altura > 2.5) {
+                JOptionPane.showMessageDialog(null, "Altura inválida. Debe ser entre 0.5 y 2.5 metros.");
+                return;
+            }
+            if (peso_actual < 20 || peso_actual > 200) {
+                JOptionPane.showMessageDialog(null, "Peso actual inválido. Debe ser entre 20 y 200 kg.");
+                return;
+            }
+            if (peso_buscado < 20 || peso_buscado > 200) {
+                JOptionPane.showMessageDialog(null, "Peso buscado inválido. Debe ser entre 20 y 200 kg.");
+                return;
+            }
             if (pacienteActual != null) {
                 pacienteActual.setNombre(nombre);
                 pacienteActual.setEdad(edad);
@@ -199,7 +217,7 @@ public class VistaPaciente extends javax.swing.JInternalFrame {
                 pacienteActual.setPeso_actual(peso_actual);
                 pacienteActual.setPeso_buscado(peso_buscado);
                 pd.modificarPaciente(pacienteActual);
-            }else{
+            } else {
                 pacienteActual = new Paciente();
                 pacienteActual.setNombre(nombre);
                 pacienteActual.setEdad(edad);
@@ -208,7 +226,7 @@ public class VistaPaciente extends javax.swing.JInternalFrame {
                 pacienteActual.setPeso_buscado(peso_buscado);
                 pd.guardarPaciente(pacienteActual);
             }
-            jLID.setText("ID: "+pacienteActual.getId_paciente());
+            jLID.setText("ID: " + pacienteActual.getId_paciente());
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Error al ingresar los tipos de datos, revise");
         }
@@ -223,20 +241,20 @@ public class VistaPaciente extends javax.swing.JInternalFrame {
 
     private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
         String entrada = JOptionPane.showInputDialog(this, "Ingrese el nombre completo del paciente");
-    pacienteActual = pd.buscarPaciente(entrada);
-    
-    if (pacienteActual != null) {
-        jLID.setText("ID: " + pacienteActual.getId_paciente());
-        jTFNombre.setText(pacienteActual.getNombre());
-        jTFEdad.setText(String.valueOf(pacienteActual.getEdad()));
-        jTFAltura.setText(String.valueOf(pacienteActual.getAltura()));
-        jTFPeso_actual.setText(String.valueOf(pacienteActual.getPeso_actual()));
-        jTFPeso_buscado.setText(String.valueOf(pacienteActual.getPeso_buscado()));
-        activarCampos();
-        jBGuardar.setEnabled(true);
-    } else {
-        JOptionPane.showMessageDialog(this, "Paciente no encontrado");
-    }
+        pacienteActual = pd.buscarPaciente(entrada);
+
+        if (pacienteActual != null) {
+            jLID.setText("ID: " + pacienteActual.getId_paciente());
+            jTFNombre.setText(pacienteActual.getNombre());
+            jTFEdad.setText(String.valueOf(pacienteActual.getEdad()));
+            jTFAltura.setText(String.valueOf(pacienteActual.getAltura()));
+            jTFPeso_actual.setText(String.valueOf(pacienteActual.getPeso_actual()));
+            jTFPeso_buscado.setText(String.valueOf(pacienteActual.getPeso_buscado()));
+            activarCampos();
+            jBGuardar.setEnabled(true);
+        } else {
+            JOptionPane.showMessageDialog(this, "Paciente no encontrado");
+        }
     }//GEN-LAST:event_jBBuscarActionPerformed
 
 

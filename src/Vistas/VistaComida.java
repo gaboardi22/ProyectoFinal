@@ -104,23 +104,22 @@ public class VistaComida extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLID)
-                    .addComponent(jLabel4)
                     .addComponent(jLabel5)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel2)
-                                .addComponent(jTFCalorias_por_100g, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jTFNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jCBTipo, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addGap(34, 34, 34)
+                                .addComponent(jLabel3)
+                                .addComponent(jTFCalorias_por_100g, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel4))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jBNuevo, javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(jBBuscar, javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(jBGuardar, javax.swing.GroupLayout.Alignment.TRAILING)))
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jCBTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -130,6 +129,13 @@ public class VistaComida extends javax.swing.JInternalFrame {
                 .addComponent(jLID)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(jBGuardar)
+                        .addGap(18, 18, 18)
+                        .addComponent(jBBuscar)
+                        .addGap(18, 18, 18)
+                        .addComponent(jBNuevo))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -137,23 +143,16 @@ public class VistaComida extends javax.swing.JInternalFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTFCalorias_por_100g, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(jBGuardar)
+                        .addComponent(jTFCalorias_por_100g, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jBBuscar)
-                        .addGap(18, 18, 18)
-                        .addComponent(jBNuevo)))
-                .addGap(18, 18, 18)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jCBTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1)
-                .addContainerGap())
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -196,14 +195,26 @@ public class VistaComida extends javax.swing.JInternalFrame {
             activarCampos();
             jBGuardar.setEnabled(true);
         } else {
-            JOptionPane.showMessageDialog(this, "Paciente no encontrado");
+            JOptionPane.showMessageDialog(this, "Comida no encontrada");
         }
     }//GEN-LAST:event_jBBuscarActionPerformed
 
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
         try {
-            String nombre = jTFNombre.getText();
+            if (jCBTipo.getSelectedItem() == null) {
+                JOptionPane.showMessageDialog(null, "Debe seleccionar un tipo de comida");
+                return;
+            }
+            if (jTFNombre.getText().isEmpty() || jTFCalorias_por_100g.getText().isEmpty() || jTADetalle.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "No puede dejar campos vacíos");
+                return;
+            }
             Integer calorias_por_100g = Integer.valueOf(jTFCalorias_por_100g.getText());
+            if (calorias_por_100g <= 0) {
+                JOptionPane.showMessageDialog(null, "Calorías por 100g debe ser un número entero positivo");
+                return;
+            }
+            String nombre = jTFNombre.getText();
             String tipo = String.valueOf(jCBTipo.getSelectedItem());
             String detalle = jTADetalle.getText();
             if (comidaActual != null) {

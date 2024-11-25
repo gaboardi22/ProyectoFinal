@@ -17,11 +17,11 @@ import javax.swing.table.DefaultTableModel;
  */
 public class VistaImprimirRenglon extends javax.swing.JInternalFrame {
 
-   RenglonMenuData rmd = new  RenglonMenuData();
-   MenuDiarioData mdd = new MenuDiarioData();
-   List<MenuDiario> listaM = mdd.listarMenusDiarios();
-   DefaultTableModel modelo = new DefaultTableModel();
-   
+    RenglonMenuData rmd = new RenglonMenuData();
+    MenuDiarioData mdd = new MenuDiarioData();
+    List<MenuDiario> listaM = mdd.listarMenusDiarios();
+    DefaultTableModel modelo = new DefaultTableModel();
+
     /**
      * Creates new form VistaImprimirRenglon
      */
@@ -29,7 +29,7 @@ public class VistaImprimirRenglon extends javax.swing.JInternalFrame {
         initComponents();
         cargaCombo();
         cargarTabla();
-        
+
     }
 
     /**
@@ -100,20 +100,21 @@ public class VistaImprimirRenglon extends javax.swing.JInternalFrame {
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         MenuDiario combo = (MenuDiario) jComboBox1.getSelectedItem();
-        if (combo !=null){
+        if (combo != null) {
             modelo.setRowCount(0);
             int id = combo.getId_menu_diario();
             List<RenglonMenu> lista = rmd.listarRenglonMenu(id);
-                    for (RenglonMenu renglon : lista) {
-                        Object[] fila = {
-                            renglon.getId_renglon(),
-                            renglon.getComida(),
-                            renglon.getCantidad_gramos(),
-                            renglon.getSubtotal_calorias()
-                        };
-                        modelo.addRow(fila);
-                    }
-                    jTable1.updateUI();
+            for (RenglonMenu renglon : lista) {
+                Object[] fila = {
+                    renglon.getId_renglon(),
+                    renglon.getMenu_diario().getId_menu_diario(),
+                    renglon.getComida().getNombre(),
+                    renglon.getCantidad_gramos(),
+                    renglon.getSubtotal_calorias()
+                };
+                modelo.addRow(fila);
+            }
+            jTable1.updateUI();
     }//GEN-LAST:event_jComboBox1ActionPerformed
     }
 
@@ -123,15 +124,15 @@ public class VistaImprimirRenglon extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
-    
-    private void cargaCombo(){
-        for (MenuDiario lista : listaM ){
+
+    private void cargaCombo() {
+        for (MenuDiario lista : listaM) {
             jComboBox1.addItem(lista);
         }
     }
 
     private void cargarTabla() {
-        String[] columnas = {"ID", "menu dario", "comida", "cantidad de gramos", "subtotal de calorias"};
+        String[] columnas = {"ID", "ID menu dario", "comida", "cantidad de gramos", "subtotal de calorias"};
         modelo.setColumnIdentifiers(columnas);
         jTable1.setModel(modelo);
     }

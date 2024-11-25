@@ -164,9 +164,12 @@ public class VistaCargarPesoYFinalizar extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
     
     private void cargarCombo() {
-        for (Paciente paciente : listaPacientes) {
+    DietaData dd = new DietaData();
+    for (Paciente paciente : listaPacientes) {
+        if (dd.buscarDieta(paciente) != null) {
             jCBPacientes.addItem(paciente);
         }
     }
+}
 
 }
